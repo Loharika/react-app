@@ -1,8 +1,8 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../logo.svg";
-
-function App() {
+function AppLink() {
   return (
     <div className="App">
       <header className="App-header">
@@ -18,10 +18,15 @@ function App() {
         >
           Learn React
         </a>
-        <Link to="/page-1">Page 1</Link>
+        <Link to="/page-1">Page</Link>
+        <Link to="/assignments">Assignments</Link>
+        {/*<Link to="/car">Car</Link>
+        <Link to="/todo">Todo List</Link>
+        <Link to="/formComponents">Form Components</Link>
+        <Link to="/countryDashboard">Country Dashboard</Link>*/}
       </header>
     </div>
   );
 }
 
-export default App;
+export default AppLink;

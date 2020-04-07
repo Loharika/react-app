@@ -1,0 +1,87 @@
+html,body{
+    width:100%;
+    height:100%;
+}
+.country-details-app{
+    background-color:white;
+}
+.Light{
+    width:98%;
+    height:100%;
+    background-color:white;
+}
+.Light>*>*{
+    color:black;
+}
+.Dark{
+    width:98%;
+    height:100%;
+    background-color:#2b3945;
+}
+.Dark>*{
+    color:white;
+}
+.countries-list{
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
+.country-details-dark{
+    background-color:#2b3945;
+    color:white;
+}
+.country-details-light{
+    background-color:white;
+    color:black;
+}
+
+.loading-icon{
+    align-self:center;
+}
+.error-message{
+    width:100%;
+    text-align:center;
+    font-weight:bold;
+    height:100vh;
+}
+.country-card-image{
+    width:100%;
+    height:50%;
+    object-fit:cover;
+}
+.continent-names-list-light{
+    background-color:black;
+    font-weight:bold;
+}
+.continent-names-list-dark{
+    background-color:lightgrey;
+    color:white;
+    font-weight:bold;
+}
+@media only screen and (max-width: 576px) {
+  .card {
+    width:300px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .card {
+    width:200px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .card {
+    width:200px;
+  }
+}
+@media only screen and (max-width: 1199px) {
+  .card {
+    width:200px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .card {
+    width:240px;
+  }
+}
+
