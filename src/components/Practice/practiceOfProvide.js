@@ -11,7 +11,7 @@ class A extends Component{
                 foreground: 'white',
                 background: 'lightgrey'});
             }
-    onChange=()=>{
+    onChange=(event)=>{
         this.value=event.target.value;
     }
     render(){
