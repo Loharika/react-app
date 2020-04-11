@@ -1,0 +1,109 @@
+.checkbox {
+    /*min-width: 40px;
+    min-height: 40px;
+    border-radius: 20px;
+    color: #f5f5f5;*/
+    min-height: 40px;
+    min-width: 40px;
+    border: 2px solid #f5f5f5;
+    background-color: white;
+    border-radius: 20px;
+    
+}
+.checkbox:checked+.text {
+    text-decoration: line-through;
+}
+body {
+    background-color: #f5f5f5;
+}
+
+.todo-title {
+    color: rgba(154, 154, 228,0.6); 
+    font-size: 100px;
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 2px;
+}
+.dont-display{
+    display:none;
+    
+}
+.display{
+    display:flex;
+    align-items:center;
+}
+ul{
+    list-style: none;
+}
+.todo-list-details{
+    display:flex;
+    justify-content:center;
+    
+}
+.all,.active,.completed,.clearCompleted{
+    /*padding:2px;
+    background-color: #f2f2f2;
+    font-size:16px;
+    margin:5px;
+    border-radius:3px;
+    border:none;*/
+    border: none;
+    background-color: white;
+    color: #777777;
+    font-size: 14px;
+    padding-right: 30px;
+    padding:5px 10px;
+}
+.all:hover,.active:hover,.completed:hover{
+    border:2px solid rgba(175, 47, 47, 0.5);
+    border-radius:10px;
+}
+.flexbox{
+    margin:2%;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    background: #fff;
+    box-shadow:
+    0 1px 1px rgba(0,0,0,0.15),
+    0 10px 0 -5px #eee,
+    0 10px 1px -4px rgba(0,0,0,0.15),
+    0 20px 0 -10px #eee,
+    0 20px 1px -9px rgba(0,0,0,0.15);
+    padding: 30px;
+}
+.text,.text1 {
+    border: none;
+    border-radius: 2px;
+    font-size: 24px;
+    flex-grow: 1;
+}
+.text1{
+    width:50%;
+}
+.text:focus,.text1:focus {
+    border: 1px solid #e1e1e1;
+}
+.delete-btn{
+    color:rgba(154, 154, 228,0.6);
+    font-size:25px;
+    border:none;
+}
+.todo-list-item {
+    width:120%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-bottom: 3px solid #f5f5f5;
+    border-radius: 2px;
+    height: 50px;
+    background-color: white;
+    font-size: 20px;
+    color: grey;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left:-11%;
+    flex-grow:1;
+}

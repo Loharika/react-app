@@ -243,10 +243,28 @@ const SearchCountryInput=styled.input`
     overflow: hidden;
     flex-grow:1;
 `;
+const CounterAppStyle=styled.div`
+    ${tw`w-screen h-screen flex flex-col justify-center items-center`}
+`;
+const CounterTitle=styled.h1`
+    ${tw`text-4xl font-bold`}
+`;
+const Counter=styled.div`
+    ${tw`flex justify-center`}
+`;
+const IncrementButton=styled.button`
+    ${tw`mr-2 text-3xl bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded`}
+`;
+const DecrementButton=styled.button`
+    ${tw`ml-2 text-3xl bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded`}
+`;
+const CounterValueDisplay=styled.input`
+  ${tw`text-3xl border-solid border-red-300 border-2 w-1/5`}
+`;
 
 export {EmojiCardComponent,Image,EmojiCardsList,EmojiGameComponent,FooterComponent,ParagraphComponentPlay,ParagraphComponent,HeaderComponent,ThemeChangeButton
     ,SpanComponent,SpanComponentForTitle,WinOrLoseComponent,WinOrLoseResult,GameScore,ButtonComponent,ScoreBoardComponent,CountriesList,EachCountryCard,CountryFlagImage,
     ShowDetails,ButtonElement,ImageElement,ButtonElementDiv,TotalCountryData,FlagImage,CountryDetails,CountryDetailsWithoutBorderDetails
     ,CountryName,EachDetailAboutCountry,EachDetail,BorderCountries,CountryDetailsHeading,CountryBorderButtons,CovidGraphTitle,CountryCardDetails,CountryCardTitle,SearchBarContinentList,
-    CountryHeaderComponent,ThemeIcon,HeaderTitle,CountryThemeChangeButton,SearchCountryComponent,SearchIconComponent,SearchCountryInput
+    CountryHeaderComponent,ThemeIcon,HeaderTitle,CountryThemeChangeButton,SearchCountryComponent,SearchIconComponent,SearchCountryInput,CounterAppStyle,CounterTitle,Counter,IncrementButton,DecrementButton,CounterValueDisplay
 };

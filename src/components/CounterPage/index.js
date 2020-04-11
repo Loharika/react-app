@@ -18,10 +18,13 @@ class CounterPage extends Component {
 
   render() {
     return (
-      <div>
-        <h1>{counterStore.count}</h1>
-        <button onClick={this.handleIncrement}>+</button>
-        <button onClick={this.handleDecrement}>-</button>
+      <div style={{width:'100vw',height:'100vh',display:'flex',justifyContent:'center',alignItems:'center'}}>
+        <div>
+      <h1>Counter</h1>
+        <h1 className='m-5' >{counterStore.count}</h1>
+        <button className='m-5' onClick={this.handleIncrement}>+</button>
+        <button  className='m-5' onClick={this.handleDecrement}>-</button>
+        </div>
       </div>
     )
   }

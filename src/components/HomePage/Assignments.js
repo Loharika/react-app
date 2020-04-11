@@ -8,10 +8,15 @@ function Assignments() {
     <div className='text-4xl text-blue-500'>Assignments</div>
         <Link to="/page-1">Page 1</Link>
         <Link to="/car">Car</Link>
-        <Link to="/todo">Todo List</Link>
+        {/*<Link to="/todo">Todo List</Link>*/}
         <Link to="/formComponents">Form Components</Link>
         <Link to="/countryDashboard">Country Dashboard</Link>
         <Link to="/emojiGame">Emoji Game</Link>
+        <Link to="/counter-app">Counter App</Link>
+        <Link to="/todo-app">Todo App</Link>
+        <Link to="/mobx-store-todo-app">Mobx Todo App</Link>
+        <Link to="/events-app">Events App</Link>
+        <Link to="/provider-example">Provider-Example</Link>
     </div>
   );
 }
