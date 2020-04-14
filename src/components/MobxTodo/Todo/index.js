@@ -1,19 +1,18 @@
 import React from 'react';
-function TodoComponent(props){
-        /*return (
-        <li id={props.id} className="todo-list-item" key={props.id}>
-            <input  className='checkbox' defaultChecked={props.isComplepled} type='checkbox' />
-            <input  className='text' type='text' defaultValue={props.title} disabled={props.isCompleted} />
-            <button type='button' className='delete-btn' >X</button>
-        </li>
-        );*/
+
+class TodoComponent extends React.Component{
+    constructor(props){
+        super(props)
+    }
+    render(){
         return (
-        <li id={props.todo.id} className="todo-list-item" key={props.todo.id}>
-            <input  className='checkbox' defaultChecked={props.todo.isCompleted} onClick={props.todo.onCompleteTodo} type='checkbox' />
-            <input  className='text' type='text' defaultValue={props.todo.title} disabled={props.todo.isCompleted} onKeyDown={props.todo.onUpdateTodoTitle}/>
-            <button type='button' className='delete-btn' onClick={()=>props.onRemoveTodo(props.todo.id)} >X</button>
+        <li id={this.props.todo.id} className="todo-list-item" key={this.props.todo.id}>
+            <input  className='checkbox' defaultChecked={this.props.todo.isCompleted} onClick={this.props.todo.onCompleteTodo} type='checkbox' />
+            <input  className='text' type='text' defaultValue={this.props.todo.title} disabled={this.props.todo.isCompleted} onKeyDown={this.props.todo.onUpdateTodoTitle}/>
+            <button type='button' className='delete-btn' onClick={()=>this.props.onRemoveTodo(this.props.todo.id)} >X</button>
         </li>
         );
+    }
         
 }
 export default TodoComponent;

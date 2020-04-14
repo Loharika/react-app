@@ -1,10 +1,12 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
+
+import {EmojiCardsList,EmojiGameComponent} from '../../styleComponents/styleComponents.js';
 import NavBar from '../navBar/navBar.js';
 import Footer from '../footer/footer.js';
 import EmojiCard from '../emojiCard/emojiCard.js';
 import WinOrLose from '../winOrLose/winOrLose.js';
-import {withRouter} from 'react-router-dom';
-import {EmojiCardsList,EmojiGameComponent} from '../../styleComponents/styleComponents.js';
+
 const url='https://tap.ibhubs.in/react/assignments/assignment-5/preview/images/';
 let emojis=[];
 const emojisNames=['Exploding Head','Grinning Face with Sweat','Smiling Face with Heart Eyes','Smirking Face','Thinking Face','Winking Face','Grinning Face',

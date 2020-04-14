@@ -1,11 +1,13 @@
 import React from 'react';
 import {reaction,action,computed,observable} from 'mobx';
 import {observer}  from 'mobx-react';
+
+import todoStore from '../../../stores/TodoStore/index';
+import AddTodo from '../AddTodo/index';
+import Footer from '../TodoFooter/index';
+import TodoComponent from '../Todo/index';
+
 import './index.css';
-import todoStore from '../../../stores/TodoStore/index.js';
-import AddTodo from '../AddTodo/index.js';
-import Footer from '../TodoFooter/index.js';
-import TodoComponent from '../Todo/index.js';
 
 @observer
 class MobxTodoApp extends React.Component{
@@ -19,13 +21,6 @@ class MobxTodoApp extends React.Component{
         this.value=value;
         todoStore.onAddTodo(this.value);
     }
-    /*@computed
-    get renderTodoListTotal(){
-        console.log(todoStore.todos);
-        return (
-            <TodoList todos={todoStore.todos}/>
-            );
-    }*/
     @computed
     get renderTodoList(){
         if(todoStore.filteredTodos.length>0){

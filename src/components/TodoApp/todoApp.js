@@ -1,13 +1,16 @@
 import React from 'react';
 import {observable,action,configure,computed} from 'mobx';
 import {observer} from 'mobx-react';
-configure({enforceActions:'observed'});
+
 import './todoApp.css';
+
+configure({enforceActions:'observed'});
+
 function Todo(props){
         return(
         <li id={props.todoData.id} className="todo-list-item" key={props.todoData.id}>
             <input  className='checkbox' defaultChecked={props.todoData.isChecked} onClick={()=>props.toShowWhetherChecked(props.todoData.id)} type='checkbox' />
-            <input  className='text' type='text' defaultValue={props.todoData.todoInput} disabled={props.todoData.isChecked} onKeyDown={()=>props.updateTodo(props.todoData.id,event.target.value)}/>
+            <input  className='text' type='text' defaultValue={props.todoData.todoInput} disabled={props.todoData.isChecked} onKeyDown={(event)=>props.updateTodo(props.todoData.id,event.target.value,event.keyCode)}/>
             <button type='button' className='delete-btn' onClick={()=>props.removeFromTodosList(props.todoData.id)}>X</button>
         </li>
         );
@@ -93,8 +96,8 @@ class TodoApp extends React.Component{
         this.displayTodosList=todoList;
     }
     @action.bound
-    updateTodo(todoId,value){
-        if(event.keyCode===13){
+    updateTodo(todoId,value,eventKeyCode){ 
+        if(eventKeyCode===13){
                 this.allTodosList.forEach((eachTodo,index) =>{
                     if(eachTodo.id===todoId){
                         this.allTodosList[index].todoInput=value;
@@ -113,7 +116,6 @@ class TodoApp extends React.Component{
         return this.count=activeTodos;
     }
     render(){
-        console.log(this.displayTodosList);
             return(
         <div className='flexbox'>
         <h1 className='todo-title'>todos</h1>

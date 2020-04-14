@@ -1,13 +1,11 @@
-import { observable,computed,action,reaction,autorun} from 'mobx';
-import Todo from './TodoModel/index.js';
+import { observable,computed,action} from 'mobx';
+import Todo from './TodoModel/index';
 class TodoStores {
     @observable todos;
    @observable selectedFilter;
     constructor(){
         this.todos=[];
         this.selectedFilter="ALL";
-        this.todoReactionArray;
-        this.todoChangeFilter;
     }
    
    

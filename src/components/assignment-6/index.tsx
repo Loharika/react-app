@@ -1,9 +1,12 @@
 import React from 'react';
-import { observer, inject } from 'mobx-react'
+import { observer } from 'mobx-react'
 
 import {CounterAppStyle,CounterTitle,Counter,IncrementButton,DecrementButton,CounterValueDisplay} from
   '../styleComponents/styleComponents.js';
 import stores from '../../stores';
+
+
+
 const counterStore = stores.counterStore;
 @observer
 class  CounterApp extends React.Component{

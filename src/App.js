@@ -1,13 +1,13 @@
 
 import React from "react";
-import {observable} from 'mobx';
 import {observer} from 'mobx-react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {configure} from 'mobx';
 
 import HomePage from "./components/HomePage";
 import Assignments from './components/HomePage/Assignments.js';
 import Page1 from "./components/Page1";
-import TodoApp from './components/TodoApp/todoApp.js';
+import TodoApp from './components/TodoApp/todoApp';
 import CarList from  './components/CarsList/carList.js';
 import FormComponents from './components/formComponents/form.js';
 import Components from './components/formComponents/components.js';
@@ -16,16 +16,16 @@ import ShowCountryData from './components/Country/showCountryData/showCountryDat
 import EmojiGame from './components/emojiGame/emojiGame/emojiGame.js';
 import CounterPage from './components/CounterPage/index.js';
 import CounterApp from './components/assignment-6/index.js';
-import MobxTodoApp from './components/MobxTodo/MobxTodoApp/index.js';
-import EventsApp from './components/EventsApp/EventApp/index.js';
-import A from './components/Practice/practiceOfProvide.js';
-import {configure} from 'mobx';
+import MobxTodoApp from './components/MobxTodo/MobxTodoApp/index';
+import EventsApp from './components/EventsApp/EventApp/index';
+
+import themeStore from './stores/ThemeStore'
 
 import "./App.css";
 
 configure({enforceActions:'never'});
 
-import themeStore from './stores/ThemeStore'
+
 @observer
 class App extends React.Component{
   constructor(props){
@@ -34,14 +34,13 @@ class App extends React.Component{
       selectedTheme:'Light Mode',
     };
   }
-  //@observable selectedTheme='Light Mode';
+  
   getCurrentTheme=()=>{
   return themeStore.selectedTheme;
     
   }
-  setCurrentTheme=(theme)=>{
+  setCurrentTheme=(theme:string)=>{
     themeStore.updateCurrentTheme(theme);
-    //this.selectedTheme=theme;
   
   }
   
@@ -95,9 +94,6 @@ class App extends React.Component{
         </Route>
         <Route exact path="/events-app">
             <EventsApp />
-        </Route>
-        <Route exact path="/provider-example">
-          <A />
         </Route>
         <Route path="/">
           <HomePage />

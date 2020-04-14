@@ -1,4 +1,5 @@
 import React from 'react';
+
 function Footer(props){
     return(
     <div className='flex justify-between items-center'>

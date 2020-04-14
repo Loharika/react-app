@@ -1,4 +1,5 @@
 import {observable} from 'mobx';
+
 class ThemeStore{
     @observable selectedTheme
     constructor(){
