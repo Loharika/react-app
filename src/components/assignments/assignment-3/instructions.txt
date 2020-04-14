@@ -1,0 +1,146 @@
+Objective: 
+
+* Develop React components by considering below problem statements
+* Follow the below standards during development
+
+Problem Statement 0:
+
+* When the user clicks on 'Form Components' link, the page should be navigated to `/form-components`
+* Create a component named `FormComponents`
+* It has the following links to navigate to its corresponding pages.
+    - Greetings
+    - id
+* Refer preview-0
+* Create a common component named `NavBar`  which has the following methods and props
+    * Methods
+        - goBack
+    * Props
+        - title
+        - history - from withRouter 
+* On click back icon user should be navigated to "home page" refer preview-0
+
+Problem Statement 1:
+
+* When a user clicks on the 'Greetings' link, the page should be navigated to `/form-components/greetings`
+* Create a component named `Greetings` which has the following methods and state variables
+    * Methods
+        - handleUserInput
+        - handleSubmit
+        - displayMessage
+    * State variables
+        - userInputText
+        - displayName
+* Refer preview-1
+* When a user entered the name in the input field and on submit, the greeting message should be displayed below the great button.
+* On click back icon user should be navigated to "form components"
+
+
+Problem Statement 2:
+
+* When the user clicks on 'Favourite Dessert' link, the page should be navigated to `/form-components/favorite-dessert`.
+* Create a component named `FavouriteDessert` which has the following methods, props, and state variables
+    * Methods
+        - handleUserInput
+        - handleSubmit
+        - displayMessage
+        - renderDessertOptions
+    * State variables
+        - selectedDessert
+        - favoriteDessert
+    * Props
+        - dessertList
+* Refer preview-2
+* Display the selected dessert below the submit button on submit
+* Name of the selected dessert should be displayed in capital letters.
+* Accept the `dessertList` as a prop to this component
+    - ["Vanilla", "Butterscotch", "Gulab Jamum", "Yoghurt Pots", "Baked Banana", "Chocolate"]
+* On click back icon user should be navigated to "form components"
+
+
+Problem Statement 3:
+
+* When the user clicks on 'Visited Cities' link, the page should be navigated to `/form-components/visited-cities`
+* Create a component named `CheckboxWithLabel` which has the following methods, props inside `src/common/components`
+    * Props
+        - label
+        - handleCheckboxClick - callback function with label and isChecked as arguments
+    * Methods
+        - handleCheckboxClick
+* Create a component named `VisitedCities` which has the following methods, props, and state variables inside `src/components`
+    * Methods
+        - handleCheckboxClick
+        - handleSubmit
+        - displayVisitedCitiesMessage
+        - renderCityOptions
+    * State variables
+        - visitedCities
+        - selectedCities
+        - cityOptions
+    * Props
+        - cityList
+* Refer preview-3
+* Display the list of selected cities below the submit button on submit
+* List of selected cities should be displayed as comma-separated shown in the preview-3
+* Accept the `cityList` as a prop to VisitedCities component
+    - ["Hyderabad", "Chennai", "Bangalore", "Pune", "Mumbai", "Delhi"]
+* On click back icon user should be navigated to "form components"
+
+
+Problem Statement 4:
+
+* When the user clicks on 'Your State' link, the page should be navigated to '/form-components/your-state`
+* Create a component named `YourState` which has the following methods, props, and state variables
+    * Methods
+        - handleChangeState
+        - handleSubmit
+        - displayMessage
+    * State variables
+        - selectedState
+        - submittedState
+    * Props
+        - stateList
+* Refer preview-4
+* Display the selected state below the submit button on submit
+* Accept the `stateList` as a prop to this component
+    - ["Andhra Pradesh", "Telangana", "Tamil Nadu", "Kerala", "Karnataka", "Haryana"]
+* On click back icon user should be navigated to "form components"
+
+
+Problem Statement 5:
+
+* When the user clicks on 'Disable or Enable' link, the page should be navigated to `/form-components/disabled-enabled`
+Create a component named `DisableOrEnable` which has the following methods, props, and state variables
+    * Methods
+        - handleChange
+        - handleSubmit
+        - displayMessage
+    * State variables
+        - isDisableButtonChecked
+        - showMessage
+* Refer preview-5
+* Display the enable or disable state message below the click me button
+* On click back icon user should be navigated to "form components"
+
+
+Follow the below standards for ReactJS:
+
+* Name of the component must start with the capital letter (Ex: AlertMessage, SuccessMessage)
+* React state should be treated as immutable
+* Index as a key to a component is an anti-pattern. 
+* Math.random() as a key to a component is an anti-pattern
+* All method names and variable names should be in camel case (Ex: firstName)
+
+
+Follow the below standards:
+
+* All function names and variable names should be in camel case (Ex: firstName)
+* All ids should be camel case
+* All CSS class names should be hyphenated(Ex: form-input)
+* Keep meaningful names (Ex: Don't use a,b,c,ab,bc,x,y,z...etc)
+* Do less DOM operations as they impact performance
+* CSS classes are generally better for performance than inline styles.
+* Use let if the variable changes, Use const if the variable won't change, Don't use var
+* Save constants on the top of the javascript file(Ex: Regular expressions)
+* An id attribute should be unique and should be given to single element in the entire HTML
+
+

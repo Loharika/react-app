@@ -39,7 +39,7 @@ class App extends React.Component{
   return themeStore.selectedTheme;
     
   }
-  setCurrentTheme=(theme:string)=>{
+  setCurrentTheme=(theme)=>{
     themeStore.updateCurrentTheme(theme);
   
   }

@@ -1,0 +1,64 @@
+Objective: 
+
+* Develop a Car Fleet app by considering below use cases and problem statement
+* Follow the below standards during development
+
+Use Cases:
+
+* User should be able to see a car blueprint
+* User should be able to see car-1 when the page loaded
+* User should be able to add car dynamically
+* User should be able to remove car dynamically
+* User should be able to start or stop a specific car
+* User should not be able to accelerate or apply brake when the car is stopped
+* User should be able to accelerate when the car is running
+* User should not be able to use a brake when car speed is zero
+* User should be able to apply brake when the car speed is greater than zero
+* User should be able to accelerate or apply brake a specific car
+* User should be able to increase the speed of a car by 10kmph when accelerate is pressed
+* User should be able to decrease the speed of car by 10kmph when apply brake is pressed
+* User should not be able to reduce the speed of car less than zero
+* User should be able to see the status of the each car
+    - Stopped
+    - Running
+    - Running with speed xkmph
+
+Problem Statement:
+
+* Create a react class component named `Car` with the following methods, state, and props
+    * Methods
+        - onStartOrStop
+        - onApplyBrake
+        - onAccelerate
+        - displayStatusText
+    * State variables
+        - status
+            - Possible values: "RUNNING", "STOPPED"
+        - speed
+    * Props 
+        - carId
+        - removeCarFromCarsList
+* Create a react class component named `CarsList` with the following methods and state variables
+    * Methods
+        - addCarToCarsList
+        - removeCarFromCarsList
+        - renderCarsList
+    * State variables
+        - carsList (Array<carId>)
+
+Follow the below standards:
+
+* All function names and variable names should be in camel case (Ex: firstName)
+* All ids should be camel case
+* All CSS class names should be hyphenated(Ex: form-input)
+* Keep meaningful names (Ex: Don't use a,b,c,ab,bc,x,y,z...etc)
+* Do less DOM operations as they impact performance
+* CSS classes are generally better for performance than inline styles.
+* Use let if the variable changes, Use const if the variable won't change, Don't use var
+* Save constants on the top of the javascript file(Ex: Regular expressions)
+* An id attribute should be unique and should be given to single element in the entire HTML
+
+
+Follow the below standards for ReactJS:
+
+* Name of the component must start with the capital letter (Ex: AlertMessage, SuccessMessage)

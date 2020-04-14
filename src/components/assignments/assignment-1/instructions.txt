@@ -1,0 +1,49 @@
+Objective: 
+
+* Develop React components by considering below problem statements
+* Follow the below standards during development
+
+Problem Statement 1:
+
+* Create a react component named `Strikethrough` to show strikethrough text for the text content given to that component through a `text` prop
+* Refer preview-1
+
+Problem Statement 2:
+
+* Create the below react components
+    * StandardImageView
+    * RoundedCornersImageView
+    * CircularImageView
+* Create a new react component named `ImageViews` which renders all the above components 
+* User should be able to see a placeholder color while the image is loading
+* Refer preview-2
+
+Problem Statement 3:
+
+* Create the below react components
+    * SuccessMessage
+    * WarningMessage
+    * InfoMessage
+    * ErrorMessage
+* Create a react component named `AlertMessage` which accepts `messageType`, `messageText` as props
+    * AlertMessage should display the message text content based on the `messageText` prop given to that component
+    * AlertMessage should display the SuccessMessage, WarningMessage, InfoMessage, ErrorMessage based on the `messageType` prop given to that component
+* Refer preview-3
+
+
+Follow the below standards:
+
+* All function names and variable names should be in camel case (Ex: firstName)
+* All ids should be camel case
+* All CSS class names should be hyphenated(Ex: form-input)
+* Keep meaningful names (Ex: Don't use a,b,c,ab,bc,x,y,z...etc)
+* Do less DOM operations as they impact performance
+* CSS classes are generally better for performance than inline styles.
+* Use let if the variable changes, Use const if the variable won't change, Don't use var
+* Save constants on the top of the javascript file(Ex: Regular expressions)
+* An id attribute should be unique and should be given to single element in the entire HTML
+
+
+Follow the below standards for ReactJS:
+
+* Name of the component must start with the capital letter (Ex: AlertMessage, SuccessMessage)
