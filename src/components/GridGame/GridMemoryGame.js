@@ -15,7 +15,14 @@ const GameDashboard=styled.div`
     align-self:center;
     width:${props=>props.width}px;
 `;
-
+const Game=styled.div`
+    ${tw`w-screen h-screen flex justify-center items-center`}
+    width:${props=>props.width}px;
+    background-color:${props=>
+    props.theme==='LIGHT'?'':'#2d3748'};
+    color:${props=>
+    props.theme==='LIGHT'?'black':'white'};
+`;
 @observer
 class GridMemoryGame extends React.Component{
     @observable data;
@@ -24,14 +31,14 @@ class GridMemoryGame extends React.Component{
         }
     render(){
         return (
-        <div className='w-screen h-screen flex justify-center items-center'>
+        <Game theme={memoryGamethemeStore.getCurrentTheme()}>
              <GameDashboard width={gameStore.gameLevelsData[gameStore.level].gridWidth}>
              <Provider gameLevelsData={gameStore.gameLevelsData}>
                 <Header score={0} topScore={0} theme={memoryGamethemeStore.getCurrentTheme()} onChangeTheme={memoryGamethemeStore.onChangeTheme}/>
                 <GameField  cells={gameStore.setGridCells} onCellClick={gameStore.onCellClick} level={gameStore.level}/>
             </Provider>
             </GameDashboard>
-        </div>
+        </Game>
             );
        
     }
