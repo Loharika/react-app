@@ -17,6 +17,7 @@ function Assignments() {
         <Link to="/mobx-store-todo-app">Mobx Todo App</Link>
         <Link to="/events-app">Events App</Link>
         <Link to="/provider-example">Provider-Example</Link>
+        <Link to="/grid-game">Grid Memory Game</Link>
     </div>
   );
 }

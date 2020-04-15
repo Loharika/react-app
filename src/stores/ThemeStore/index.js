@@ -6,7 +6,6 @@ class ThemeStore{
         this.selectedTheme='Light Mode';
     }
     updateCurrentTheme(){
-        alert(this.selectedTheme);
         this.selectedTheme==='Light Mode'?(this.selectedTheme='Dark Mode'):(this.selectedTheme='Light Mode');
     }
 }

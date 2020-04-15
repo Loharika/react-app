@@ -18,8 +18,8 @@ import CounterPage from './components/CounterPage/index.js';
 import CounterApp from './components/assignment-6/index.js';
 import MobxTodoApp from './components/MobxTodo/MobxTodoApp/index';
 import EventsApp from './components/EventsApp/EventApp/index';
-
-import themeStore from './stores/ThemeStore'
+import GridMemoryGame from './components/GridGame/GridMemoryGame';
+import themeStore from './stores/ThemeStore';
 
 import "./App.css";
 
@@ -91,6 +91,9 @@ class App extends React.Component{
         </Route>
         <Route exact path="/mobx-store-todo-app">
             <MobxTodoApp />
+        </Route>
+        <Route exact path="/grid-game">
+            <GridMemoryGame />
         </Route>
         <Route exact path="/events-app">
             <EventsApp />
