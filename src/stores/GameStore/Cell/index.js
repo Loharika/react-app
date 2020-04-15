@@ -5,6 +5,7 @@ class Cell{
     constructor(){
         this.id=Math.random();
         this.isHidden=false;
+        this.isClicked=false;
     }
 }
 export default Cell;

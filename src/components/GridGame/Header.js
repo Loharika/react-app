@@ -1,4 +1,5 @@
 import React from 'react';
+import {observer} from 'mobx-react';
 import styled from '@emotion/styled';
 import tw from 'tailwind.macro';
 const GridGameHeader=styled.div`
@@ -16,17 +17,22 @@ const ThemeChangeButtonStyle=styled.div`
     border:${props=>
     props.theme==='LIGHT'?'1px solid black':'1px solid white'};
 `;
-function Header(props){
+@observer
+class Header extends React.Component{
+    render(){
+        const {level,topLevel,theme,onChangeTheme}=this.props;
         return(
-            <GridGameHeader theme={props.theme} >
-                <span theme={props.theme}>Top Score:{props.topScore}</span>
+            <GridGameHeader theme={theme} >
+                <span theme={theme}>Top Level:{topLevel}</span>
                 <ScoreAndThemeStyle >
-                <span theme={props.theme}>Score:{props.score}</span>
+                <span theme={theme}>Level:{level}</span>
                 <ThemeChangeButtonStyle type='button' 
-                onClick={props.onChangeTheme} theme={props.theme}>
-                Mode: {props.theme}</ThemeChangeButtonStyle>
+                onClick={onChangeTheme} theme={theme}>
+                Mode: {theme}</ThemeChangeButtonStyle>
                 </ScoreAndThemeStyle>
             </GridGameHeader>
             );
+    }
+        
 }
 export default Header;

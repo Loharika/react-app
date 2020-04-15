@@ -34,8 +34,8 @@ class GridMemoryGame extends React.Component{
         <Game theme={memoryGamethemeStore.getCurrentTheme()}>
              <GameDashboard width={gameStore.gameLevelsData[gameStore.level].gridWidth}>
              <Provider gameLevelsData={gameStore.gameLevelsData}>
-                <Header score={0} topScore={0} theme={memoryGamethemeStore.getCurrentTheme()} onChangeTheme={memoryGamethemeStore.onChangeTheme}/>
-                <GameField  cells={gameStore.setGridCells} onCellClick={gameStore.onCellClick} level={gameStore.level}/>
+                <Header level={gameStore.level} topLevel={gameStore.topLevel} theme={memoryGamethemeStore.getCurrentTheme()} onChangeTheme={memoryGamethemeStore.onChangeTheme}/>
+                <GameField  cells={gameStore.setGridCells()} onCellClick={gameStore.onCellClick} level={gameStore.level}/>
             </Provider>
             </GameDashboard>
         </Game>

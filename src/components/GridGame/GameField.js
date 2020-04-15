@@ -4,10 +4,15 @@ import styled from '@emotion/styled';
 import tw from 'tailwind.macro';
 const GridGameField=styled.div`
     display:grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(${props=>props.gridColumns},minmax(0, 1fr));
     width:${props=>props.width}px;
-    gap: 10px;
+    height:${props=>props.width}px;
+    gap: 4px;
     padding:20px;
+`;
+const GridCell=styled.div`
+     ${tw`p-3 border-2 border-500-blue`};
+     background-color:${props=>props.isHidden===true?'skyblue':'#2d3748'}
 `;
 @inject("gameLevelsData")
 @observer
@@ -16,17 +21,17 @@ class GameField extends React.Component{
         super(props);
     }
     renderAllGrids=()=>{
-        let id=0;
+        let id=1;
         const {cells,onCellClick}=this.props;
         let allGrids=cells.map(eachGrid=>{
-            return (<div className='p-3 border-2 border-500-blue'key={eachGrid.id} onClick={onCellClick}>{id++}</div>);
+            return (<GridCell isHidden={eachGrid.isHidden} className=''key={eachGrid.id} onClick={()=>onCellClick(eachGrid.id)}>{}</GridCell>);
         });
         return allGrids;
     }
     render(){
         const {level,gameLevelsData}=this.props;
         return (
-            <GridGameField width={gameLevelsData[level].gridWidth}>
+            <GridGameField width={gameLevelsData[level].gridWidth} gridColumns={gameLevelsData[level].gridSize}>
             {this.renderAllGrids()}
             </GridGameField>
             );

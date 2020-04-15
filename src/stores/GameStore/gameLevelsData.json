@@ -22,21 +22,21 @@
   {
     "gridSize": 7, 
     "hiddenCellCount": 7, 
-    "gridWidth": 300 
+    "gridWidth": 400 
   },
   {
     "gridSize": 8, 
     "hiddenCellCount": 8, 
-    "gridWidth": 300 
+    "gridWidth": 400 
   },
   {
     "gridSize": 9, 
     "hiddenCellCount": 9, 
-    "gridWidth": 300 
+    "gridWidth": 400 
   },
   {
     "gridSize": 10, 
     "hiddenCellCount": 10, 
-    "gridWidth": 300 
+    "gridWidth": 400 
   }
 ]
