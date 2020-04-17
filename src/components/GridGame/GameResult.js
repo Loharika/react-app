@@ -1,18 +1,9 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import tw from 'tailwind.macro';
 import {observer,inject} from 'mobx-react';
-import {ButtonComponent,GameScore} from '../styleComponents/styleComponents.js';
 
-const GameResultStyle=styled.span`
-    ${tw`my-2 `};
-    color:green;
-`;
-const GameResultPage=styled.span`
-    ${tw`flex flex-col justify-around items-center p-4 border-2 border-500-blue`};
-    width:${props=>props.width}px;
-    height:350px;
-`;
+import {ButtonComponent,GameScore} from '../styleComponents/styleComponents.js';
+import {GameResultStyle,GameResultPage} from './styledComponents';
+
 @inject("gameLevelsData")
 @observer
 class GameResult extends React.Component {

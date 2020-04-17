@@ -1,6 +1,8 @@
 import {observable,action} from 'mobx';
+
 import Cell from './Cell';
 import gameLevelsData from './gameLevelsData.json';
+
 class GameStore {
     @observable level;
     @observable topLevel;
@@ -17,11 +19,12 @@ class GameStore {
         this.gameLevelsData=gameLevelsData;
         this.timer=0;
     }
+    
     @action.bound
     onCellClick(gridCellId,isHidden){
         if(isHidden===true){
             this.currentLevelGridCells.forEach((each,index) =>{
-                if(this.currentLevelGridCells[index].id===gridCellId && index!==14){
+                if(this.currentLevelGridCells[index].id===gridCellId){
                     if(this.currentLevelGridCells[index].isClicked===false){
                         this.currentLevelGridCells[index].isClicked=true;
                         this.incrementSelectedCellsCount();
@@ -33,9 +36,9 @@ class GameStore {
             this.goToInitialLevelAndUpdateCells();
         }
     }
+    
     @action.bound
     setGridCells(){
-        
         let level=gameLevelsData[this.level].gridSize;
         let GridCells=[];
         for(let i=0;i<level*level;i++){
@@ -53,8 +56,8 @@ class GameStore {
              }
         }
         this.currentLevelGridCells=GridCells;
-        return this.currentLevelGridCells;
     }
+    
     @action.bound
     setTimer(){
         clearTimeout(this.timer);
@@ -62,6 +65,7 @@ class GameStore {
                 this.goToInitialLevelAndUpdateCells();
             },this.gameLevelsData[this.level].hiddenCellCount*2000);
     }
+    
     @action.bound
     goToNextLevelAndUpdateCells(){
         if(this.level===gameLevelsData.length-1){
@@ -86,6 +90,7 @@ class GameStore {
         }
         
     }
+    
     @action.bound
     goToInitialLevelAndUpdateCells(){
         this.setTopLevel();
@@ -93,10 +98,12 @@ class GameStore {
         this.resetSelectedCellsCount();
         this.setGridCells();
     }
+    
     @action.bound
     resetSelectedCellsCount(){
         this.selectedCellsCount=0;
     }
+    
     @action.bound
     incrementSelectedCellsCount(){
         ++this.selectedCellsCount;
@@ -105,11 +112,13 @@ class GameStore {
             this.goToNextLevelAndUpdateCells();
         }
     }
+    
     @action.bound
     onPlayAgainClick(){
         this.resetGame();
         this.isGameCompleted=false;
     }
+    
     @action.bound
     resetGame(){
         this.level=0;
@@ -117,6 +126,7 @@ class GameStore {
         this.resetSelectedCellsCount();
         this.setGridCells();
     }
+    
     @action.bound
     setTopLevel(){
         if(this.level===gameLevelsData.length-1){

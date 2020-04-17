@@ -1,29 +1,16 @@
 import React from 'react';
-import {observable,action} from 'mobx';
+import {observable} from 'mobx';
 import {Provider,observer} from 'mobx-react';
-import styled from '@emotion/styled';
-import tw from 'tailwind.macro';
-
 
 import memoryGamethemeStore from '../../stores/GameTheme/index';
 import gameStore from '../../stores/GameStore/index';
 import Header from './Header';
 import GameField from './GameField';
 import GameResult from './GameResult';
-const GameDashboard=styled.div`
-    ${tw`flex flex-col`}
-    align-self:center;
-    width:${props=>props.width}px;
-    width:${props=>props.isGameCompleted?props.widthByTopLevel:props.widthByLevel}px
-`;
-const Game=styled.div`
-    ${tw`w-screen h-screen flex justify-center items-center`}
-    width:${props=>props.width}px;
-    background-color:${props=>
-    props.theme==='LIGHT'?'':'#313d4e'};
-    color:${props=>
-    props.theme==='LIGHT'?'black':'white'};
-`;
+
+import {GameDashboard,Game} from './styledComponents';
+
+
 @observer
 class GridMemoryGame extends React.Component{
     @observable intialGridCells;
