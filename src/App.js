@@ -7,6 +7,7 @@ import {configure} from 'mobx';
 import HomePage from "./components/HomePage";
 import Assignments from './components/HomePage/Assignments.js';
 import Page1 from "./components/Page1";
+import FadeApp from './components/Practice/practice';
 import TodoApp from './components/TodoApp/todoApp';
 import CarList from  './components/CarsList/carList.js';
 import FormComponents from './components/formComponents/form.js';
@@ -97,6 +98,9 @@ class App extends React.Component{
         </Route>
         <Route exact path="/events-app">
             <EventsApp />
+        </Route>
+        <Route exact path="/fade-app">
+            <FadeApp />
         </Route>
         <Route path="/">
           <HomePage />

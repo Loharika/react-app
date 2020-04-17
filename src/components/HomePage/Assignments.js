@@ -18,6 +18,7 @@ function Assignments() {
         <Link to="/events-app">Events App</Link>
         <Link to="/provider-example">Provider-Example</Link>
         <Link to="/grid-game">Grid Memory Game</Link>
+        <Link to="/fade-app">Fade App</Link>
     </div>
   );
 }

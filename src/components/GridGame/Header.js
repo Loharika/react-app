@@ -5,7 +5,7 @@ import tw from 'tailwind.macro';
 const GridGameHeader=styled.div`
     ${tw`flex flex-col justify-between items-center px-2 py-3 font-bold`};
     background-color:${props=>
-    props.theme==='LIGHT'?'':'#2d3748'};
+    props.theme==='LIGHT'?'':'#313d4e'};
     color:${props=>
     props.theme==='LIGHT'?'black':'white'};
 `;
