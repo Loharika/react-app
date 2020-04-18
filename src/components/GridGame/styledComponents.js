@@ -66,6 +66,14 @@ const ThemeChangeButtonStyle=styled.div`
     border:${props=>
     props.theme!=='LIGHT'?'1px solid black':'1px solid white'};
 `;
+const ResetButton=styled.button`
+        ${tw`flex font-bold mx-4 my-2 p-1 rounded self-end`};
+    border:${props=>
+    props.theme!=='LIGHT'?'1px solid black':'1px solid white'};
+`;
+const ResetButtonAndDisplayLives=styled.div`
+    ${tw`flex w-full justify-between items-center px-1 py-1 font-bold`};
+`;
 export {GridCell,WrongCell,DisplayHidden,GridGameField,GameResultStyle,GameResultPage,GameDashboard,Game,
-    GridGameHeader,ScoreAndThemeStyle,ThemeChangeButtonStyle
+    GridGameHeader,ScoreAndThemeStyle,ThemeChangeButtonStyle,ResetButton,ResetButtonAndDisplayLives
 };

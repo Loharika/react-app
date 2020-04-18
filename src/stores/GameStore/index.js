@@ -1,4 +1,4 @@
-import {observable,action} from 'mobx';
+import {observable,action,computed} from 'mobx';
 
 import Cell from './Cell';
 import gameLevelsData from './gameLevelsData.json';
@@ -10,6 +10,7 @@ class GameStore {
     @observable selectedCellsCount;
     @observable isGameCompleted;
     @observable timer;
+    @observable intialLives;
     constructor(){
         this.level=0;
         this.topLevel=0;
@@ -18,6 +19,7 @@ class GameStore {
         this.isGameCompleted=false;
         this.gameLevelsData=gameLevelsData;
         this.timer=0;
+        this.intialLives=3;
     }
     
     @action.bound
@@ -33,10 +35,26 @@ class GameStore {
             });
         }
         else{
+            this.checkingLives();
+            //this.goToInitialLevelAndUpdateCells();
+        }
+    }
+    @action.bound
+    checkingLives(){
+        --this.intialLives;
+        if(this.intialLives!==0){
+            this.resetSelectedCellsCount();
+            this.level=this.level;
+        }
+        else{
+            this.setIntialLives();
             this.goToInitialLevelAndUpdateCells();
         }
     }
-    
+    @action.bound
+    setIntialLives(){
+        this.intialLives=3;
+    }
     @action.bound
     setGridCells(){
         let level=gameLevelsData[this.level].gridSize;
@@ -57,15 +75,6 @@ class GameStore {
         }
         this.currentLevelGridCells=GridCells;
     }
-    
-    @action.bound
-    setTimer(){
-        clearTimeout(this.timer);
-            this.timer=setTimeout(()=>{
-                this.goToInitialLevelAndUpdateCells();
-            },this.gameLevelsData[this.level].hiddenCellCount*2000);
-    }
-    
     @action.bound
     goToNextLevelAndUpdateCells(){
         if(this.level===gameLevelsData.length-1){
@@ -77,12 +86,16 @@ class GameStore {
         else if(this.level>=this.topLevel){
             ++this.level;
             
+            this.setIntialLives();
+            
             this.setGridCells();
             
             this.resetSelectedCellsCount();
         }
         else{
             ++this.level;
+            
+            this.setIntialLives();
             
             this.setGridCells();
             
@@ -102,6 +115,7 @@ class GameStore {
     @action.bound
     resetSelectedCellsCount(){
         this.selectedCellsCount=0;
+        
     }
     
     @action.bound
@@ -125,6 +139,7 @@ class GameStore {
         this.topLevel=0;
         this.resetSelectedCellsCount();
         this.setGridCells();
+        this.setIntialLives();
     }
     
     @action.bound
@@ -136,6 +151,16 @@ class GameStore {
         else{
             (this.level>this.topLevel)?this.topLevel=this.level:this.topLevel=this.topLevel;
         }
+    }
+    @computed
+    get timeToDisplayHiddenCells(){
+        let timeToDisplayHiddenCells=this.gameLevelsData[this.level].hiddenCellCount*1000;
+        return timeToDisplayHiddenCells;
+    }
+    @computed
+    get timeToGoToIntialLevel(){
+        let timeToGoToIntialLevel=this.gameLevelsData[this.level].hiddenCellCount*2000;
+        return timeToGoToIntialLevel;
     }
 }
 const gameStore=new GameStore();

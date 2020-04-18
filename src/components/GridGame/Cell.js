@@ -14,13 +14,14 @@ class Cell extends React.Component{
         this.shouldShowHiddenCells=true;
         this.isClickedOnCell=false;
         this.buttonDisable=true;
+        this.displayisClickedOnCell=300;
     }
     componentDidMount(){
-        const {hiddenCellCount}=this.props;
+        const {timeToDisplayHiddenCells}=this.props;
         setTimeout(()=>{
             this.shouldShowHiddenCells=false;
             this.buttonDisable=false;
-        },hiddenCellCount*1000);
+        },timeToDisplayHiddenCells);
         
     }
     
@@ -31,16 +32,18 @@ class Cell extends React.Component{
         this.buttonDisable=true;
         setTimeout(()=>{
              onCellClick(cellId,isHidden,isClicked);
-        },300);
+        },this.displayisClickedOnCell);
            
     }
     render(){
         const {id,isHidden,isClicked}=this.props.gridCellModel;
         const {theme}=this.props;
         const {shouldShowHiddenCells,isClickedOnCell,buttonDisable}=this;
+        
         const hiddenCellAnimate=isHidden && (shouldShowHiddenCells || isClickedOnCell);
         const wrongCell=!isHidden && isClickedOnCell;
         const clickingEvent=shouldShowHiddenCells || isClickedOnCell;
+        
        return (
            <GridCell disabled={buttonDisable} clickingEvent={clickingEvent} theme={theme} onClick={()=>this.onCellClick(id,isHidden,isClicked)}>
            {!wrongCell?
