@@ -13,6 +13,10 @@ class GameStore {
     @observable intialLives;
     @observable currentTime;
     constructor(){
+        this.setIntialLevelsOfVariables();
+    }
+    @action.bound
+    setIntialLevelsOfVariables(){
         this.level=0;
         this.topLevel=0;
         this.currentLevelGridCells=[];//[{id,isHidden}]
@@ -21,24 +25,17 @@ class GameStore {
         this.gameLevelsData=gameLevelsData;
         this.timer=0;
         this.intialLives=3;
-        this.currentTime=new Date();
+        
     }
-    
     @action.bound
-    onCellClick(gridCellId,isHidden){
+    onCellClick(isHidden,isClickedOnCellGridOnce){
         if(isHidden===true){
-            this.currentLevelGridCells.forEach((each,index) =>{
-                if(this.currentLevelGridCells[index].id===gridCellId){
-                    if(this.currentLevelGridCells[index].isClicked===false){
-                        this.currentLevelGridCells[index].isClicked=true;
-                        this.incrementSelectedCellsCount();
-                    }
+            if(isClickedOnCellGridOnce===true){
+                    this.incrementSelectedCellsCount();
                 }
-            });
-        }
+            }
         else{
             this.checkingLives();
-            //this.goToInitialLevelAndUpdateCells();
         }
     }
     @action.bound
@@ -49,8 +46,8 @@ class GameStore {
             this.level=this.level;
         }
         else{
-            this.setIntialLives();
             this.goToInitialLevelAndUpdateCells();
+            this.setIntialLives();
         }
     }
     @action.bound
@@ -64,10 +61,10 @@ class GameStore {
         for(let i=0;i<level*level;i++){
            GridCells.push(new Cell());
         }
-        
         let hiddenCellCount=gameLevelsData[this.level].hiddenCellCount;
+        let GridCellsNumber=GridCells.length;
         for(let i=0;i<hiddenCellCount;++i){
-             let index=GridCells[Math.floor(Math.random()*GridCells.length)];
+             let index=GridCells[Math.floor(Math.random()*GridCellsNumber)];
              if(!index.isHidden){
                 index.isHidden=true;
              }
@@ -79,7 +76,8 @@ class GameStore {
     }
     @action.bound
     goToNextLevelAndUpdateCells(){
-        if(this.level===gameLevelsData.length-1){
+        let topLevelToBeReached=gameLevelsData.length-1;
+        if(this.level===topLevelToBeReached){
         //if(this.level===1){
             this.isGameCompleted=true;
             this.setTopLevel();
@@ -139,6 +137,7 @@ class GameStore {
     resetGame(){
         this.level=0;
         this.topLevel=0;
+        this.isGameCompleted=false;
         this.resetSelectedCellsCount();
         this.setGridCells();
         this.setIntialLives();
@@ -161,7 +160,7 @@ class GameStore {
     }
     @computed
     get timeToGoToIntialLevel(){
-        let timeToGoToIntialLevel=this.gameLevelsData[this.level].hiddenCellCount*2000;
+        let timeToGoToIntialLevel=(this.gameLevelsData[this.level].hiddenCellCount*2000)+500;
         return timeToGoToIntialLevel;
     }
 }

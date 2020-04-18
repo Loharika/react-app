@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {observable,action} from 'mobx';
 import {observer} from 'mobx-react';
@@ -8,44 +9,48 @@ import { GridCell,WrongCell,DisplayHidden} from './styledComponents';
 class Cell extends React.Component{
     @observable shouldShowHiddenCells;
     @observable isClickedOnCell;
-    @observable buttonDisable;
+    @observable timer;
     constructor(props){
         super(props);
         this.shouldShowHiddenCells=true;
         this.isClickedOnCell=false;
-        this.buttonDisable=true;
         this.displayisClickedOnCell=300;
+        this.timer=0;
     }
     componentDidMount(){
         const {timeToDisplayHiddenCells}=this.props;
-        setTimeout(()=>{
+        this.timer=setTimeout(()=>{
             this.shouldShowHiddenCells=false;
             this.buttonDisable=false;
         },timeToDisplayHiddenCells);
         
     }
+    componentWilUnmount(){
+        clearTimeout(this.timer);
+    }
     
     @action.bound
-    onCellClick(cellId,isHidden,isClicked){
+    onCellClick(isHidden,gridCellModel){
+        console.log(gridCellModel);
         const {onCellClick}=this.props;
         this.isClickedOnCell=true;
-        this.buttonDisable=true;
         setTimeout(()=>{
-             onCellClick(cellId,isHidden,isClicked);
+             onCellClick(isHidden,this.isClickedOnCell);
+             gridCellModel.updateIsClicked();
         },this.displayisClickedOnCell);
            
     }
     render(){
-        const {id,isHidden,isClicked}=this.props.gridCellModel;
-        const {theme}=this.props;
-        const {shouldShowHiddenCells,isClickedOnCell,buttonDisable}=this;
+        const {isHidden}=this.props.gridCellModel;
+        const {theme,gridCellModel}=this.props;
+        const {shouldShowHiddenCells,isClickedOnCell}=this;
         
         const hiddenCellAnimate=isHidden && (shouldShowHiddenCells || isClickedOnCell);
         const wrongCell=!isHidden && isClickedOnCell;
         const clickingEvent=shouldShowHiddenCells || isClickedOnCell;
         
        return (
-           <GridCell disabled={buttonDisable} clickingEvent={clickingEvent} theme={theme} onClick={()=>this.onCellClick(id,isHidden,isClicked)}>
+           <GridCell shouldShowHiddenCells={shouldShowHiddenCells} clickingEvent={clickingEvent} theme={theme} onClick={()=>this.onCellClick(isHidden,gridCellModel)}>
            {!wrongCell?
            <DisplayHidden clickingEvent={clickingEvent} animate={hiddenCellAnimate}  theme={theme} />:
            <WrongCell />}

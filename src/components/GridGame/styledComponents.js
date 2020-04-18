@@ -1,15 +1,18 @@
 import styled from '@emotion/styled';
 import tw from 'tailwind.macro';
 
-const GridCell=styled.button`
+const GridCell=styled.div`
     ${tw`flex w-full h-full justify-center items-center`};
     background-color:#586d8d;
+    border:none;
+    pointer-events:${props=>props.shouldShowHiddenCells?'none':'auto'};
 `;
 const WrongCell=styled.div`
     ${tw`flex h-full w-full`};
     background-color:red;
     transition:all .2s;
     transform:scale(1);
+    border:none;
 `;
 const DisplayHidden=styled.div`
     ${tw`flex h-full w-full`};
@@ -18,6 +21,7 @@ const DisplayHidden=styled.div`
     height:${props=>props.animate?'100%':'0%'};
     transition:all 0.4s;
     tranform:${props=>props.animate?'scale(1)':'scale(0)'}
+    border:none;
     `;
 const GridGameField=styled.div`
     display:grid;
@@ -61,7 +65,7 @@ const GridGameHeader=styled.div`
 const ScoreAndThemeStyle=styled.div`
         ${tw`flex w-full justify-between items-center px-3 py-4 font-bold`};
 `;
-const ThemeChangeButtonStyle=styled.div`
+const ThemeChangeButtonStyle=styled.button`
      ${tw`flex font-bold mx-4 my-2 p-1 rounded`};
     border:${props=>
     props.theme!=='LIGHT'?'1px solid black':'1px solid white'};

@@ -1,11 +1,14 @@
-import {observable} from 'mobx';
+import {observable,action} from 'mobx';
 class Cell{
-    @observable id;
     @observable isHidden;
     constructor(){
         this.id=Math.random().toString();
         this.isHidden=false;
         this.isClicked=false;
+    }
+    @action.bound
+    updateIsClicked(){
+        this.isClicked=true;
     }
 }
 export default Cell;
