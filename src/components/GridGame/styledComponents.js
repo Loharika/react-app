@@ -62,7 +62,7 @@ const ScoreAndThemeStyle=styled.div`
         ${tw`flex w-full justify-between items-center px-3 py-4 font-bold`};
 `;
 const ThemeChangeButtonStyle=styled.div`
-     ${tw`flex font-bold mx-4 my-2 p-2 rounded`};
+     ${tw`flex font-bold mx-4 my-2 p-1 rounded`};
     border:${props=>
     props.theme!=='LIGHT'?'1px solid black':'1px solid white'};
 `;

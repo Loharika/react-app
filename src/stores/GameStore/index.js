@@ -11,6 +11,7 @@ class GameStore {
     @observable isGameCompleted;
     @observable timer;
     @observable intialLives;
+    @observable currentTime;
     constructor(){
         this.level=0;
         this.topLevel=0;
@@ -20,6 +21,7 @@ class GameStore {
         this.gameLevelsData=gameLevelsData;
         this.timer=0;
         this.intialLives=3;
+        this.currentTime=new Date();
     }
     
     @action.bound
