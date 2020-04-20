@@ -3,6 +3,10 @@ import {observable,action,computed} from 'mobx';
 import Cell from './Cell';
 import gameLevelsData from './gameLevelsData.json';
 
+const animationTime=500;
+const numberOfInitialLives=3;
+const timeForDisplayHiddenCell=1000;
+const timeForGoToIntialLevel=2000;
 class GameStore {
     @observable level;
     @observable topLevel;
@@ -24,7 +28,7 @@ class GameStore {
         this.isGameCompleted=false;
         this.gameLevelsData=gameLevelsData;
         this.timer=0;
-        this.intialLives=3;
+        this.intialLives=numberOfInitialLives;
         
     }
     @action.bound
@@ -52,7 +56,7 @@ class GameStore {
     }
     @action.bound
     setIntialLives(){
-        this.intialLives=3;
+        this.intialLives=numberOfInitialLives;
     }
     @action.bound
     setGridCells(){
@@ -145,7 +149,8 @@ class GameStore {
     
     @action.bound
     setTopLevel(){
-        if(this.level===gameLevelsData.length-1){
+        let topLevelToBeReached=gameLevelsData.length-1;
+        if(this.level===topLevelToBeReached){
         //if(this.level===1){
             this.topLevel=this.level;
         }
@@ -155,12 +160,12 @@ class GameStore {
     }
     @computed
     get timeToDisplayHiddenCells(){
-        let timeToDisplayHiddenCells=this.gameLevelsData[this.level].hiddenCellCount*1000;
+        let timeToDisplayHiddenCells=this.gameLevelsData[this.level].hiddenCellCount*timeForDisplayHiddenCell;
         return timeToDisplayHiddenCells;
     }
     @computed
     get timeToGoToIntialLevel(){
-        let timeToGoToIntialLevel=(this.gameLevelsData[this.level].hiddenCellCount*2000)+500;
+        let timeToGoToIntialLevel=(this.gameLevelsData[this.level].hiddenCellCount*timeForGoToIntialLevel)+animationTime;
         return timeToGoToIntialLevel;
     }
 }

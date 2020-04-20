@@ -23,7 +23,9 @@ class AddTodo extends React.Component{
     }
     render(){
         return (
-            <input onChange={this.onChangeTodo} value={this.todoTitle} onKeyDown={this.onKeyDownTodo} placeholder='Enter the todo...!!'className='border-3 border-blue-500'/>
+            <div className='flex w-1/3'>
+            <input onChange={this.onChangeTodo} value={this.todoTitle} onKeyDown={this.onKeyDownTodo} placeholder='Enter the todo...!!'className='flex-grow w-auto p-2 rounded border-2 border-grey-100'/>
+            </div>
             );
     }
 }

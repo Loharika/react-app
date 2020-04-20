@@ -15,10 +15,11 @@ function Assignments() {
         <Link to="/counter-app">Counter App</Link>
         <Link to="/todo-app">Todo App</Link>
         <Link to="/mobx-store-todo-app">Mobx Todo App</Link>
+        <Link to="/rest-todo-app">Rest Todo App</Link>
         <Link to="/events-app">Events App</Link>
-        <Link to="/provider-example">Provider-Example</Link>
         <Link to="/grid-game">Grid Memory Game</Link>
         <Link to="/fade-app">Fade App</Link>
+        
     </div>
   );
 }

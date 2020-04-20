@@ -1,5 +1,15 @@
 import { observable,computed,action} from 'mobx';
 import Todo from './TodoModel/index';
+/*let  request = new XMLHttpRequest();
+let data=[];
+request.open('GET', 'https://5e6864ded426c00016b7cfce.mockapi.io/api/v1/users123', true);
+request.responseType = 'text';
+request.onload = function() {
+    data = request.response;
+};
+request.send();
+
+*/
 class TodoStores {
     @observable todos;
    @observable selectedFilter;
@@ -7,12 +17,27 @@ class TodoStores {
         this.todos=[];
         this.selectedFilter="ALL";
     }
-   
-  
+    @action.bound
+    addDataFromTheServer(serverData){
+        serverData.forEach(eachTodo=>{
+            let todoObject={
+                id:eachTodo.id,
+                title:eachTodo.title,
+                isCompleted:eachTodo.isCompleted,
+            };
+            let todo=new Todo(todoObject);
+            this.todos.push(todo);
+        });
+    }
    @action.bound
    onAddTodo(value) {
        this.selectedFilter="ALL";
-       let todo=new Todo(value);
+       let todoObject={
+                id:Math.random(),
+                title:value,
+                isCompleted:false,
+            };
+       let todo=new Todo(todoObject);
        this.todos.push(todo);
    }
     @action.bound
@@ -40,14 +65,9 @@ class TodoStores {
     @computed 
     get activeTodosCount(){
         let activeTodos=0;
-        let completedTodos=0;
         this.todos.forEach(eachTodo=>{
             if(eachTodo.isCompleted===false){
                 activeTodos++;
-        }});
-        this.todos.forEach(eachTodo=>{
-            if(eachTodo.isCompleted===true){
-                completedTodos++;
         }});
         return activeTodos;
     }

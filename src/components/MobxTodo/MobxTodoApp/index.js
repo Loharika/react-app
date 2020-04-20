@@ -19,13 +19,13 @@ class MobxTodoApp extends React.Component{
     @action.bound
     onAddTodo(value){
         this.value=value;
-        todoStore.onAddTodo(this.value);
+       todoStore.onAddTodo(this.value);
     }
     @computed
     get renderTodoList(){
         if(todoStore.filteredTodos.length>0){
             return todoStore.filteredTodos.map(eachTodo=>{return(
-           <TodoComponent todo={eachTodo} onRemoveTodo={todoStore.onRemoveTodo}/>
+           <TodoComponent todo={eachTodo} key={eachTodo.id} onRemoveTodo={todoStore.onRemoveTodo}/>
            )}); 
         }
         else{

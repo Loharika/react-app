@@ -36,7 +36,6 @@ class Cell extends React.Component{
         this.isClickedOnCell=true;
         setTimeout(()=>{
              onCellClick(isHidden,this.isClickedOnCell);
-             gridCellModel.updateIsClicked();
         },this.displayisClickedOnCell);
            
     }

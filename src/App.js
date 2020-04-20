@@ -20,6 +20,7 @@ import CounterApp from './components/assignment-6/index.js';
 import MobxTodoApp from './components/MobxTodo/MobxTodoApp/index';
 import EventsApp from './components/EventsApp/EventApp/index';
 import GridMemoryGame from './components/GridGame/GridMemoryGame';
+import RestTodoApp from './components/RestTodoApp/RestTodoApp/index';
 import themeStore from './stores/ThemeStore';
 
 import "./App.css";
@@ -101,6 +102,9 @@ class App extends React.Component{
         </Route>
         <Route exact path="/fade-app">
             <FadeApp />
+        </Route>
+        <Route exact path="/rest-todo-app">
+            <RestTodoApp />
         </Route>
         <Route path="/">
           <HomePage />
