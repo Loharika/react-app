@@ -22,6 +22,8 @@ import EventsApp from './components/EventsApp/EventApp/index';
 import GridMemoryGame from './components/GridGame/GridMemoryGame';
 import RestTodoApp from './components/RestTodoApp/RestTodoApp/index';
 import themeStore from './stores/ThemeStore';
+import UsersPage from './components/UsersPage/index';
+
 
 import "./App.css";
 
@@ -105,6 +107,9 @@ class App extends React.Component{
         </Route>
         <Route exact path="/rest-todo-app">
             <RestTodoApp />
+        </Route>
+        <Route exact path="/user-app">
+            <UsersPage />
         </Route>
         <Route path="/">
           <HomePage />

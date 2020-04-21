@@ -20,6 +20,7 @@ export const networkCallWithApisauce = async (
 export const getUserDisplayableErrorMessage = (error) => {
   const defaultMessage = 'Something went wrong please try again'
   try {
+    //depending in the backend return the below part will be changed//
     if (error && error.message) {
       return JSON.parse(error).originalError.message
     }

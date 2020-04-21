@@ -18,7 +18,7 @@ function Assignments() {
         <Link to="/rest-todo-app">Rest Todo App</Link>
         <Link to="/events-app">Events App</Link>
         <Link to="/grid-game">Grid Memory Game</Link>
-        <Link to="/fade-app">Fade App</Link>
+        <Link to="/user-app">Users App</Link>
         
     </div>
   );
