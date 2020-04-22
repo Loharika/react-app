@@ -1,15 +1,11 @@
-.checkbox {
-    /*min-width: 40px;
-    min-height: 40px;
-    border-radius: 20px;
-    color: #f5f5f5;*/
+/*.checkbox {
     min-height: 40px;
     min-width: 40px;
     border: 2px solid #f5f5f5;
     background-color: white;
     border-radius: 20px;
     
-}
+}*/
 .checkbox:checked+.text {
     text-decoration: line-through;
 }

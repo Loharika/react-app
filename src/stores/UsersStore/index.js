@@ -2,6 +2,61 @@
 import {observable,action} from 'mobx';
 import {API_INITIAL,API_FETCHING,API_FAILED,API_SUCCESS} from '@ib/api-constants';
 import {bindPromiseWithOnSuccess} from '@ib/mobx-promise';
+
+import UserService from '../../services/UserService/index.fixture';
+class UsersStore{
+    @observable getUsersApiStatus
+    @observable getUsersApiError
+    @observable users
+    userService
+    constructor(userService){
+         this.userService=userService;
+        this.init();
+       
+    }
+    @action.bound
+    init(){
+        this.getUsersApiStatus=API_INITIAL;
+        this.getUsersApiError=null;
+        this.users=[];
+    }
+    @action.bound
+    clearStore(){
+        this.init();
+    }
+    @action.bound
+    getUsers(){
+        const usersPromise=this.userService.getUsersAPI();
+        return bindPromiseWithOnSuccess(usersPromise)
+        .to(this.setUsersAPIStatus,this.setUsersAPIResponse)
+        .catch(this.setUsersAPIError);
+    }
+     @action.bound
+    setUsersAPIResponse(usersResponse){
+        
+        this.users=usersResponse.map((user)=>user.name);
+    }
+    @action.bound
+    setUsersAPIError(error){
+       
+        this.getUsersApiError=error;
+    }
+    @action.bound
+    setUsersAPIStatus(apiStatus){
+        this.getUsersApiStatus=apiStatus;
+    }
+    
+}
+export default UsersStore;
+/*const userService=new UserService();
+const userStore=new UsersStore(userService);
+export default userStore;
+
+
+/*global fetch
+import {observable,action} from 'mobx';
+import {API_INITIAL,API_FETCHING,API_FAILED,API_SUCCESS} from '@ib/api-constants';
+import {bindPromiseWithOnSuccess} from '@ib/mobx-promise';
 import {create} from 'apisauce';
 import {networkCallWithApisauce} from '../../utils/APIUtils';
 import {apiMethods} from '../../constants/APIConstants';
@@ -47,7 +102,7 @@ class UsersStore{
         fetch('https://jsonplaceholder.typicode.com/users')
         .then(res=>res.json())
         .then(this.setUsersAPIResponse)
-        .catch(this.setUsersAPIError);*/
+        .catch(this.setUsersAPIError);
     }
      @action.bound
     setUsersAPIResponse(usersResponse){
@@ -68,4 +123,4 @@ class UsersStore{
     
 }
 const userStore=new UsersStore;
-export default userStore;
+export default userStore;*/

@@ -1,6 +1,6 @@
 
 import React from "react";
-import {observer} from 'mobx-react';
+import {observer,Provider} from 'mobx-react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {configure} from 'mobx';
 
@@ -23,7 +23,8 @@ import GridMemoryGame from './components/GridGame/GridMemoryGame';
 import RestTodoApp from './components/RestTodoApp/RestTodoApp/index';
 import themeStore from './stores/ThemeStore';
 import UsersPage from './components/UsersPage/index';
-
+import TodoAppAPI from './components/TodoAppAPI';
+import stores from './stores';
 
 import "./App.css";
 
@@ -58,6 +59,7 @@ class App extends React.Component{
   }*/
   render(){
   return (
+    <Provider {...stores}>
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/counter-page">
@@ -108,15 +110,15 @@ class App extends React.Component{
         <Route exact path="/rest-todo-app">
             <RestTodoApp />
         </Route>
-        <Route exact path="/user-app">
-            <UsersPage />
-        </Route>
+        <Route exact path="/user-app" component={UsersPage}/>
+         <Route exact path="/todo-app-api" component={TodoAppAPI}/>
         <Route path="/">
           <HomePage />
         </Route>
         
       </Switch>
     </Router>
+    </Provider>
   );
   }
 }

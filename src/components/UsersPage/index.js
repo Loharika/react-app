@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
 import {action} from 'mobx';
-import {observer} from 'mobx-react';
+import {observer,inject} from 'mobx-react';
 import LoadingWrapperWithFailure from '../common/LoadingWrapperWithFailure';
 import NoDataView from '../common/NoDataView';
-import userStore from '../../stores/UsersStore/index';
 
+@inject("usersStore")
 @observer
 class UsersPage extends Component{
     
@@ -12,12 +12,16 @@ class UsersPage extends Component{
         this.doNetworkCalls();
     }
     @action.bound
+    getUsersStore(){
+        return this.props.usersStore;
+    }
+    @action.bound
     doNetworkCalls(){
-        userStore.getUsers();
+        this.getUsersStore().getUsers();
     }
     @action.bound
     renderUsersList(){
-        const {users}=userStore;
+        const {users}=this.getUsersStore();
         if(users.length===0){
             return <NoDataView />;
         }
@@ -26,7 +30,7 @@ class UsersPage extends Component{
         );
     }
     render(){
-        const {getUsersApiStatus,getUsersApiError}=userStore;
+        const {getUsersApiStatus,getUsersApiError}=this.getUsersStore();
         console.log();
         return (
           <LoadingWrapperWithFailure apiStatus={getUsersApiStatus} apiError={getUsersApiError} 
