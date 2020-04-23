@@ -19,6 +19,8 @@ ${tw`flex items-center`}
     padding:0px;
     margin:0px;
     min-width:50%;
+    padding-top:10px;
+    padding-bottom:10px;
 `;
 const StyledCheckBox=styled.input`
     ${tw``}
@@ -32,7 +34,11 @@ const TodoInputField=styled.input`
     border-radius: 2px;
     font-size: 15px;
     flex-grow: 1;
-    focus:border: 1px solid #e1e1e1;
+    
+    &:focus{
+        border: 1px solid #e1e1e1;
+        border-radius:10px;
+    }
     text-decoration:${props=>props.isCompleted?'line-through':'none'};
     text-align:center;
 `;
@@ -47,14 +53,17 @@ const TodoFooter=styled.div`
     min-width:50%;
 `;
 const FooterButtons=styled.button`
+
     border: none;
     background-color: white;
     color: #777777;
     font-size: 14px;
     padding-right: 30px;
     padding:5px 10px;
-    hover:border:2px solid rgba(175, 47, 47, 0.5);
-    hover:border-radius:10px;
+    &:hover{
+        border:2px solid rgba(175, 47, 47, 0.5);
+        border-radius:10px;
+    }
 `;
 const DisplayActiveTodos=styled.span`
 

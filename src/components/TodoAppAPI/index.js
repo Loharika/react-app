@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 
-import {computed,action,observable} from 'mobx';
+import {action} from 'mobx';
 import LoadingWrapperWithFailure from '../common/LoadingWrapperWithFailure';
 import NoDataView from '../common/NoDataView';
 import AddTodo from './addTodo';
@@ -11,9 +11,6 @@ import {inject,observer} from 'mobx-react';
 @inject('todosStore')
 @observer
 class TodoAppAPI extends Component{
-    constructor(){
-        super();
-    }
     componentDidMount(){
         this.doNetworkCalls();
     }

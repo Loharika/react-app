@@ -20,7 +20,7 @@ function Assignments() {
         <Link to="/events-app">Events App</Link>
         <Link to="/grid-game">Grid Memory Game</Link>
         <Link to="/user-app">Users App</Link>
-        
+        <Link to='/app'>Post App</Link>
     </div>
   );
 }
