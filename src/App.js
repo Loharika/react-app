@@ -24,8 +24,8 @@ import RestTodoApp from './components/RestTodoApp/RestTodoApp/index';
 import themeStore from './stores/ThemeStore';
 import UsersPage from './components/UsersPage/index';
 import TodoAppAPI from './components/TodoAppAPI';
+import LoginForm from './components/LoginForm';
 import stores from './stores';
-
 import "./App.css";
 
 configure({enforceActions:'never'});
@@ -52,11 +52,6 @@ class App extends React.Component{
   onChangeTheme=()=>{
       selectedTheme:(this.getCurrentTheme()==='Light Mode')?this.setCurrentTheme('Dark Mode'):this.setCurrentTheme('Light Mode');
   }
-  /*onChangeTheme=()=>{
-    this.setState(()=>({
-      selectedTheme:(this.state.selectedTheme==='Light Mode')?'Dark Mode':'Light Mode'
-    }));
-  }*/
   render(){
   return (
     <Provider {...stores}>
@@ -111,10 +106,12 @@ class App extends React.Component{
             <RestTodoApp />
         </Route>
         <Route exact path="/user-app" component={UsersPage}/>
-         <Route exact path="/todo-app-api" component={TodoAppAPI}/>
-        <Route path="/">
+        <Route exact path="/todo-app-api" component={TodoAppAPI}/>
+        
+        <Route path="/home">
           <HomePage />
         </Route>
+        <Route path="/" component={LoginForm}/>
         
       </Switch>
     </Router>

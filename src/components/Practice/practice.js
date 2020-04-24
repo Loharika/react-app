@@ -16,7 +16,7 @@ class TodoService{
         let todoObject=
             {'id':Math.random(),
             'title':'Loharika',
-            'isCompleted':true,}
+            'isCompleted':true,};
         return (networkCallWithApisauce(
             this.api,
             'users123/',
