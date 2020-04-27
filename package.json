@@ -24,8 +24,10 @@
     "postcss-cli": "^7.1.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-icons": "3.10.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "react-sidebar": "3.0.2",
     "tailwind.macro": "^1.0.0-alpha.10",
     "typescript": "3.8.3"
   },

@@ -24,12 +24,17 @@ import RestTodoApp from './components/RestTodoApp/RestTodoApp/index';
 import themeStore from './stores/ThemeStore';
 import UsersPage from './components/UsersPage/index';
 import TodoAppAPI from './components/TodoAppAPI';
-import LoginForm from './components/LoginForm';
 import stores from './stores';
 import "./App.css";
 
-configure({enforceActions:'never'});
+import Authentication from './Authentication/Routes';
+import ProductsPage from './E_Commerce/Components/ProductsPage';
 
+import E_Commerce from './E_Commerce/Routes';
+
+
+
+configure({enforceActions:'never'});
 
 @observer
 class App extends React.Component{
@@ -52,11 +57,18 @@ class App extends React.Component{
   onChangeTheme=()=>{
       selectedTheme:(this.getCurrentTheme()==='Light Mode')?this.setCurrentTheme('Dark Mode'):this.setCurrentTheme('Light Mode');
   }
+
   render(){
   return (
     <Provider {...stores}>
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
+        
+        <Route exact path="/e-commerce" component={ProductsPage}/>
+        {Authentication}
+        {E_Commerce}
+  
+  
         <Route exact path="/counter-page">
           <CounterPage />
         </Route>
@@ -108,11 +120,10 @@ class App extends React.Component{
         <Route exact path="/user-app" component={UsersPage}/>
         <Route exact path="/todo-app-api" component={TodoAppAPI}/>
         
-        <Route path="/home">
+        <Route exact path="/home">
           <HomePage />
         </Route>
-        <Route path="/" component={LoginForm}/>
-        
+
       </Switch>
     </Router>
     </Provider>
