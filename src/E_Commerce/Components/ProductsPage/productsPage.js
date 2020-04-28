@@ -1,79 +1,80 @@
 import React,{Component} from 'react';
-import {action,observable} from 'mobx';
+import {action} from 'mobx';
 import {inject,observer} from 'mobx-react';
-
-//import Sidebar from "react-sidebar";
-
-import { BrowserRouter as Router, Switch, Route,Redirect } from "react-router-dom";
+import {Redirect } from "react-router-dom";
 
 import SizeFilter from '../SizeFilter';
 import Header from '../Header';
 import ProductList from '../ProductList';
 import ProductCart from '../ProductCart';
 
-import {AvailableSizes_SignOutButton,ProductsDashboard,SignOutButton,ProductListDisplay_Header,ProductsPageStyle} from './styledComponents';
+import {AvailableSizes_SignOutButton,ProductsDashboard,SignOutButton,
+    ProductListDisplay_Header,ProductsPageStyle} from './styledComponents';
 
-@inject('productStore','authStore','cartStore')
+@inject('productStore','authStore')
 @observer
 class ProductsPage extends Component{
-    @observable isSignOut;
-    @observable sidebarOpen;
-    constructor(){
-        super();
-        this.isSignOut=false;
-        this.sidebarOpen= true;
-    }
     componentDidMount(){
-        this.doNetworkCalls();
+        const {doNetworkCalls}=this;
+        doNetworkCalls();
     }
     @action.bound
     getProductsStore(){
-        return this.props.productStore;
+        const {productStore}=this.props;
+        return productStore;
     }
     @action.bound
     doNetworkCalls(){
-        this.getProductsStore().getProductList();
-    }
-    @action.bound
-    onClickSignOut(){
-        this.isSignOut=true;
-    }
-    
-    @action.bound
-    onSetSidebarOpen(sideBar) {
-    this.sidebarOpen=sideBar;
+        const {getProductsStore}=this;
+        getProductsStore().getProductList();
     }
 
     
     render(){
-        if(this.isSignOut){
+        
+        const {productStore:{onSelectSize,onChangeSortBy,sortedAndFilteredProducts,onClickAddToCart,totalNoOfProductsDisplayed,sizeFilter,
+            getProductListAPIStatus,getProductListAPIError}}=this.props;
+            
+        const {authStore:{authAPIService,userSignOut}}=this.props;
+        
+        const {doNetworkCalls}=this;
+        
+        if(authAPIService===undefined){
             return (
-            <Redirect to={{pathname:'/'}}/>
+            <Redirect to={{pathname:'/ecommerce-store/sign-in/'}}/>
             );
         }
-        const {onSelectSize,onChangeSortBy,sortedAndFilteredProducts,onClickAddToCart,totalNoOfProductsDisplayed,sizeFilter,
-            getProductListAPIStatus,getProductListAPIError,
-        }=this.getProductsStore();
         return (
             <ProductsPageStyle >
                 <ProductsDashboard>
                     <AvailableSizes_SignOutButton >
-                        <SignOutButton onClick={this.onClickSignOut}>Sign Out</SignOutButton>
+                        <SignOutButton onClick={userSignOut}>Sign Out</SignOutButton>
                         <SizeFilter key={Math.random()} onSelectSize={onSelectSize} sizeFilter={sizeFilter}/>
                     </AvailableSizes_SignOutButton>
                     <ProductListDisplay_Header >
                         <Header productsCount={totalNoOfProductsDisplayed} onChangeSortBy={onChangeSortBy} />
-                        <ProductList products={sortedAndFilteredProducts} productsCount={totalNoOfProductsDisplayed} onClickAddToCart={onClickAddToCart} doNetworkCalls={this.doNetworkCalls} getProductListAPIStatus={getProductListAPIStatus} getProductListAPIError={getProductListAPIError}/>
+                        <ProductList products={sortedAndFilteredProducts} onClickAddToCart={onClickAddToCart} 
+                            doNetworkCalls={doNetworkCalls} getProductListAPIStatus={getProductListAPIStatus} 
+                                getProductListAPIError={getProductListAPIError}/>
                     </ProductListDisplay_Header>
                 </ProductsDashboard>
-                <ProductCart cartStore={this.props.cartStore}/>
+                
+                <ProductCart/>
             </ProductsPageStyle>
             );
     }
 }
 export default ProductsPage;
 
+
+
+
+
+
+
+
 /*
+//import Sidebar from "react-sidebar";
 {/*<div className='m-64'>
                 <Sidebar
                 sidebar={

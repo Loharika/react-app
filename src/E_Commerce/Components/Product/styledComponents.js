@@ -3,9 +3,10 @@ import tw from 'tailwind.macro';
 
 const ProductTitle=styled.div`
     ${tw`flex-grow text-center my-2`}
-`
+`;
 const ProductCard=styled.div`
-    ${tw`w-48 h-auto m-1 p-2 flex flex-col items-center justify-around bg-white hover:border`};
+    ${tw`w-48  m-1 p-2 flex flex-col items-center justify-around bg-white hover:border`};
+    height:450px;
     `;
 const ProductImage=styled.img`
     ${tw`w-9/12 border-3 `}
@@ -17,9 +18,12 @@ const ProductPrice=styled.div`
     ${tw``}
 `;
 const AddCartToButton=styled.button`
-    ${tw`bg-gray-800 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow my-5 `}
+    ${tw`bg-black text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow my-5 flex-grow`}
 `;
-const Product=styled.div`
-    ${tw``}
-`
-export {ProductTitle,ProductCard,ProductImage,InstallmentsCount,ProductPrice,AddCartToButton};
+const ProductImageWithFreeShippingTag=styled.div`
+${tw`relative`};
+    `;
+const FreeShippingTag=styled.div`
+    ${tw`absolute top-0 text-white right-0 bg-black`}
+    `;
+export {ProductTitle,ProductCard,ProductImage,InstallmentsCount,ProductPrice,AddCartToButton,ProductImageWithFreeShippingTag,FreeShippingTag};

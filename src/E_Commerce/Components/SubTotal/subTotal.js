@@ -6,11 +6,11 @@ class SubTotal extends Component{
     render(){
         const {totalCartAmount}=this.props;
         return (
-            <SubTotalDisplay className=''>
+            <SubTotalDisplay >
                 <SubTotalTitle>SUB TOTAL</SubTotalTitle>
                 <TotalAmount>{totalCartAmount}</TotalAmount>
             </SubTotalDisplay>
-            )
+            );
     }
 }
 export default SubTotal;

@@ -8,7 +8,7 @@ class CheckOutButton extends Component{
             <CheckOutButtonStyle disabled={noOfProductsInCart>0?false:true} noOfProductsInCart={noOfProductsInCart} onClick={clearCart} >
               CHECK OUT
             </CheckOutButtonStyle>
-            )
+            );
     }
 }
 export default CheckOutButton;

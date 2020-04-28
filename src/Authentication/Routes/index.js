@@ -1,13 +1,10 @@
+import React from 'react';
 
-import React,{Component} from "react";
-import { BrowserRouter as Router, Switch, Route,Redirect } from "react-router-dom";
-import {observable,action} from 'mobx';
+import { Route } from "react-router-dom";
 
 import SignInForm from '../Components/SignInForm';
-import SignOutForm from '../Components/SignOutForm/SignOutForm.js';
 
 const Authentication=[
-                <Route path='/sign-out-form' component={SignOutForm} key={Math.random()}/>,
-                <Route path="/" component={SignInForm} key={Math.random()} />];
+                <Route path="/ecommerce-store/sign-in/" component={SignInForm} key={Math.random()} />];
 
 export default Authentication;

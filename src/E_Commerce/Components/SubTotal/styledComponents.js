@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import tw from 'tailwind.macro';
 
 const SubTotalDisplay=styled.div`
-    ${tw`flex justify-between py-4 mx-3`};
+    ${tw`flex justify-between py-4 mx-3 mt-auto`};
 `;
 const SubTotalTitle=styled.span`
     ${tw``};

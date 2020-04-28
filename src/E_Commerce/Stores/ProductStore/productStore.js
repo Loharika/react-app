@@ -2,7 +2,7 @@ import {observable,action,computed} from 'mobx';
 import {bindPromiseWithOnSuccess} from '@ib/mobx-promise';
 import {API_INITIAL} from '@ib/api-constants';
 
-import ProductModel from '../ProductModel';
+import ProductModel from '../Models/ProductModel';
 
 class ProductStore {
     @observable productList;
@@ -22,7 +22,7 @@ class ProductStore {
         this.getProductListAPIError=null;
         this.productsAPIService=productsAPIService;
         this.sizeFilter=[];
-        this.sortBy='select'; //ASCENDING, DESCENDING, SELECT
+        this.sortBy='SELECT'; //ASCENDING, DESCENDING, SELECT
     }
     @action.bound
     getProductList(){
@@ -84,15 +84,15 @@ class ProductStore {
             filteredProducts=this.productList;
         }
         switch(this.sortBy){
-            case 'select':{
+            case 'SELECT':{
                 return filteredProducts;
             }
-            case 'Lowest to Highest':{
+            case 'ASCENDING':{
                 return filteredProducts.slice().sort((a, b)=>{
                     return a.price-b.price;
                 });
             }
-            case 'Highest to Lowest':{
+            case 'DESCENDING':{
                 return filteredProducts.slice().sort((a, b)=>{
                     return b.price-a.price;
                 });

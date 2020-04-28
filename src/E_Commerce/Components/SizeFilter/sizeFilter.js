@@ -1,17 +1,19 @@
 import React from 'react';
-import {observable} from 'mobx';
-import {ProductSizeButton,SizeFilterButtonDisplay} from './styledComponents';
 import {observer} from 'mobx-react';
+import {ProductSizeButton,SizeFilterButtonDisplay,SizesTitle,SizeFilterStyledComponent} from './styledComponents';
+
 @observer
 class SizeFilter extends React.Component{
     renderSizeButton=()=>{
         let sizeButtons=['S','XS','M','L','XL','XXL'];
+        
         const {sizeFilter}=this.props;
+        const {onSelectSize}=this;
+        
         return (sizeButtons.map(size=>{
             let isSelected=false;
             isSelected=sizeFilter.includes(size)?true:false;
-            //alert(isSelected);
-            return (<ProductSizeButton key={Math.random()} isSelected={isSelected} onClick={()=>this.onSelectSize(size)}>{size}</ProductSizeButton>);
+            return (<ProductSizeButton key={size} isSelected={isSelected} onClick={()=>onSelectSize(size)}>{size}</ProductSizeButton>);
         }));
         
     }
@@ -21,9 +23,14 @@ class SizeFilter extends React.Component{
         
     }
     render(){
-        //alert(this.props.sizeFilter);
+        
+        const {renderSizeButton}=this;
+        
         return (
-        <SizeFilterButtonDisplay>{this.renderSizeButton()}</SizeFilterButtonDisplay>
+            <SizeFilterStyledComponent>
+                <SizesTitle>Sizes:</SizesTitle>
+                <SizeFilterButtonDisplay>{renderSizeButton()}</SizeFilterButtonDisplay>
+            </SizeFilterStyledComponent>
        );
     }
     

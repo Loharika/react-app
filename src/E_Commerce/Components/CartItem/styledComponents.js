@@ -9,7 +9,7 @@ const CartDetailsWithImage=styled.div`
   ${tw`flex justify-start items-center py-2`};
 `;
 const CartItemImage=styled.img`
-  ${tw`w-12 h-20 p-1`}
+  ${tw`w-12 h-16`}
 `;
 const CartItemDetails=styled.div`
   ${tw``}
@@ -29,7 +29,7 @@ const CartItemQuantity=styled.div`
 const RemoveButtonWithPrice=styled.div`
   ${tw`flex h-full justify-between items-end flex-col py-2`};
 `;
-const RemoveCartItem=styled.div`
+const RemoveCartItem=styled.button`
   ${tw`text-black p-1`};
   
 `;

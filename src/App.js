@@ -1,7 +1,7 @@
 
 import React from "react";
 import {observer,Provider} from 'mobx-react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,Redirect } from "react-router-dom";
 import {configure} from 'mobx';
 
 import HomePage from "./components/HomePage";
@@ -64,7 +64,6 @@ class App extends React.Component{
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         
-        <Route exact path="/e-commerce" component={ProductsPage}/>
         {Authentication}
         {E_Commerce}
   

@@ -1,37 +1,47 @@
 
 import React from 'react';
-import {observable} from 'mobx';
-import {observer} from 'mobx-react';
+import {observable,action} from 'mobx';
+import {observer,inject} from 'mobx-react';
+import {withRouter } from "react-router-dom";
 
-import authStore from '../../Stores';
+import {SignInFormStyle,Password,UserName,ErrorStyle,SignInButton,SignInFormPage,SignFormTitle} from './styledComponents.js';
 
-import { BrowserRouter as Router, Switch, Route,Redirect } from "react-router-dom";
-
-import {SignInFormStyle,Password,UserName,ErrorStyle,SignInButtonDiv,SignInButton,SignInFormPage} from './styledComponents.js';
+@inject("authStore")
 @observer
 class SignInForm extends React.Component{
   @observable userName;
   @observable password;
   @observable displayError;
   @observable displayText;
-  @observable isRedirect;
+  @observable isSignInClicked;
   constructor(){
     super();
     this.userName='';
     this.password='';
     this.displayError=false;
     this.displayText='';
-    this.isRedirect=false;
+    this.isSignInClicked=false;
   }
     onSubmit=()=>{
-        authStore.userSignIn();
-        if(this.userName.length===0 || this.password.length===0){
-            this.displayText='Enter the details';
-            this.displayError=true;
+        let {displayText,displayError,userName,password,onClickSignInButton}=this;
+        
+        if(userName.length===0 && password.length===0){
+            displayText='Enter the details';
+            displayError=true;
+        }
+        else if(userName.length===0 ){
+            displayText='Please enter username';
+            displayError=true;
+        }
+        else if(this.password.length===0 ){
+            displayText='Please enter password';
+            displayError=true;
         }
         else{
-            this.displayError=false;
-            this.onClickSignInButton();
+            displayError=false;
+            onClickSignInButton();
+            
+            
         }
         
     }
@@ -43,31 +53,38 @@ class SignInForm extends React.Component{
         this.password=event.target.value;
         this.displayError=false;
     }
-    onClickSignInButton=()=>{
-        this.displayError=false;
-        const {history}=this.props;
-        this.isRedirect=true;
-       
+    
+    @action.bound
+    async onClickSignInButton(){
+        this.userName="";
+        this.password="";
+        this.isSignInClicked=true;
+        const {authStore:{userSignIn}}=this.props;
+        await userSignIn();
+        const {authStore:{authAPIService}}=this.props;
+        if(authAPIService){
+            const {history}=this.props;
+            history.replace('/ecommerce-store/products/');
+        }
+        
     }
     
     render(){
-        if(this.isRedirect){
-            return (<Redirect to={{pathname:'/e-commerce'}}/>);
-        }
+        const {userName,password,onChangeUserName,onChangePassword,displayText,onSubmit,displayError}=this;
+        let element=this.isSignInClicked?<i className="fa fa-spinner fa-spin"></i>:'Sign In';
         return (
-            <SignInFormPage className=" ">
-                <SignInFormStyle className="">
-                    <UserName onChange={this.onChangeUserName}  type="text" placeholder="Username"/>
-                    <Password onChange={this.onChangePassword}  type="password" placeholder="*********"/>
-                  {this.displayError?<ErrorStyle >{this.displayText}</ErrorStyle>:''}
-                  <SignInButtonDiv>
-                    <SignInButton onClick={this.onSubmit} type='button'>
-                      Sign In
+            <SignInFormPage >
+                <SignInFormStyle >
+                    <SignFormTitle > Sign in</SignFormTitle>
+                    <UserName value={userName} onChange={onChangeUserName}  type="text" placeholder="  Username"/>
+                    <Password value={password} onChange={onChangePassword}  type="password" placeholder="  Password"/>
+                        {displayError?<ErrorStyle >{displayText}</ErrorStyle>:''}
+                    <SignInButton onClick={onSubmit} type='button'>
+                     {element}
                     </SignInButton>
-                  </SignInButtonDiv>
                 </SignInFormStyle>
             </SignInFormPage>
             );
     }
 }
-export default SignInForm;
+export default withRouter(SignInForm);

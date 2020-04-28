@@ -1,30 +1,40 @@
 import React,{Component} from 'react';
 import {observer} from 'mobx-react';
-import {DropDownComponent} from './styledComponents.js';
+import {observable} from 'mobx';
+
+import {DropDownComponent,SortByStyleComponent,SelectOption} from './styledComponents.js';
+
 @observer
 class ProductSort extends Component{
-    
+    @observable displaySelect;
+    constructor(){
+        super();
+        this.displaySelect=true;
+    }
     renderDropDown=()=>{
-        let productSort=['select','Lowest to Highest','Highest to Lowest'];
-        return productSort.map(option=>{
-            return (<option value={option} key={Math.random()}>{option}</option>);
-        });
-        
+        return (
+            <DropDownComponent onChange={this.onSelectSortBy}>
+                <SelectOption value='SELECT' displaySelect={this.displaySelect} key={Math.random()}>select</SelectOption>
+                <option value='ASCENDING' key={Math.random()}>Lowest to Highest</option>
+                <option value='DESCENDING' key={Math.random()}>Highest to Lowest</option>
+            </DropDownComponent>
+            );
     }
     
     onSelectSortBy=(event)=>{
+        this.displaySelect=false;
         const {onChangeSortBy}=this.props;
         onChangeSortBy(event.target.value);
+        
     }
     render(){
         return (
-            <div>
-            Sort price by: &nbsp; 
-            <DropDownComponent onChange={this.onSelectSortBy}>
+            <SortByStyleComponent>
+                Sort price by: &nbsp; 
                 {this.renderDropDown()}
-            </DropDownComponent>
-            </div>
+            </SortByStyleComponent>
             );
     }
 }
 export default ProductSort;
+//<SelectOption value='SELECT' displaySelect={this.displaySelect} key={Math.random()}>select</SelectOption>

@@ -1,6 +1,6 @@
 import {observable,action,computed} from 'mobx';
 import productsStore from '../ProductStore';
-import CartItemModel from '../CartItemModel';
+import CartItemModel from '../Models/CartItemModel';
 class CartStore{
     @observable cartProductList;
     constructor(){

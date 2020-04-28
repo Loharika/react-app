@@ -2,21 +2,21 @@ import React,{Component} from 'react';
 import {observer} from 'mobx-react';
 
 import CartItem from '../CartItem';
-import {DisplayCartList} from './styledComponents.js';
+import {DisplayCartList,DisplayAddItemsText} from './styledComponents.js';
 
 
 @observer
 class CartList extends Component{
     renderCartList=()=>{
-        const {productsInCart}=this.props;
+        const {productsInCart,getProductDetailsById,onRemoveCartItem}=this.props;
         if(productsInCart.length!==0){
             return productsInCart.map(product=>{
-            return (<CartItem key={Math.random()} cartItem={product} getProductDetailsById={this.props.getProductDetailsById} onRemoveCartItem={this.props.onRemoveCartItem}/>);
+            return (<CartItem key={Math.random()} cartItem={product} getProductDetailsById={getProductDetailsById} onRemoveCartItem={onRemoveCartItem}/>);
         });
         }
         
         else{
-            return (<div>Add some products in the cart</div>)
+            return (<DisplayAddItemsText>Add some products in the cart</DisplayAddItemsText>);
         }
     }
     

@@ -11,7 +11,7 @@ class ProductList extends Component{
     renderProductsList=()=>{
         const {products}=this.props;
         return products.map(product=>{
-            return <Product key={Math.random()} product={product} onClickAddToCart={this.onClickAddToCart}/>
+            return <Product key={Math.random()} product={product} onClickAddToCart={this.onClickAddToCart}/>;
         });
     }
     onClickAddToCart=(productDetails)=>{
@@ -19,12 +19,14 @@ class ProductList extends Component{
     }
     render(){
         
-        const {getProductListAPIError,getProductListAPIStatus,doNetworkCalls,productsCount}=this.props;
+        const {getProductListAPIError,getProductListAPIStatus,doNetworkCalls}=this.props;
+        const {renderProductsList}=this;
+        
         return (
             <DisplayProductsList >
-            <LoadingWrapperWithFailure key={productsCount} apiStatus={getProductListAPIStatus} apiError={getProductListAPIError} 
-                onRetryClick={doNetworkCalls} renderSuccessUI={this.renderProductsList}
-            />
+                <LoadingWrapperWithFailure key={Math.random()} apiStatus={getProductListAPIStatus} apiError={getProductListAPIError} 
+                    onRetryClick={doNetworkCalls} renderSuccessUI={renderProductsList}
+                />
             </DisplayProductsList>
             
             );

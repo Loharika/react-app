@@ -1,8 +1,8 @@
 import {observable,action} from 'mobx';
 import {bindPromiseWithOnSuccess} from '@ib/mobx-promise';
 import {API_INITIAL} from '@ib/api-constants';
+import {getAccessToken,setAccessToken,clearUserSession} from "../../utils/StorageUtils";
 
-import Cookie from 'js-cookie';
 
 class AuthStore {
     
@@ -18,7 +18,7 @@ class AuthStore {
     init(){
         this.getUserSignInAPIStatus=API_INITIAL;
         this.getUserSignInAPIError=null;
-        this.authAPIService={};
+        this.authAPIService=getAccessToken();
     }
   
         
@@ -32,9 +32,9 @@ class AuthStore {
     }
      @action.bound
     setUserSignInAPIResponse(signInResponseToken){
-        this.authAPIService=signInResponseToken[0].access_token;
-        
-        Cookie.set('access_token', this.authAPIService);
+        const access_token=signInResponseToken[0].access_token;
+        setAccessToken(access_token);
+        this.authAPIService=getAccessToken();
     }
      @action.bound
     setGetUserSignInAPIError(apiError){
@@ -46,6 +46,7 @@ class AuthStore {
     }
      @action.bound
     userSignOut(){
+        clearUserSession();
         this.init();
     }
 }

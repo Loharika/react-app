@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import tw from 'tailwind.macro';
 
 const CartItems=styled.div`
-    ${tw`flex flex-col z-10 h-screen absolute fixed`};
+    ${tw`flex flex-col z-10 absolute fixed  h-screen`};
     top:0px;
     right:0px;
     width:${props=>props.shouldDisplayCart?'420px':'auto'};
@@ -22,40 +22,39 @@ const CartHideButton=styled.button`
 `;
 
 const Cart=styled.div`
-${tw`flex-col relative  `}
+${tw`flex-col relative h-full  `}
     width:400px;
-    flex-grow:1;
     align-items:center;
     display:${props=>props.shouldDisplayCart?'flex':'none'};
 `;
 
 const SubTotalWithCheckOutButton=styled.div`
-  ${tw`w-full flex-col flex-grow justify-end`};
+  ${tw`w-full flex-col justify-end`};
   display:${props=>props.shouldDisplayCart?'flex':'none'};
 `;
 const AddCartOpen=styled.div`
-    ${tw`w-12 h-12 text-white flex justify-center items-center relative`};
+    ${tw`w-12 h-12 text-white flex justify-center items-center  relative `};
     background-color:#2d3748;
-    font-size:50px;
+    font-size:40px;
     width:60px;
-    height:60px;
+    height:70px;
     display:${props=>props.shouldDisplayCart?'none':'flex'}
     `;
 const AddCartClose=styled.div`
-    ${tw`w-12 h-12 text-white flex justify-center items-center relative`};
+    ${tw`w-12 h-12 text-white flex justify-center items-center  relative `};
     background-color:#2d3748;
-    font-size:50px;
+    font-size:40px;
     width:60px;
-    height:60px;
+    height:70px;
     align-self:center;
-    margin-top:-40px;
+    margin-top:-30px;
     display:${props=>!props.shouldDisplayCart?'none':'flex'}
     
     `;
 const NumberOfCartItems=styled.span`
     ${tw`absolute`};
     color:#cc7a00;
-    font-size:20px;
+    font-size:16px;
     margin-top:-2px;
 `;
 const CartTitle=styled.span`

@@ -9,7 +9,6 @@ import {CartItemDisplay,CartDetailsWithImage,CartItemImage,CartItemDetails,CartI
 
 @observer
 class CartItem extends Component{
-    @observable quantity;
     constructor(props){
         super(props);
     }
@@ -22,18 +21,18 @@ class CartItem extends Component{
         const productDetails=getProductDetailsById(cartItem.productId);
         return (
         <CartItemDisplay >
-        <CartDetailsWithImage>
-            <CartItemImage src={productDetails.image} className=''/>
-            <CartItemDetails>
-            <CartItemTitle>{productDetails.title}</CartItemTitle>
-            <CartItemStyle>{productDetails.style}</CartItemStyle>
-            <CartItemQuantity>Quantity:{cartItem.quantity}</CartItemQuantity>
-            </CartItemDetails>
-        </CartDetailsWithImage>
-        <RemoveButtonWithPrice className='flex flex-col'>
-            <RemoveCartItem type='button' onClick={()=>this.onRemoveCartItem(cartItem.cartItemId)}>X</RemoveCartItem>
-            <CartItemPrice>{productDetails.currencyFormat} {productDetails.price}</CartItemPrice>
-        </RemoveButtonWithPrice>
+            <CartDetailsWithImage>
+                <CartItemImage src={productDetails.image} />
+                <CartItemDetails>
+                    <CartItemTitle>{productDetails.title}</CartItemTitle>
+                    <CartItemStyle>{productDetails.style}</CartItemStyle>
+                    <CartItemQuantity>Quantity:{cartItem.quantity}</CartItemQuantity>
+                </CartItemDetails>
+            </CartDetailsWithImage>
+            <RemoveButtonWithPrice>
+                <RemoveCartItem  onClick={()=>this.onRemoveCartItem(cartItem.cartItemId)}>X</RemoveCartItem>
+                <CartItemPrice>{productDetails.currencyFormat} {productDetails.price}</CartItemPrice>
+            </RemoveButtonWithPrice>
         </CartItemDisplay>);
     }
 }

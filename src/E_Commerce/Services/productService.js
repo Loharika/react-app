@@ -1,7 +1,8 @@
 import {action} from 'mobx';
 import {create} from 'apisauce';
 import {networkCallWithApisauce} from '../../utils/APIUtils';
-import {apiMethods} from '../../constants/APIConstants';
+import {apiMethods} from '../Constants';
+import endpoints from '../EndPoints';
 
 class ProductService {
     api;
@@ -14,7 +15,7 @@ class ProductService {
     getProductsAPI(){
         return networkCallWithApisauce(
             this.api,
-            'v1/products/',
+            endpoints.products,
             {},
             apiMethods.get
             );
