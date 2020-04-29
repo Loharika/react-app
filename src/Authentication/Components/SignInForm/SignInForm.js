@@ -23,25 +23,24 @@ class SignInForm extends React.Component{
     this.isSignInClicked=false;
   }
     onSubmit=()=>{
-        let {displayText,displayError,userName,password,onClickSignInButton}=this;
+        let {userName,password,onClickSignInButton}=this;
         
         if(userName.length===0 && password.length===0){
-            displayText='Enter the details';
-            displayError=true;
+            this.displayText='Enter the details';
+            this.displayError=true;
+            
         }
         else if(userName.length===0 ){
-            displayText='Please enter username';
-            displayError=true;
+            this.displayText='Please enter username';
+            this.displayError=true;
         }
         else if(this.password.length===0 ){
-            displayText='Please enter password';
-            displayError=true;
+            this.displayText='Please enter password';
+            this.displayError=true;
         }
         else{
-            displayError=false;
-            onClickSignInButton();
-            
-            
+            this.displayError=false;
+            this.onClickSignInButton();
         }
         
     }

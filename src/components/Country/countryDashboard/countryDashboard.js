@@ -1,5 +1,6 @@
 /*global fetch*/
 import React from 'react';
+import {observer,inject} from 'mobx-react';
 import Header from '../header/header.js';
 import FilterBar from '../filterBar/filterBar.js';
 import Countries from '../countries/countries.js';
@@ -7,6 +8,8 @@ import {withRouter} from 'react-router-dom';
 import loaderIcon from '../assets/loader-icon.svg';
 import '../countryDashboard/countryDashboard.css';
 
+@inject('themeStore')
+@observer
 class CountryDashboard extends React.Component{
     constructor(){
         super();
@@ -63,12 +66,12 @@ class CountryDashboard extends React.Component{
   history.push({pathname:`/countryDashboard/:${event.target.id}`});
     }
   render(){
-    let styletag1=(this.props.selectedTheme==='Light Mode')?'Light':'Dark';
+    let styletag1=(this.props.themeStore.selectedTheme==='Light Mode')?'Light':'Dark';
     if(this.state.countries.length>0){
       return(
             <div id='countriesApp' className={styletag1}>
-            <Header selectedTheme={this.props.selectedTheme} onChangeTheme={this.props.onChangeTheme}/>
-            <FilterBar selectedTheme={this.props.selectedTheme} regionOptions={this.state.regionOptions} onChangeSearchText={this.onChangeSearchText} onChangeSelectedRegion={this.onChangeSelectedRegion} />
+            <Header selectedTheme={this.props.themeStore.selectedTheme} onChangeTheme={this.props.themeStore.updateCurrentTheme}/>
+            <FilterBar selectedTheme={this.props.themeStore.selectedTheme} regionOptions={this.state.regionOptions} onChangeSearchText={this.onChangeSearchText} onChangeSelectedRegion={this.onChangeSelectedRegion} />
             {(this.getCountriesRequired().length<=0)?
             <div className='error-message'><span>No such country name is found in the available region!!</span></div>:
             <Countries displayCountries={this.getCountriesRequired()} eachCountryData={this.eachCountryData}/>

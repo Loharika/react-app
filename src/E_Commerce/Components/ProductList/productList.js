@@ -10,9 +10,15 @@ import {DisplayProductsList} from './styledComponents.js';
 class ProductList extends Component{
     renderProductsList=()=>{
         const {products}=this.props;
-        return products.map(product=>{
+        let productsList=products.map(product=>{
             return <Product key={Math.random()} product={product} onClickAddToCart={this.onClickAddToCart}/>;
         });
+        if(productsList.length>0){
+            return (productsList);
+        }
+        else{
+            return('No products Found');
+        }
     }
     onClickAddToCart=(productDetails)=>{
         this.props.cartStore.onClickAddToCart(productDetails);
@@ -21,15 +27,16 @@ class ProductList extends Component{
         
         const {getProductListAPIError,getProductListAPIStatus,doNetworkCalls}=this.props;
         const {renderProductsList}=this;
-        
-        return (
+            return (
             <DisplayProductsList >
-                <LoadingWrapperWithFailure key={Math.random()} apiStatus={getProductListAPIStatus} apiError={getProductListAPIError} 
-                    onRetryClick={doNetworkCalls} renderSuccessUI={renderProductsList}
-                />
+               <LoadingWrapperWithFailure key={Math.random()} apiStatus={getProductListAPIStatus} apiError={getProductListAPIError} 
+                        onRetryClick={doNetworkCalls} renderSuccessUI={renderProductsList}
+                    />
+                
             </DisplayProductsList>
             
             );
+        
             
     }
 }

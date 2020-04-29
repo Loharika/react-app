@@ -2,7 +2,9 @@
 import React,{Component}from "react";
 import { Link,Redirect } from "react-router-dom";
 import {action,observable} from 'mobx';
-import {observer} from 'mobx-react';
+import {observer,inject} from 'mobx-react';
+
+@inject('appStore')
 @observer
 
 class Assignments extends Component{
@@ -13,19 +15,27 @@ class Assignments extends Component{
       }
       @action.bound
       gotoGridScreenIfLogOut(){
+        const {appStore:{userLogOut}}=this.props;
         this.isLogOut=true;
+        userLogOut();
       }
     render()
       {
-    if(this.isLogOut){
+    /*if(this.isLogOut){
         return (
       <Redirect 
       to={{
-        pathname:'/login-form'
+        pathname:'/'
       }}
       />
       );
-    }
+    }*/
+    const {appStore:{authAPIService}}=this.props;
+        if(authAPIService===undefined){
+            return (
+            <Redirect to={{pathname:'login-form'}}/>
+            );
+        }
   return (
     <div className='flex w-screen h-screen justify-around border-2'>
           <div className="font-bold flex flex-col justify-center items-center ml-40 text-indigo-900">
@@ -43,6 +53,7 @@ class Assignments extends Component{
                 <Link to="/grid-game">Grid Memory Game</Link>
                 <Link to="/user-app">Users App</Link>
                 <Link to='/app'>Post App</Link>
+                <Link to='/ecommerce-store/products/'>E_Commerce</Link>
           </div>
           <div className='border-2 self-center'>
             <button onClick={this.gotoGridScreenIfLogOut} className="self center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">

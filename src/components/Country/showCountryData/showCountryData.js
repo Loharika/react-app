@@ -1,12 +1,17 @@
 /*global fetch*/
 import React from 'react';
+import {observer,inject} from 'mobx-react';
 import {withRouter} from 'react-router';
 import CovidGraph from '../covidGraph/covidGraph.js';
 import Header from '../header/header.js';
 import {ShowDetails,ButtonElement,ImageElement,ButtonElementDiv,TotalCountryData,FlagImage,CountryDetails,CountryDetailsWithoutBorderDetails
     ,CountryName,EachDetailAboutCountry,EachDetail,BorderCountries,CountryDetailsHeading,CountryBorderButtons,CovidGraphTitle
 } from '../../styleComponents/styleComponents.js';
+
 import loaderIcon from '../assets/loader-icon.svg';
+
+@inject('themeStore')
+@observer
 class ShowCountryData extends React.Component{
     constructor(props){
         super(props);
@@ -36,7 +41,7 @@ class ShowCountryData extends React.Component{
             return found.name;
         });
         const listItems = borders.map((eachBorder,index) =>
-        <ButtonElement theme={this.props.selectedTheme}  id={eachBorder} onClick={this.displayBorderCountryData}>{borderCountryNames[index]}</ButtonElement>
+        <ButtonElement theme={this.props.themeStore.selectedTheme}  key={eachBorder} id={eachBorder} onClick={this.displayBorderCountryData}>{borderCountryNames[index]}</ButtonElement>
         );
         let returnlist=listItems.length!==0?listItems:'None';
         return (
@@ -49,11 +54,11 @@ class ShowCountryData extends React.Component{
             let languages=countryData.languages.map(eachLanguage=>eachLanguage.name).toString();
             let currencies=countryData.currencies.map(eachcurrency=>eachcurrency.name).toString();
             return (
-                <ShowDetails theme={this.props.selectedTheme}>
-                    <Header selectedTheme={this.props.selectedTheme} onChangeTheme={this.props.onChangeTheme} />
+                <ShowDetails theme={this.props.themeStore.selectedTheme}>
+                    <Header selectedTheme={this.props.themeStore.selectedTheme} onChangeTheme={this.props.themeStore.updateCurrentTheme} />
                         <ButtonElementDiv>
-                            <ButtonElement theme={this.props.selectedTheme} onClick={this.goBack} 
-                            >{<i class="fa fa-long-arrow-left"></i>} &nbsp; Back</ButtonElement>
+                            <ButtonElement theme={this.props.themeStore.selectedTheme} onClick={this.goBack} 
+                            >{<i className="fa fa-long-arrow-left"></i>} &nbsp; Back</ButtonElement>
                         </ButtonElementDiv>
                         <TotalCountryData>
                             <FlagImage >

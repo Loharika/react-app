@@ -11,6 +11,7 @@ class ProductStore {
     @observable productsAPIService;
     @observable sizeFilter;
     @observable sortBy;
+    @observable searchInput;
     productsAPIService
     constructor(productsAPIService){
         this.init(productsAPIService);
@@ -23,6 +24,7 @@ class ProductStore {
         this.productsAPIService=productsAPIService;
         this.sizeFilter=[];
         this.sortBy='SELECT'; //ASCENDING, DESCENDING, SELECT
+        this.searchInput='';
     }
     @action.bound
     getProductList(){
@@ -57,6 +59,10 @@ class ProductStore {
             this.sizeFilter.splice(this.sizeFilter.indexOf(productSize),1);
         }
     }
+    @action.bound
+    onChangeSearchInput(searchName){
+        this.searchInput=searchName;
+    }
     @computed
     get products(){
         let filteredProducts=[];
@@ -82,6 +88,13 @@ class ProductStore {
         }
         else{
             filteredProducts=this.productList;
+        }
+        if(this.searchInput.length!==0){
+            let array=filteredProducts.filter(product=>(product.title.toLowerCase().includes(this.searchInput.toLowerCase())));
+            filteredProducts=array;
+        }
+        else{
+            filteredProducts=filteredProducts;
         }
         switch(this.sortBy){
             case 'SELECT':{

@@ -32,7 +32,7 @@ class ProductsPage extends Component{
     
     render(){
         
-        const {productStore:{onSelectSize,onChangeSortBy,sortedAndFilteredProducts,onClickAddToCart,totalNoOfProductsDisplayed,sizeFilter,
+        const {productStore:{onSelectSize,onChangeSortBy,onChangeSearchInput,sortedAndFilteredProducts,onClickAddToCart,totalNoOfProductsDisplayed,sizeFilter,
             getProductListAPIStatus,getProductListAPIError}}=this.props;
             
         const {authStore:{authAPIService,userSignOut}}=this.props;
@@ -44,15 +44,17 @@ class ProductsPage extends Component{
             <Redirect to={{pathname:'/ecommerce-store/sign-in/'}}/>
             );
         }
+        
         return (
             <ProductsPageStyle >
+            
                 <ProductsDashboard>
                     <AvailableSizes_SignOutButton >
                         <SignOutButton onClick={userSignOut}>Sign Out</SignOutButton>
                         <SizeFilter key={Math.random()} onSelectSize={onSelectSize} sizeFilter={sizeFilter}/>
                     </AvailableSizes_SignOutButton>
                     <ProductListDisplay_Header >
-                        <Header productsCount={totalNoOfProductsDisplayed} onChangeSortBy={onChangeSortBy} />
+                        <Header productsCount={totalNoOfProductsDisplayed} onChangeSortBy={onChangeSortBy} onChangeSearchInput={onChangeSearchInput} />
                         <ProductList products={sortedAndFilteredProducts} onClickAddToCart={onClickAddToCart} 
                             doNetworkCalls={doNetworkCalls} getProductListAPIStatus={getProductListAPIStatus} 
                                 getProductListAPIError={getProductListAPIError}/>

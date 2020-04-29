@@ -1,12 +1,11 @@
 
 import React from "react";
 import {observer,Provider} from 'mobx-react';
-import { BrowserRouter as Router, Switch, Route,Redirect } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import {configure} from 'mobx';
 
 import HomePage from "./components/HomePage";
 import Assignments from './components/HomePage/Assignments.js';
-import Page1 from "./components/Page1";
 import LocalApp from './components/Practice/practice';
 import TodoApp from './components/TodoApp/todoApp';
 import CarList from  './components/CarsList/carList.js';
@@ -24,11 +23,11 @@ import RestTodoApp from './components/RestTodoApp/RestTodoApp/index';
 import themeStore from './stores/ThemeStore';
 import UsersPage from './components/UsersPage/index';
 import TodoAppAPI from './components/TodoAppAPI';
+import LoginForm from './components/LoginForm';
 import stores from './stores';
 import "./App.css";
 
 import Authentication from './Authentication/Routes';
-import ProductsPage from './E_Commerce/Components/ProductsPage';
 
 import E_Commerce from './E_Commerce/Routes';
 
@@ -38,91 +37,33 @@ configure({enforceActions:'never'});
 
 @observer
 class App extends React.Component{
-  constructor(props){
-    super(props);
-    this.state={
-      selectedTheme:'Light Mode',
-    };
-  }
-  
-  getCurrentTheme=()=>{
-  return themeStore.selectedTheme;
-    
-  }
-  setCurrentTheme=(theme)=>{
-    themeStore.updateCurrentTheme(theme);
-  
-  }
-  
-  onChangeTheme=()=>{
-      selectedTheme:(this.getCurrentTheme()==='Light Mode')?this.setCurrentTheme('Dark Mode'):this.setCurrentTheme('Light Mode');
-  }
 
   render(){
   return (
     <Provider {...stores}>
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
-        
         {Authentication}
         {E_Commerce}
-  
-  
-        <Route exact path="/counter-page">
-          <CounterPage />
-        </Route>
-        <Route exact path="/counter-app">
-          <CounterApp />
-        </Route>
-        <Route exact path="/page-1">
-          <Page1 />
-        </Route>
-        <Route exact path="/assignments">
-          <Assignments />
-        </Route>
-        <Route path="/car">
-            <CarList />
-        </Route>
-        <Route exact path="/formComponents">
-            <FormComponents />
-        </Route>
-        <Route exact path="/formComponents/:formName">
-            <Components />
-        </Route>
-        <Route exact path="/countryDashboard">
-            <CountryDashboard selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme}/>
-        </Route>
-        <Route exact path="/countryDashboard/:id">
-            <ShowCountryData selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme} />
-        </Route>
-        <Route exact path="/emojiGame">
-            <EmojiGame selectedTheme={this.getCurrentTheme()} onChangeTheme={this.onChangeTheme}/>
-        </Route>
-        <Route exact path="/todo-app">
-            <TodoApp />
-        </Route>
-        <Route exact path="/mobx-store-todo-app">
-            <MobxTodoApp />
-        </Route>
-        <Route exact path="/grid-game">
-            <GridMemoryGame />
-        </Route>
-        <Route exact path="/events-app">
-            <EventsApp />
-        </Route>
-        <Route exact path="/app">
-            <LocalApp />
-        </Route>
-        <Route exact path="/rest-todo-app">
-            <RestTodoApp />
-        </Route>
+        <Route path='/login-form' component={LoginForm}/>
+        <Route exact path="/counter-page" component={CounterPage}/>
+        <Route exact path="/counter-app" component={CounterApp}/>
+        <Route exact path="/assignments" component={Assignments}/>
+        <Route path="/car" component={CarList}/>
+        <Route exact path="/formComponents" component={FormComponents}/>
+        <Route exact path="/formComponents/:formName" component={Components}/>
+        <Route exact path="/countryDashboard" component={CountryDashboard}/>
+        <Route exact path="/countryDashboard/:id" component={ShowCountryData}/>
+        <Route exact path="/emojiGame" component={EmojiGame}/>
+        <Route exact path="/todo-app" component={TodoApp}/>
+        <Route exact path="/mobx-store-todo-app" component={MobxTodoApp}/>
+        <Route exact path="/grid-game" component={GridMemoryGame}/>
+        <Route exact path="/events-app" component={EventsApp}/>
+        <Route exact path="/app" component={LocalApp}/>
+        <Route exact path="/rest-todo-app" component={RestTodoApp}/>
         <Route exact path="/user-app" component={UsersPage}/>
         <Route exact path="/todo-app-api" component={TodoAppAPI}/>
-        
-        <Route exact path="/home">
-          <HomePage />
-        </Route>
-
+        <Route exact path="/" component={HomePage}/>
       </Switch>
     </Router>
     </Provider>

@@ -42,7 +42,7 @@ class DisableButton extends React.Component{
             <div  className='total'>
                 <div className='checkbox'>
                     <input id='disabled' type="checkbox" onChange={this.checkBoxClick} />
-                    <label for="disabled">Disabled</label>
+                    <label htmlFor="disabled">Disabled</label>
                     <div>{!this.state.checkboxChecked?<button type="button" onClick={this.onClickButton}>Click Me!</button>:<button type="button" disabled>Click Me!</button>}</div>
                 </div>
                 <div className='button-and-displaytext'>

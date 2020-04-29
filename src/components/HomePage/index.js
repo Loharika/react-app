@@ -23,7 +23,6 @@ render(){
         >
           Learn React
         </a>
-        <Link to="/page-1">Page</Link>
         <Link to="/assignments">Assignments</Link>
       </header>
     </div>

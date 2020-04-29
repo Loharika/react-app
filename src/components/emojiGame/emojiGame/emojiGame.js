@@ -1,5 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import {inject,observer} from 'mobx-react';
 
 import {EmojiCardsList,EmojiGameComponent} from '../../styleComponents/styleComponents.js';
 import NavBar from '../navBar/navBar.js';
@@ -14,6 +15,9 @@ const emojisNames=['Exploding Head','Grinning Face with Sweat','Smiling Face wit
 emojisNames.forEach((emoji,index)=>{
     emojis.push({id:index,isClicked:false, name:emoji, image:url+`memoji-${index+1}.png`});
 });
+
+@inject('themeStore')
+@observer
 class EmojiGame extends React.Component{
     constructor(props){
         super(props);
@@ -90,7 +94,7 @@ class EmojiGame extends React.Component{
     displayEmojis=()=>{
     const allEmojiCards=this.state.emojis.map(emoji=>{
       return (
-        <EmojiCard emojiData={emoji} key={emoji.id} onEmojiClick={this.onEmojiClick} selectedTheme={this.props.selectedTheme}/>
+        <EmojiCard emojiData={emoji} key={emoji.id} onEmojiClick={this.onEmojiClick} selectedTheme={this.props.themeStore.selectedTheme}/>
         );
         });
     return allEmojiCards;
@@ -98,14 +102,14 @@ class EmojiGame extends React.Component{
     render(){
         return (
             <EmojiGameComponent gameState={this.state.gameState}>
-                <NavBar selectedTheme={this.props.selectedTheme} score={this.state.score} topScore={this.state.topScore} onChangeTheme={this.props.onChangeTheme}/>
+                <NavBar selectedTheme={this.props.themeStore.selectedTheme} score={this.state.score} topScore={this.state.topScore} onChangeTheme={this.props.themeStore.updateCurrentTheme}/>
                 {(this.state.gameState==='PLAYING')?
-                    <EmojiCardsList theme={this.props.selectedTheme} gameState={this.state.gameState}>
+                    <EmojiCardsList theme={this.props.themeStore.selectedTheme} gameState={this.state.gameState}>
                         {this.displayEmojis()}
                     </EmojiCardsList>:
-                    <WinOrLose gameState={this.state.gameState} score={this.state.score} selectedTheme={this.props.selectedTheme} onPlayAgainClick={this.onPlayAgainClick}/>
+                    <WinOrLose gameState={this.state.gameState} score={this.state.score} selectedTheme={this.props.themeStore.selectedTheme} onPlayAgainClick={this.onPlayAgainClick}/>
                 }
-                <Footer selectedTheme={this.props.selectedTheme} />
+                <Footer selectedTheme={this.props.themeStore.selectedTheme} />
             </EmojiGameComponent>
             );
     }

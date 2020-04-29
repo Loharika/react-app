@@ -3,7 +3,6 @@ import {bindPromiseWithOnSuccess} from '@ib/mobx-promise';
 import {API_INITIAL} from '@ib/api-constants';
 import {getAccessToken,setAccessToken,clearUserSession} from "../../utils/StorageUtils";
 
-
 class AuthStore {
     
     @observable getUserSignInAPIStatus;

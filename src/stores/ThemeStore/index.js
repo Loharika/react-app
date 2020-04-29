@@ -5,7 +5,8 @@ class ThemeStore{
     constructor(){
         this.selectedTheme='Light Mode';
     }
-    updateCurrentTheme(){
+    
+    updateCurrentTheme=()=>{
         this.selectedTheme==='Light Mode'?(this.selectedTheme='Dark Mode'):(this.selectedTheme='Light Mode');
     }
 }
