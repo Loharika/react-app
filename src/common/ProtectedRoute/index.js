@@ -1,26 +1,25 @@
 import React from 'react';
 import {Redirect,Route} from 'react-router-dom';
-import {observer} from 'mobx-react';
-import authStore from '../../Authentication/Stores/authStore';
+import {observer,inject} from 'mobx-react';
 
-//alert(authStore.authAPIService);
-
-import {getAccessToken} from '../../utils/StorageUtils';
- 
-const ProtectedRoute = observer(({ component: Component, ...rest }) => (
+const ProtectedRoute = inject('authStore') (observer(({ component: Component,authStore, ...rest }) => {
+      
+      let authAPIService=authStore.authAPIService;
+      
+   return(   
 <Route
       {...rest}
-      render={props =>
-      getAccessToken() ? (
-      <Component />
-      ) : (
-      <Redirect
+      render={props =>{
+      if(authAPIService !== undefined){
+            return <Component />;
+      }
+      else{
+           return <Redirect
       to={{
       pathname: '/ecommerce-store/sign-in/'
       }}
-      />
-      )
+      />;
       }
-      />
-      ));
+      
+      }} />)}));
 export {ProtectedRoute};

@@ -28,29 +28,27 @@ class ProductsPage extends Component{
         const {getProductsStore}=this;
         getProductsStore().getProductList();
     }
+    
+    @action.bound
+    onClickuserSignOut(){
+        const {authStore:{userSignOut}}=this.props;
+        userSignOut();
+    }
 
     
     render(){
-        
+    
         const {productStore:{onSelectSize,onChangeSortBy,onChangeSearchInput,sortedAndFilteredProducts,onClickAddToCart,totalNoOfProductsDisplayed,sizeFilter,
             getProductListAPIStatus,getProductListAPIError}}=this.props;
-            
-        const {authStore:{authAPIService,userSignOut}}=this.props;
         
         const {doNetworkCalls}=this;
-        
-        if(authAPIService===undefined){
-            return (
-            <Redirect to={{pathname:'/ecommerce-store/sign-in/'}}/>
-            );
-        }
         
         return (
             <ProductsPageStyle >
             
                 <ProductsDashboard>
                     <AvailableSizes_SignOutButton >
-                        <SignOutButton onClick={userSignOut}>Sign Out</SignOutButton>
+                        <SignOutButton onClick={this.onClickuserSignOut}>Sign Out</SignOutButton>
                         <SizeFilter key={Math.random()} onSelectSize={onSelectSize} sizeFilter={sizeFilter}/>
                     </AvailableSizes_SignOutButton>
                     <ProductListDisplay_Header >
