@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 
 import {action} from 'mobx';
-import LoadingWrapperWithFailure from '../common/LoadingWrapperWithFailure';
-import NoDataView from '../common/NoDataView';
+import LoadingWrapperWithFailure from '../../common/LoadingWrapperWithFailure';
+import NoDataView from '../../common/NoDataView';
 import AddTodo from './addTodo';
 import Footer from './footer';
 import TodoComponent from './todo';

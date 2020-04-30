@@ -43,8 +43,10 @@ class App extends React.Component{
     <Provider {...stores}>
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
+      
         {Authentication}
         {E_Commerce}
+        
         <Route path='/login-form' component={LoginForm}/>
         <Route exact path="/counter-page" component={CounterPage}/>
         <Route exact path="/counter-app" component={CounterApp}/>

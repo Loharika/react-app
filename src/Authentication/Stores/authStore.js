@@ -18,6 +18,7 @@ class AuthStore {
         this.getUserSignInAPIStatus=API_INITIAL;
         this.getUserSignInAPIError=null;
         this.authAPIService=getAccessToken();
+        //alert(this.authAPIService);
     }
   
         
@@ -34,6 +35,7 @@ class AuthStore {
         const access_token=signInResponseToken[0].access_token;
         setAccessToken(access_token);
         this.authAPIService=getAccessToken();
+        //alert(this.authAPIService);
     }
      @action.bound
     setGetUserSignInAPIError(apiError){
@@ -45,8 +47,10 @@ class AuthStore {
     }
      @action.bound
     userSignOut(){
+        //alert("signOut");
         clearUserSession();
         this.init();
+        //alert("cleared");
     }
 }
 export default AuthStore;

@@ -9,8 +9,8 @@ import AddTodo from '../AddTodo/index';
 import Footer from '../TodoFooter/index';
 import TodoComponent from '../Todo/index';
 
-import LoadingWrapperWithFailure from '../../common/LoadingWrapperWithFailure';
-import NoDataView from '../../common/NoDataView';
+import LoadingWrapperWithFailure from '../../../common/LoadingWrapperWithFailure';
+import NoDataView from '../../../common/NoDataView';
 import './index.css';
 
 @observer

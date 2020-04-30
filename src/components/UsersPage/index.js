@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import {action} from 'mobx';
 import {observer,inject} from 'mobx-react';
-import LoadingWrapperWithFailure from '../common/LoadingWrapperWithFailure';
-import NoDataView from '../common/NoDataView';
+import LoadingWrapperWithFailure from '../../common/LoadingWrapperWithFailure';
+import NoDataView from '../../common/NoDataView';
 
 @inject("usersStore")
 @observer

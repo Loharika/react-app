@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {observer,inject} from 'mobx-react';
 
-import LoadingWrapperWithFailure from '../../../components/common/LoadingWrapperWithFailure';
+import LoadingWrapperWithFailure from '../../../common/LoadingWrapperWithFailure';
 import Product from '../Product';
 import {DisplayProductsList} from './styledComponents.js';
 
