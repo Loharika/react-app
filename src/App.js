@@ -6,7 +6,7 @@ import {configure} from 'mobx';
 
 import HomePage from "./components/HomePage";
 import Assignments from './components/HomePage/Assignments.js';
-import LocalApp from './components/Practice/practice';
+//import LocalApp from './components/Practice/practice';
 import TodoApp from './components/TodoApp/todoApp';
 import CarList from  './components/CarsList/carList.js';
 import FormComponents from './components/formComponents/form.js';
@@ -58,7 +58,7 @@ class App extends React.Component{
         <ProtectedRoute exact path="/mobx-store-todo-app" component={MobxTodoApp}/>
         <ProtectedRoute exact path="/grid-game" component={GridMemoryGame}/>
         <ProtectedRoute exact path="/events-app" component={EventsApp}/>
-        <ProtectedRoute exact path="/app" component={LocalApp}/>
+        
         <ProtectedRoute exact path="/rest-todo-app" component={RestTodoApp}/>
         <ProtectedRoute exact path="/user-app" component={UsersPage}/>
         <ProtectedRoute exact path="/todo-app-api" component={TodoAppAPI}/>
@@ -73,7 +73,7 @@ class App extends React.Component{
 
 export default App;
 
-
+//<ProtectedRoute exact path="/app" component={LocalApp}/>
 //we can export the observer like 
   // export default observer(App) without defining above the class
 /*import React from "react";

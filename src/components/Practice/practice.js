@@ -1,88 +1,43 @@
+
+
+
 import React,{Component} from 'react';
-import {action} from 'mobx';
-import {create} from 'apisauce';
-import {networkCallWithApisauce} from '../../utils/APIUtils';
-import {apiMethods} from '../../constants/APIConstants';
-import {bindPromiseWithOnSuccess} from '@ib/mobx-promise';
-class TodoService{
-    api;
-    constructor(){
-        this.api=create({
-            baseURL:'https://5e6864ded426c00016b7cfce.mockapi.io/api/v1/'
-        });
-    }
-    @action.bound
-    postTodoAPI(){
-        let todoObject=
-            {'id':Math.random(),
-            'title':'Loharika',
-            'isCompleted':true,};
-        return (networkCallWithApisauce(
-            this.api,
-            'users123/',
-            todoObject,
-            apiMethods.post
-        ));
-    }
-    @action.bound
-    getPosted(response){
-        console.log(response);
-    }
-    @action.bound
-    getTodosAPI(){
-        return (networkCallWithApisauce(
-            this.api,
-            'users123/',
-            {},
-            apiMethods.get
-        ));
-    }
-    
-}
-let todoService=new TodoService();
-        
+import {observable} from 'mobx';
 
-class LocalApp extends Component{
-    postTheObject=()=>{
-        //alert("post");
-        todoService.postTodoAPI();
-        this.getTheObjectData();
-    }
-    getTheObjectData=()=>{
-        //alert("getting the data");
-        const todosPromise=todoService.getTodosAPI();
-        return bindPromiseWithOnSuccess(todosPromise)
-        .to(this.setGetTodoListAPIStatus,this.setTodoListResponse)
-        .catch(this.setGetTodoListAPIError);
-    }
-    setGetTodoListAPIStatus=(apiStatus)=>{
-        //this.getTodoListAPIStatus=apiStatus;
-    }
-     setTodoListResponse=(todosResponse)=>{
-         let DataArray=[];
-        console.log(todosResponse);
-        DataArray=todosResponse.map(todo=>{
-            return JSON.parse(JSON.parse(todo.data));
-        });
-        console.log(DataArray);
-    }
-    setGetTodoListAPIError=(error)=>{
-        //this.getTodoListAPIError=error;
-    }
+
+class HelloMessage extends React.Component{
     render(){
-        return (
-            <div>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-5" onClick={this.postTheObject}>
-            Click to post the Object
-        </button>
-
-        </div>
-            )
-        
+        return (<div>{this.props.message}</div>);
     }
 }
-export default LocalApp;
 
+
+
+
+class UpperInput extends React.Component {
+  state = {upper: ''}
+    @observable upper
+  onUpperChange = e => {
+    this.upper= e.target.value.toUpperCase();
+  }
+
+  render() {
+    return (
+      <div>
+        <label htmlFor="upper">Upper</label>
+        <input
+          id="upper"
+          value={this.upper}
+          onChange={this.onUpperChange}
+        />
+      </div>
+    )
+  }
+}
+export {HelloMessage}
+
+
+<HelloMessage message='world'/>;
 
 /*import React from 'react';
 
@@ -233,3 +188,88 @@ class ParentCounter extends React.Component{
     }
 }
 export default ParentCounter;*/
+/*import React,{Component} from 'react';
+import {action} from 'mobx';
+import {create} from 'apisauce';
+import {networkCallWithApisauce} from '../../utils/APIUtils';
+import {apiMethods} from '../../constants/APIConstants';
+import {bindPromiseWithOnSuccess} from '@ib/mobx-promise';
+class TodoService{
+    api;
+    constructor(){
+        this.api=create({
+            baseURL:'https://5e6864ded426c00016b7cfce.mockapi.io/api/v1/'
+        });
+    }
+    @action.bound
+    postTodoAPI(){
+        let todoObject=
+            {'id':Math.random(),
+            'title':'Loharika',
+            'isCompleted':true,};
+        return (networkCallWithApisauce(
+            this.api,
+            'users123/',
+            todoObject,
+            apiMethods.post
+        ));
+    }
+    @action.bound
+    getPosted(response){
+        console.log(response);
+    }
+    @action.bound
+    getTodosAPI(){
+        return (networkCallWithApisauce(
+            this.api,
+            'users123/',
+            {},
+            apiMethods.get
+        ));
+    }
+    
+}
+let todoService=new TodoService();
+        
+
+class LocalApp extends Component{
+    postTheObject=()=>{
+        //alert("post");
+        todoService.postTodoAPI();
+        this.getTheObjectData();
+    }
+    getTheObjectData=()=>{
+        //alert("getting the data");
+        const todosPromise=todoService.getTodosAPI();
+        return bindPromiseWithOnSuccess(todosPromise)
+        .to(this.setGetTodoListAPIStatus,this.setTodoListResponse)
+        .catch(this.setGetTodoListAPIError);
+    }
+    setGetTodoListAPIStatus=(apiStatus)=>{
+        //this.getTodoListAPIStatus=apiStatus;
+    }
+     setTodoListResponse=(todosResponse)=>{
+         let DataArray=[];
+        console.log(todosResponse);
+        DataArray=todosResponse.map(todo=>{
+            return JSON.parse(JSON.parse(todo.data));
+        });
+        console.log(DataArray);
+    }
+    setGetTodoListAPIError=(error)=>{
+        //this.getTodoListAPIError=error;
+    }
+    render(){
+        return (
+            <div>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-5" onClick={this.postTheObject}>
+            Click to post the Object
+        </button>
+
+        </div>
+            )
+        
+    }
+}
+export default LocalApp;
+*/
