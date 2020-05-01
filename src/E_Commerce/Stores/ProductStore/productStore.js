@@ -36,10 +36,11 @@ class ProductStore {
     @action.bound
     setProductListResponse(productListResponse){
         this.productList=productListResponse;
-        //console.log(this.productList);
+        console.log(this.productList);
     }
     @action.bound
     setGetProductListAPIError(apiError){
+        console.log(apiError)
         this.getProductListAPIError=apiError;
     }
     @action.bound

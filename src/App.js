@@ -20,11 +20,11 @@ import MobxTodoApp from './components/MobxTodo/MobxTodoApp/index';
 import EventsApp from './components/EventsApp/EventApp/index';
 import GridMemoryGame from './components/GridGame/GridMemoryGame';
 import RestTodoApp from './components/RestTodoApp/RestTodoApp/index';
-import themeStore from './stores/ThemeStore';
 import UsersPage from './components/UsersPage/index';
 import TodoAppAPI from './components/TodoAppAPI';
-import LoginForm from './components/LoginForm';
 import stores from './stores';
+import {ProtectedRoute} from './common/ProtectedRoute';
+
 import "./App.css";
 
 import Authentication from './Authentication/Routes';
@@ -46,25 +46,23 @@ class App extends React.Component{
       
         {Authentication}
         {E_Commerce}
-        
-        <Route path='/login-form' component={LoginForm}/>
-        <Route exact path="/counter-page" component={CounterPage}/>
-        <Route exact path="/counter-app" component={CounterApp}/>
+        <ProtectedRoute exact path='/counter-page' component={CounterPage} />
+        <ProtectedRoute exact path="/counter-app" component={CounterApp}/>
+        <ProtectedRoute exact path="/car" component={CarList}/>
+        <ProtectedRoute exact path="/formComponents" component={FormComponents}/>
+        <ProtectedRoute exact path="/formComponents/:formName" component={Components}/>
+        <ProtectedRoute exact path="/countryDashboard" component={CountryDashboard}/>
+        <ProtectedRoute exact path="/countryDashboard/:id" component={ShowCountryData}/>
+        <ProtectedRoute exact path="/emojiGame" component={EmojiGame}/>
+        <ProtectedRoute exact path="/todo-app" component={TodoApp}/>
+        <ProtectedRoute exact path="/mobx-store-todo-app" component={MobxTodoApp}/>
+        <ProtectedRoute exact path="/grid-game" component={GridMemoryGame}/>
+        <ProtectedRoute exact path="/events-app" component={EventsApp}/>
+        <ProtectedRoute exact path="/app" component={LocalApp}/>
+        <ProtectedRoute exact path="/rest-todo-app" component={RestTodoApp}/>
+        <ProtectedRoute exact path="/user-app" component={UsersPage}/>
+        <ProtectedRoute exact path="/todo-app-api" component={TodoAppAPI}/>
         <Route exact path="/assignments" component={Assignments}/>
-        <Route path="/car" component={CarList}/>
-        <Route exact path="/formComponents" component={FormComponents}/>
-        <Route exact path="/formComponents/:formName" component={Components}/>
-        <Route exact path="/countryDashboard" component={CountryDashboard}/>
-        <Route exact path="/countryDashboard/:id" component={ShowCountryData}/>
-        <Route exact path="/emojiGame" component={EmojiGame}/>
-        <Route exact path="/todo-app" component={TodoApp}/>
-        <Route exact path="/mobx-store-todo-app" component={MobxTodoApp}/>
-        <Route exact path="/grid-game" component={GridMemoryGame}/>
-        <Route exact path="/events-app" component={EventsApp}/>
-        <Route exact path="/app" component={LocalApp}/>
-        <Route exact path="/rest-todo-app" component={RestTodoApp}/>
-        <Route exact path="/user-app" component={UsersPage}/>
-        <Route exact path="/todo-app-api" component={TodoAppAPI}/>
         <Route exact path="/" component={HomePage}/>
       </Switch>
     </Router>

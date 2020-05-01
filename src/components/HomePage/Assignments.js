@@ -4,7 +4,7 @@ import { Link,Redirect } from "react-router-dom";
 import {action,observable} from 'mobx';
 import {observer,inject} from 'mobx-react';
 
-@inject('appStore')
+@inject('authStore')
 @observer
 
 class Assignments extends Component{
@@ -15,13 +15,13 @@ class Assignments extends Component{
       }
       @action.bound
       gotoGridScreenIfLogOut(){
-        const {appStore:{userLogOut}}=this.props;
         this.isLogOut=true;
-        userLogOut();
       }
     render()
       {
-    /*if(this.isLogOut){
+    if(this.isLogOut){
+      const {authStore:{userSignOut}}=this.props;
+      userSignOut();
         return (
       <Redirect 
       to={{
@@ -29,13 +29,7 @@ class Assignments extends Component{
       }}
       />
       );
-    }*/
-    const {appStore:{authAPIService}}=this.props;
-        if(authAPIService===undefined){
-            return (
-            <Redirect to={{pathname:'login-form'}}/>
-            );
-        }
+    }
   return (
     <div className='flex w-screen h-screen justify-around border-2'>
           <div className="font-bold flex flex-col justify-center items-center ml-40 text-indigo-900">
@@ -57,7 +51,7 @@ class Assignments extends Component{
           </div>
           <div className='border-2 self-center'>
             <button onClick={this.gotoGridScreenIfLogOut} className="self center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">
-              Log Out
+              Sign Out
             </button>
           </div>
     </div>

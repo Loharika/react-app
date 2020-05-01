@@ -1,12 +1,13 @@
 import React from 'react';
-import {  Route} from "react-router-dom";
 
+
+import {ProtectedRoute} from '../../common/ProtectedRoute';
+import authStore from '../../stores';
 import ProductsPage from '../Components/ProductsPage';
-import {ProtectedRoute} from '../../common/ProtectedRoute'
+import endpoints from '../EndPoints';
+import {endpoints as signInPageEndPoints} from '../../Authentication/EndPoints';
 
-import authStore from '../../Authentication/Stores/';
 
-const E_Commerce=[<ProtectedRoute exact path='/ecommerce-store/products/' component={ProductsPage} 
-authAPIService={authStore.authAPIService} key={Math.random()}/>];
+const E_Commerce=[<ProtectedRoute path={endpoints.PRODUCTS_PAGE_PATH} component={ProductsPage} SIGN_IN_PATH={signInPageEndPoints.SIGN_IN_PAGE_PATH} authAPIService={authStore.authStore.authAPIService} key={Math.random()}/>];
 
 export default E_Commerce;

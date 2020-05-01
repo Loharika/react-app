@@ -4,6 +4,7 @@ import {observable,action} from 'mobx';
 import {observer,inject} from 'mobx-react';
 import {withRouter } from "react-router-dom";
 
+import endpoints from '../../../E_Commerce/EndPoints';
 import {SignInFormStyle,Password,UserName,ErrorStyle,SignInButton,SignInFormPage,SignFormTitle} from './styledComponents.js';
 
 @inject("authStore")
@@ -55,6 +56,7 @@ class SignInForm extends React.Component{
     
     @action.bound
     async onClickSignInButton(){
+        let path=window.localStorage.getItem('path');
         this.userName="";
         this.password="";
         this.isSignInClicked=true;
@@ -63,7 +65,7 @@ class SignInForm extends React.Component{
         const {authStore:{authAPIService}}=this.props;
         if(authAPIService){
             const {history}=this.props;
-            history.replace('/ecommerce-store/products/');
+            history.replace(path);
         }
         
     }
