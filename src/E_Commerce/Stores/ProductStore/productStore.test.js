@@ -51,24 +51,16 @@ describe("ProductStore Tests", () => {
   it("should test getProductsAPI data fetching state", () => {
 
     const mockLoadingPromise = new Promise(function (resolve, reject) {});
-
     const mockGetProductsAPI = jest.fn();
-
     mockGetProductsAPI.mockReturnValue(mockLoadingPromise);
     productService.getProductsAPI = mockGetProductsAPI;
-    
-
     productStore.getProductList();
-    
     expect(productStore.getProductListAPIStatus).toBe(API_FETCHING);
     });
-    
     it("should test getProductList success state", async () => {
-   
     const mockSuccessPromise = new Promise(function(resolve, reject) {
       resolve(getProductListResponse);
     });
-    
     const mockGetProductsAPI = jest.fn();
     
     mockGetProductsAPI.mockReturnValue(mockSuccessPromise);
@@ -76,9 +68,9 @@ describe("ProductStore Tests", () => {
 
     await productStore.getProductList();
     expect(productStore.getProductListAPIStatus).toBe(API_SUCCESS);
-    
+    expect(productStore.productList).toEqual(getProductListResponse);
   });
-  it("should test getProductList failure state", async () => {
+  it("it should test getProductList failure state", async () => {
     const mockFailurePromise = new Promise(function(resolve, reject) {
       reject(new Error("error"));
     }).catch(() => {});
@@ -92,12 +84,18 @@ describe("ProductStore Tests", () => {
       expect(productStore.getProductListAPIStatus).toBe(API_FAILED);
     });
   });
-  test("should test getting the sortedAndFilteredProducts",()=>{
-    let mockOnSelectSize=jest.fn();
-    mockOnSelectSize.mockReturnValue(expect.any(String));
-    mockOnSelectSize=productStore.onSelectSize;
+  it("it should test the sortedAndFilteredProducts Return Value",()=>{
+    let mockSortedAndFilteredProducts=jest.fn();
+    mockSortedAndFilteredProducts.mockReturnValue(Array);
+    mockSortedAndFilteredProducts=productStore.sortedAndFilteredProducts;
+    expect(mockSortedAndFilteredProducts).toEqual(expect.any(Array));
     
   });
-  
+  it("it should test the totalNoOfProductsDisplayed Return Value",()=>{
+    let mocktotalNoOfProductsDisplayed=jest.fn();
+    mocktotalNoOfProductsDisplayed.mockReturnValue(Number);
+    mocktotalNoOfProductsDisplayed=productStore.totalNoOfProductsDisplayed;
+    expect(mocktotalNoOfProductsDisplayed).toEqual(expect.any(Number));
+  });
   
 });

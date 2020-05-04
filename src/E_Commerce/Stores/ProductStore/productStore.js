@@ -65,7 +65,6 @@ class ProductStore {
     @computed
     get products(){
         let filteredProducts=[];
-        //console.log('sizes:'+this.sizeFilter);
         if(this.sizeFilter.length!==0){
             this.sizeFilter.forEach(eachSize=>{
             this.productList.forEach(product=>{
@@ -76,7 +75,7 @@ class ProductStore {
                     if(filteredProduct.title===product.title){
                         flag++;
                     }
-                })
+                });
                 if(flag===0){
                     filteredProducts.push(product);
                     }
