@@ -56,20 +56,27 @@ describe("ProductStore Tests", () => {
     productService.getProductsAPI = mockGetProductsAPI;
     productStore.getProductList();
     expect(productStore.getProductListAPIStatus).toBe(API_FETCHING);
+    expect(productStore.getProductListAPIError).toBe(null);
     });
-    it("should test getProductList success state", async () => {
-    const mockSuccessPromise = new Promise(function(resolve, reject) {
-      resolve(getProductListResponse);
-    });
-    const mockGetProductsAPI = jest.fn();
     
-    mockGetProductsAPI.mockReturnValue(mockSuccessPromise);
-    productService.getProductsAPI = mockGetProductsAPI;
+    it("should test getProductList success state", async () => {
+      const mockSuccessPromise = new Promise(function(resolve, reject) {
+        resolve(getProductListResponse);
+      });
+      const mockGetProductsAPI = jest.fn();
+      
+      mockGetProductsAPI.mockReturnValue(mockSuccessPromise);
+      productService.getProductsAPI = mockGetProductsAPI;
+  
+      await productStore.getProductList();
 
-    await productStore.getProductList();
-    expect(productStore.getProductListAPIStatus).toBe(API_SUCCESS);
-    expect(productStore.productList).toEqual(getProductListResponse);
+      expect(productStore.getProductListAPIStatus).toBe(API_SUCCESS);
+      expect(productStore.getProductListAPIError).toBe(null);
+    
+      expect(productStore.productList).toEqual(getProductListResponse);
+      expect(productStore.productList.length).toBe(getProductListResponse.length);
   });
+  
   it("it should test getProductList failure state", async () => {
     const mockFailurePromise = new Promise(function(resolve, reject) {
       reject(new Error("error"));
@@ -89,13 +96,51 @@ describe("ProductStore Tests", () => {
     mockSortedAndFilteredProducts.mockReturnValue(Array);
     mockSortedAndFilteredProducts=productStore.sortedAndFilteredProducts;
     expect(mockSortedAndFilteredProducts).toEqual(expect.any(Array));
-    
   });
+  
   it("it should test the totalNoOfProductsDisplayed Return Value",()=>{
     let mocktotalNoOfProductsDisplayed=jest.fn();
     mocktotalNoOfProductsDisplayed.mockReturnValue(Number);
     mocktotalNoOfProductsDisplayed=productStore.totalNoOfProductsDisplayed;
     expect(mocktotalNoOfProductsDisplayed).toEqual(expect.any(Number));
+    expect(mocktotalNoOfProductsDisplayed).toEqual(productStore.sortedAndFilteredProducts.length);
+  });
+  it("it should check the onChangeSortBy is getting and called and updating the mobx state variable or not",()=>{
+    productStore.onChangeSortBy('ASCENDING');
+    expect(productStore.sortBy).toBe('ASCENDING');
+  });
+  it("it should check the onSelectSize funtion is getting and called and updating the mobx state variable or not",()=>{
+    productStore.onSelectSize('XS');
+    productStore.onSelectSize('XXL');
+    expect(productStore.sizeFilter).toEqual(['XS','XXL']);
+    productStore.onSelectSize('XXL');
+    expect(productStore.sizeFilter).toEqual(['XS']);
+  });
+  it("it should check the onSelectInputText funtion is getting and called and updating the mobx state variable or not",()=>{
+    productStore.onChangeSearchInput('grey');
+    expect(productStore.searchInput).toBe('grey');
+  });
+  it("it should check the onChangeSortBy function in the store",()=>{
+    productStore.productList=getProductListResponse;
+    productStore.onSelectSize('XS');
+    productStore.onSelectSize('XXL');
+    productStore.onChangeSortBy('ASCENDING');
+    productStore.onChangeSearchInput('grey');
+    expect(productStore.sortedAndFilteredProducts.length).toBe(2);
+    productStore.onChangeSortBy('DESCENDING');
+    expect(productStore.sortedAndFilteredProducts.length).toBe(2);
+  });
+  it("it should check the function setGetProductListAPIStatus",()=>{
+    productStore.setGetProductListAPIStatus('success');
+    expect(productStore.getProductListAPIStatus).toBe('success');
+  });
+  it("it should check the function setGetProductListAPIError",()=>{
+    productStore.setGetProductListAPIError('failure');
+    expect(productStore.getProductListAPIError).toBe('failure');
+  });
+  it("it should check the funtion setProductListResponse",()=>{
+    productStore.setProductListResponse(getProductListResponse);
+    expect(productStore.productList).toEqual(getProductListResponse);
   });
   
 });

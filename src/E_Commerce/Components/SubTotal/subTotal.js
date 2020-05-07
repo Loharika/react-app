@@ -8,7 +8,7 @@ class SubTotal extends Component{
         return (
             <SubTotalDisplay >
                 <SubTotalTitle>SUB TOTAL</SubTotalTitle>
-                <TotalAmount>{totalCartAmount}</TotalAmount>
+                <TotalAmount data-testid='sub-total-amount'>{totalCartAmount}</TotalAmount>
             </SubTotalDisplay>
             );
     }

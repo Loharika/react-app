@@ -14,9 +14,8 @@ class CartStore{
     @action.bound
     onClickAddToCart(productDetails){
         const {cartProductList}=this;
-         let productIsThereInCart=false;
-            cartProductList.forEach(cartItem=>{
-           
+        let productIsThereInCart=false;
+        cartProductList.forEach(cartItem=>{
             if(cartItem.productId===productDetails.productId){
                 productIsThereInCart=true;
             }

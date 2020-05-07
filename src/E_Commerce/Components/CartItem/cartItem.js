@@ -19,6 +19,9 @@ class CartItem extends Component{
     render(){
         const {getProductDetailsById,cartItem}=this.props;
         const productDetails=getProductDetailsById(cartItem.productId);
+        let cartItemQuantity=`${cartItem.productId} quantity`;
+        alert(cartItem.productId);
+        alert(productDetails.id);
         return (
         <CartItemDisplay >
             <CartDetailsWithImage>
@@ -26,11 +29,11 @@ class CartItem extends Component{
                 <CartItemDetails>
                     <CartItemTitle>{productDetails.title}</CartItemTitle>
                     <CartItemStyle>{productDetails.style}</CartItemStyle>
-                    <CartItemQuantity>Quantity:{cartItem.quantity}</CartItemQuantity>
+                    <CartItemQuantity data-testid={cartItemQuantity} >Quantity:{cartItem.quantity}</CartItemQuantity>
                 </CartItemDetails>
             </CartDetailsWithImage>
             <RemoveButtonWithPrice>
-                <RemoveCartItem  onClick={()=>this.onRemoveCartItem(cartItem.cartItemId)}>X</RemoveCartItem>
+                <RemoveCartItem  onClick={()=>this.onRemoveCartItem(cartItem.cartItemId)} data-testid='remove-cart-item'>X</RemoveCartItem>
                 <CartItemPrice>{productDetails.currencyFormat} {productDetails.price}</CartItemPrice>
             </RemoveButtonWithPrice>
         </CartItemDisplay>);

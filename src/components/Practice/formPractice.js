@@ -1,4 +1,33 @@
 import React from 'react'
+import { observable, autorun } from "mobx"
+
+function Sample(){
+var todos = observable([
+    { title: "Spoil tea", completed: true },
+    { title: "Make coffee", completed: false }
+])
+
+autorun(() => {
+    console.log(
+        "Remaining:",
+        todos
+            .filter(todo => !todo.completed)
+            .map(todo => todo.title)
+            .join(", ")
+    )
+})
+// Prints: 'Remaining: Make coffee'
+
+todos[0].completed = false
+// Prints: 'Remaining: Spoil tea, Make coffee'
+
+todos[2] = { title: "Take a nap", completed: false }
+// Prints: 'Remaining: Spoil tea, Make coffee, Take a nap'
+
+todos.shift()
+}
+export default Sample;
+// Prints: 'Remaining: Make coffee, Take a nap'
 /*class Form extends React.Component{
     render(){
         return (
@@ -236,7 +265,9 @@ function Form() {
     </FancyBorder>
   );
 }*/
-function Contacts() {
+
+
+/*function Contacts() {
   return <div className="Contacts" style={{color:"blue",backgroundColor:"grey"}}>Hello</div>;
 }
 
@@ -269,3 +300,5 @@ function Form() {
   );
 }
 export default Form;
+
+*/

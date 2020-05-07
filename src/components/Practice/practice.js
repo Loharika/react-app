@@ -1,44 +1,6 @@
 
 
 
-import React,{Component} from 'react';
-import {observable} from 'mobx';
-
-
-class HelloMessage extends React.Component{
-    render(){
-        return (<div>{this.props.message}</div>);
-    }
-}
-
-
-
-
-class UpperInput extends React.Component {
-  state = {upper: ''}
-    @observable upper
-  onUpperChange = e => {
-    this.upper= e.target.value.toUpperCase();
-  }
-
-  render() {
-    return (
-      <div>
-        <label htmlFor="upper">Upper</label>
-        <input
-          id="upper"
-          value={this.upper}
-          onChange={this.onUpperChange}
-        />
-      </div>
-    )
-  }
-}
-export {HelloMessage}
-
-
-<HelloMessage message='world'/>;
-
 /*import React from 'react';
 
 export default class FadeApp extends React.Component {

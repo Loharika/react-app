@@ -12,7 +12,7 @@ class SearchByName extends React.Component{
         return (
             <SearchFieldComponent>
                 <SearchFieldLabel htmlFor='searchInput'>Search Name:  </SearchFieldLabel>
-                <NameSearchComponent type='text' id='searchInput' defaultValue={searchInput} placeholder='Search Name'onChange={onChange} onKeyDown={onKeyDown}/>
+                <NameSearchComponent type='text' data-testid="searchInput" defaultValue={searchInput} placeholder='Search Name' onChange={onChange} onKeyDown={onKeyDown}/>
             </SearchFieldComponent>
             );
     }

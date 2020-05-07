@@ -11,7 +11,7 @@ class Header extends React.Component{
         const {productsCount,onChangeSortBy,onChangeSearchInput}=this.props;
         return (
             <HeaderComponent>
-                <DisplayNumberOfProducts>{productsCount} product(s) found.</DisplayNumberOfProducts>
+                <DisplayNumberOfProducts data-testid="productsCount">{productsCount} product(s) found.</DisplayNumberOfProducts>
                 <SearchByNameRoute onChangeSearchInput={onChangeSearchInput} />
                 <ProductSort onChangeSortBy={onChangeSortBy}/>
             </HeaderComponent>

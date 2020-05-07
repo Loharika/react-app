@@ -1,4 +1,4 @@
 
-import {withRouter } from "react-router-dom";
-import ProductsPage from './productsPage';
-export default withRouter(ProductsPage);
+
+import ProductsPage from './productPage.js';
+export default ProductsPage;

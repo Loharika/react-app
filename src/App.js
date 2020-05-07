@@ -24,7 +24,7 @@ import UsersPage from './components/UsersPage/index';
 import TodoAppAPI from './components/TodoAppAPI';
 import stores from './stores';
 import {ProtectedRoute} from './common/ProtectedRoute';
-
+import Sample from './components/Practice/practice.js';
 import "./App.css";
 
 import Authentication from './Authentication/Routes';
@@ -58,10 +58,11 @@ class App extends React.Component{
         <ProtectedRoute exact path="/mobx-store-todo-app" component={MobxTodoApp}/>
         <ProtectedRoute exact path="/grid-game" component={GridMemoryGame}/>
         <ProtectedRoute exact path="/events-app" component={EventsApp}/>
-        
         <ProtectedRoute exact path="/rest-todo-app" component={RestTodoApp}/>
         <ProtectedRoute exact path="/user-app" component={UsersPage}/>
         <ProtectedRoute exact path="/todo-app-api" component={TodoAppAPI}/>
+        
+        <Route exact path='/sample' component={Sample}/>
         <Route exact path="/assignments" component={Assignments}/>
         <Route exact path="/" component={HomePage}/>
       </Switch>

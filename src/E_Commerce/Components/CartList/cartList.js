@@ -7,23 +7,19 @@ import {DisplayCartList,DisplayAddItemsText} from './styledComponents.js';
 
 @observer
 class CartList extends Component{
-    renderCartList=()=>{
-        const {productsInCart,getProductDetailsById,onRemoveCartItem}=this.props;
-        if(productsInCart.length!==0){
-            return productsInCart.map(product=>{
-            return (<CartItem key={Math.random()} cartItem={product} getProductDetailsById={getProductDetailsById} onRemoveCartItem={onRemoveCartItem}/>);
-        });
-        }
-        
-        else{
-            return (<DisplayAddItemsText>Add some products in the cart</DisplayAddItemsText>);
-        }
-    }
-    
     render(){
         const {productsInCart}=this.props;
+        const {getProductDetailsById,onRemoveCartItem}=this.props;
+        if(productsInCart.length!==0){
+            return (<DisplayCartList cartItemsNumber={productsInCart.length}>{productsInCart.map(product=>{
+                    return (<CartItem data-testid='display-items' key={Math.random()} cartItem={product} getProductDetailsById={getProductDetailsById} onRemoveCartItem={onRemoveCartItem}/>);
+                })
+            }</DisplayCartList>);
+        }
         return (
-            <DisplayCartList cartItemsNumber={productsInCart.length}>{this.renderCartList()}</DisplayCartList>
+            <DisplayCartList cartItemsNumber={productsInCart.length}>
+                    <DisplayAddItemsText data-testid='display-no-items'>Add some products in the cart</DisplayAddItemsText>
+            </DisplayCartList>
             );
     }
 }

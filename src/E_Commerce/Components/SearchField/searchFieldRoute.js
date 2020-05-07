@@ -12,16 +12,16 @@ class SearchByNameRoute extends React.Component{
         this.searchInput='';
     }
     
-    onChange=(event)=>{
-        this.searchInput=event.target.value;
+    onChange=(value)=>{
+        this.searchInput=value;
         const {onChangeSearchInput}=this.props;
         const {searchInput}=this;
         onChangeSearchInput(searchInput);
         
     }
-    onKeyDown=(event)=>{
+    onKeyDown=(keyCode)=>{
         const {onChangeSearchInput}=this.props;
-       if(event.keyCode===13){
+       if(keyCode===13){
            if(this.searchInput.length!==0){
                onChangeSearchInput(this.searchInput);
            }
@@ -33,7 +33,7 @@ class SearchByNameRoute extends React.Component{
     render(){
         const {onChange,onKeyDown,searchInput}=this;
         return (
-            <SearchByName searchInput={searchInput} onChange={onChange} onKeyDown={onKeyDown}/>
+            <SearchByName searchInput={searchInput} onChange={()=>onChange(event.target.value)} onKeyDown={()=>onKeyDown(event.keyCode)}/>
              
             
             );

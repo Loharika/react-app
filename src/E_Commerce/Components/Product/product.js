@@ -34,7 +34,6 @@ class Product extends Component{
         const {product}=this.props;
         const {onClickAddToCart}=this;
         let installmentsCountDisplay=<InstallmentsCount>{product.installmentsCount} x {product.currencyFormat} {((product.price)/product.installmentsCount).toFixed(2)}</InstallmentsCount>;
-        
         return (
             <ProductCard >
                 <ProductImageWithFreeShippingTag >
