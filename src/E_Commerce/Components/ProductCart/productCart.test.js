@@ -69,7 +69,7 @@ describe("test case to the cart",()=>{
         });
         it("checking the correct quantity is displaying or not with respect to cartItemDetails respectively",()=>{
             const {getByTestId}=render(
-                <Provider cartStore={cartStore}>
+                <Provider cartStore={cartStore} showCart={()=>{}} hideCart={()=>{}}>
                     <ProductCart />
                   </Provider>   
                     );
@@ -80,12 +80,10 @@ describe("test case to the cart",()=>{
                  
                 cartStore.cartProductList.forEach(cartItem=>{
                     const {getByTestId}=render(<CartItem cartItem={cartItem}/>);
-                    console.log(getByTestId(`${cartItem.productId} quantity`));
+
                     expect(getByTestId(`${cartItem.productId} quantity`)).toHaveTextContent('hvjvhvj');
                 });
              }
         });
-       
-            
     
 });

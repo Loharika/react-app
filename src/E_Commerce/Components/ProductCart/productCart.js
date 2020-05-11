@@ -13,8 +13,8 @@ import CheckOutButton from '../CheckOutButton';
 @observer
 class ProductCart extends Component{
     @observable shouldDisplayCart;
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.shouldDisplayCart=false;
     }
     showCart=()=>{

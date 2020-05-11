@@ -1,7 +1,7 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 import {observable } from 'mobx';
-import SearchByName from './searchField.js';
+import SearchByName from '../Components/SearchField/searchField.js';
 
 
 @observer

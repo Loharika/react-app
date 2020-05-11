@@ -75,7 +75,13 @@
   "jest":{
     "testEnvironment":"node",
     "collectCoverageFrom":[
-      "src/components/E_Commerce/Components/*.{ts,tsx,js,jsx}"
+      "!src/components/**/*.{ts,tsx,js,jsx}",
+      "!src/constants/**/*.{ts,tsx,js,jsx}",
+      "!src/fixtures/**/*.{ts,tsx,js,jsx}",
+      "!src/stores/**/*.{ts,tsx,js,jsx}",
+      "!src/services/**/*.{ts,tsx,js,jsx}",
+      "!src/utils/**/*.{ts,tsx,js,jsx}",
+      "!src/styles/**/*.{ts,tsx,js,jsx}"
     ]
   }
 }

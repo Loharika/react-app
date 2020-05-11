@@ -12,16 +12,10 @@ class CartItem extends Component{
     constructor(props){
         super(props);
     }
-    onRemoveCartItem=(cartItemId)=>{
-        const {onRemoveCartItem}=this.props;
-        onRemoveCartItem(cartItemId);
-    }
     render(){
-        const {getProductDetailsById,cartItem}=this.props;
+        const {getProductDetailsById,cartItem,onRemoveCartItem}=this.props;
         const productDetails=getProductDetailsById(cartItem.productId);
         let cartItemQuantity=`${cartItem.productId} quantity`;
-        alert(cartItem.productId);
-        alert(productDetails.id);
         return (
         <CartItemDisplay >
             <CartDetailsWithImage>
@@ -33,7 +27,7 @@ class CartItem extends Component{
                 </CartItemDetails>
             </CartDetailsWithImage>
             <RemoveButtonWithPrice>
-                <RemoveCartItem  onClick={()=>this.onRemoveCartItem(cartItem.cartItemId)} data-testid='remove-cart-item'>X</RemoveCartItem>
+                <RemoveCartItem  onClick={()=>onRemoveCartItem(cartItem.cartItemId)} data-testid='remove-cart-item'>X</RemoveCartItem>
                 <CartItemPrice>{productDetails.currencyFormat} {productDetails.price}</CartItemPrice>
             </RemoveButtonWithPrice>
         </CartItemDisplay>);

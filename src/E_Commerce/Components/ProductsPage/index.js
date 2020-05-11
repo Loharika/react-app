@@ -1,4 +1,4 @@
 
 
-import ProductsPage from './productPage.js';
+import ProductsPage from './productsPageUI.js';
 export default ProductsPage;

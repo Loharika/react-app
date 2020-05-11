@@ -6,31 +6,18 @@ import {DropDownComponent,SortByStyleComponent,SelectOption} from './styledCompo
 
 @observer
 class ProductSort extends Component{
-    constructor(){
-        super();
-    }
-    renderDropDown=()=>{
+    render(){
+        const {onChangeSortBy}=this.props;
         return (
-            <DropDownComponent onChange={this.onSelectSortBy}>
+            <SortByStyleComponent>
+                Sort price by: &nbsp;
+                {<DropDownComponent onChange={()=>onChangeSortBy(event.target.value)}>
                 <SelectOption hidden="Select" >Select</SelectOption>
                 
                 <option value='ASCENDING'>Lowest to Highest</option>
                 <option value='DESCENDING'>Highest to Lowest</option>
-            </DropDownComponent>
-            );
-    }
-    
-    onSelectSortBy=(event)=>{
-        
-        const {onChangeSortBy}=this.props;
-        onChangeSortBy(event.target.value);
-        
-    }
-    render(){
-        return (
-            <SortByStyleComponent>
-                Sort price by: &nbsp; 
-                {this.renderDropDown()}
+            </DropDownComponent>}
+                
             </SortByStyleComponent>
             );
     }

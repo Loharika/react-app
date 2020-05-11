@@ -28,7 +28,6 @@ class SignInFormRoute extends React.Component{
         if(userName.length===0 && password.length===0){
             this.displayText='Enter the details';
             this.displayError=true;
-            
         }
         else if(userName.length===0 ){
             this.displayText='Please enter username';
@@ -64,7 +63,6 @@ class SignInFormRoute extends React.Component{
         const {authStore:{authAPIService}}=this.props;
         
         if(authAPIService){
-            // const {history}=
            this.props.history.push(path);
             //return (<Redirect to={{pathname:'/ecommerce-store/products/'}}/>);
             

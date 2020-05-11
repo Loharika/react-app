@@ -7,7 +7,7 @@ import { LoadingViewContainer } from "./styledComponents";
 class LoadingView extends React.Component {
   render() {
     return (
-      <LoadingViewContainer>
+      <LoadingViewContainer >
         <Loader />
       </LoadingViewContainer>
     );

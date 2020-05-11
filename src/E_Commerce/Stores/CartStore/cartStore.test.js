@@ -1,5 +1,5 @@
 /*global expect*/
-
+/*global jest*/
 import getProductListResponse from '../../Services/index.fixture';
 import CartStore from '.';
 import ProductModel from '../Models/ProductModel';
@@ -12,6 +12,7 @@ describe("Cart Store Test Cases",()=>{
       expect(cartStore.cartProductList.length).toBe(1);
       cartStore.onClickAddToCart(new ProductModel(getProductListResponse[0]));
       cartStore.onClickAddToCart(new ProductModel(getProductListResponse[0]));
+      
       expect(cartStore.noOfProductsInCart).toBe(3);
       expect((cartStore.cartProductList[0]).quantity).toBe(3);
     });

@@ -17,7 +17,7 @@ class ProductList extends Component{
             return (productsList);
         }
         else{
-            return('No products Found');
+            return(<div data-testid='No products text'>No products Found</div>);
         }
     }
     onClickAddToCart=(productDetails)=>{
@@ -27,10 +27,11 @@ class ProductList extends Component{
         
         const {getProductListAPIError,getProductListAPIStatus,doNetworkCalls}=this.props;
         const {renderProductsList}=this;
+        
             return (
-            <DisplayProductsList >
+            <DisplayProductsList>
                <LoadingWrapperWithFailure key={Math.random()} apiStatus={getProductListAPIStatus} apiError={getProductListAPIError} 
-                        onRetryClick={doNetworkCalls} renderSuccessUI={renderProductsList}
+                        onRetryClick={doNetworkCalls} renderSuccessUI={renderProductsList} 
                     />
                 
             </DisplayProductsList>

@@ -26,7 +26,7 @@ class LoadingWrapperWithFailure extends React.Component {
         return <RenderSuccessUI />
       case API_FAILED:
         return (
-          <FailureView
+          <FailureView 
             onRetryClick={onRetryClick}
             errorMessage={errorMessage}
           />

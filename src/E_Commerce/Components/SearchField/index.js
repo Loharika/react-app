@@ -1,2 +1,2 @@
-import SearchByNameRoute from './searchFieldRoute.js';
+import SearchByNameRoute from '../../Routes/searchFieldRoute.js';
 export default SearchByNameRoute;

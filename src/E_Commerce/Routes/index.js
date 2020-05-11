@@ -3,7 +3,7 @@ import React from 'react';
 
 import {ProtectedRoute} from '../../common/ProtectedRoute';
 import authStore from '../../stores';
-import ProductsPage from '../Components/ProductsPage';
+import ProductsPage from './productPage';
 import endpoints from '../EndPoints';
 import {endpoints as signInPageEndPoints} from '../../Authentication/EndPoints';
 

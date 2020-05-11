@@ -56,6 +56,7 @@ describe("ProductStore Tests", () => {
     productService.getProductsAPI = mockGetProductsAPI;
     productStore.getProductList();
     expect(productStore.getProductListAPIStatus).toBe(API_FETCHING);
+    
     expect(productStore.getProductListAPIError).toBe(null);
     });
     

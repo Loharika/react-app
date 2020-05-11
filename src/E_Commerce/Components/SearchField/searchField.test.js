@@ -17,7 +17,7 @@ describe("SearchInout", () => {
 
     const searchInputField = getByPlaceholderText("Search Name");
     fireEvent.change(searchInputField);
-      expect(searchInputField.value).toBe(searchInput);
+    expect(searchInputField.value).toBe(searchInput);
     
   });
 });
