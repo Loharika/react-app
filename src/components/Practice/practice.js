@@ -1,4 +1,460 @@
 import React from "react";
+import { render } from "react-dom";
+import { observer } from "mobx-react";
+import { observable } from "mobx";
+class CounterParent extends React.Component{
+  constructor(){
+    super();
+    
+  }
+  render(){
+    return (
+      <div className='flex'>
+          <div style={{border:'2px solid black',width:'200px',height:'300px'}} className='flex  m-5'>
+            
+            <img className='object-cover'src="https://encrypted-				tbn0.gstatic.com/images?							q=tbn:ANd9GcQo9XJZyV_3gQQkBDSZEHDJZzD9ENz-			P0ltMPHv6ILKQAfNYIm__GaJDJZBBA&s=10"alt="tree"/>
+            </div>
+          <div style={{border:'2px solid black',width:'200px',height:'300px'}} className='flex  m-5'>
+          
+          <img className='object-fill'src="https://encrypted-				tbn0.gstatic.com/images?							q=tbn:ANd9GcQo9XJZyV_3gQQkBDSZEHDJZzD9ENz-			P0ltMPHv6ILKQAfNYIm__GaJDJZBBA&s=10"alt="tree"/>
+          </div>
+          <div style={{border:'2px solid black',width:'200px',height:'300px'}} className='flex  m-5'>
+          
+          <img className='object-contain 'src="https://encrypted-				tbn0.gstatic.com/images?							q=tbn:ANd9GcQo9XJZyV_3gQQkBDSZEHDJZzD9ENz-			P0ltMPHv6ILKQAfNYIm__GaJDJZBBA&s=10"alt="tree"/>
+          </div>
+          <div style={{border:'2px solid black',width:'200px',height:'300px'}} className='flex m-5 '>
+          
+          <img className='object-scale-down 'src="https://encrypted-				tbn0.gstatic.com/images?							q=tbn:ANd9GcQo9XJZyV_3gQQkBDSZEHDJZzD9ENz-			P0ltMPHv6ILKQAfNYIm__GaJDJZBBA&s=10"alt="tree"/>
+    
+          </div>
+      </div>
+    );
+  }
+}
+
+
+
+/*import React from "react";
+import { render } from "react-dom";
+import { observer } from "mobx-react";
+import { observable } from "mobx";
+
+class ThemeStore {
+  @observable theme = "dark";
+
+  onChange() {
+    console.log("onChange theme");
+    if (this.theme === "dark") {
+      this.theme = "light";
+    } else {
+      this.theme = "dark";
+    }
+  }
+}
+
+const themeStore = new ThemeStore();
+
+@observer
+class CounterParent extends React.Component {
+  onChange() {
+    themeStore.onChange();
+  }
+  render() {
+    console.log("render ThemeButton", themeStore.theme);
+
+    return <button onClick={this.onChange}>Change theme</button>;
+  }
+}*/
+
+
+
+
+/*import React, { Component } from "react";
+
+import { render } from "react-dom";
+import { observer } from "mobx-react";
+import { observable, computed } from "mobx";
+
+@observer
+class CounterParent extends Component {
+  @observable mobxMonths = ["Jan", "Feb", "Mar", "Apr"];
+  jsMonths = ["May", "Jun", "Jul", "Aug"];
+
+  sortedJsMonths = () => {
+    return this.jsMonths.sort();
+  };
+
+  @computed
+  get sortedMobxMonths() {
+    return this.mobxMonths.sort();
+  }
+
+  render() {
+    return (
+      <div>
+        <p>
+          {this.sortedMobxMonths[0]}, {this.mobxMonths[0]}
+        </p>
+        <p>
+          {this.sortedJsMonths()[0]}, {this.jsMonths[0]}
+        </p>
+      </div>
+    );
+  }
+}
+*/
+
+/*import React, { Component } from "react";
+import { render } from "react-dom";
+import { observer } from "mobx-react";
+import { observable, computed } from "mobx";
+
+@observer
+class CounterParent extends Component {
+  @observable mobxNumbers = [1, 2, 3, 4, 5];
+  jsNumbers = [1, 2, 3, 4, 5];
+
+  @computed
+  get mobxNumbersReverse() {
+    return this.mobxNumbers.reverse();
+  }
+
+  jsNumbersReverse() {
+    let element=this.jsNumbers.reverse();
+    console.log(element);
+    return element;
+  }
+
+  render() {
+    return (
+      <div>
+        <p>
+          {this.mobxNumbersReverse[0]}, {this.mobxNumbers[0]}
+        </p>
+        <p>
+          {this.jsNumbersReverse()[0]}, {this.jsNumbers[0]}
+        </p>
+      </div>
+    );
+  }
+}*/
+
+/*import React, { Component } from "react";
+import { render } from "react-dom";
+import { observable, computed } from "mobx";
+import { observer } from "mobx-react";
+
+// Example React component that observes state
+@observer
+class CounterParent extends Component {
+  @observable firstName = "Ramu";
+  @observable lastName = "Ratnam";
+  @observable initial = "K";
+
+  @computed get fullName() {
+    console.log("Computed");
+    return this.lastName + " " + this.initial;
+  }
+
+  changeFirstNameAndLastName = () => {
+    this.firstName = "Mark";
+  };
+
+  getFullNameFn = () => {
+    console.log("getFullNameFn called");
+    return this.lastName + " " + this.initial;
+  };
+
+  render() {
+    return (
+      <div>
+        <p>FirstName: {this.firstName}</p>
+        <p>Fullname: {this.fullName}</p>
+        <p>{this.getFullNameFn()}</p>
+        <button onClick={this.changeFirstNameAndLastName}>
+          Change first name and last name
+        </button>
+      </div>
+    );
+  }
+}
+*/
+/*import React, { Component } from "react";
+import { render } from "react-dom";
+import { observable } from "mobx";
+import { observer } from "mobx-react";
+
+@observer
+class CounterParent extends React.Component {
+  @observable state = {
+    name: "Michael",
+    address: {
+      city: "Hyderabad",
+      country: "India",
+    },
+  };
+
+  prevCityState = this.state.address.city;
+  nextCityState = this.state.address.city;
+
+  updateAddress = () => {
+    this.prevCityState = this.state.address.city;
+    this.state.address.city = "Delhi";
+  };
+x
+  render() {
+    this.nextCityState = this.state.address.city;
+    console.log(this.nextCityState === this.prevCityState);
+
+    return (
+      <div>
+        <p>Name: {this.state.name}</p>
+        <p>City: {this.state.address.city}</p>
+        <p>Name: {this.state.address.country}</p>
+        <button onClick={this.updateAddress}>Update address</button>
+      </div>
+    );
+  }
+}
+*/
+/*import React, { Component } from "react";
+import { render } from "react-dom";
+import { observable } from "mobx";
+import { observer } from "mobx-react";
+
+@observer
+class CounterParent extends Component {
+  @observable userDetails = null;
+  @observable count = 0;
+  @observable secondCount = 0;
+
+  getUserDetails = async () => {
+    await null;
+    //this.count = this.count + 1;
+    //this.secondCount = this.secondCount + 1;
+    let promise = new Promise((resolve, reject) => {
+      resolve({
+        name: "Tom Preston-Werner",
+        company: "Facebook",
+      });
+    });
+    let response = await promise;
+    this.userDetails = response;
+  };
+
+  render() {
+    console.log("render UserProfile");
+    console.log(this.count, this.secondCount);
+
+    if (this.userDetails === null) {
+      return <button onClick={this.getUserDetails}>Get user details</button>;
+    }
+    return (
+      <div>
+        <p>Name: {this.userDetails.name}</p>
+        <p>Company: {this.userDetails.company}</p>
+      </div>
+    );
+  }
+}
+
+*/
+
+/*import React from "react";
+import { render } from "react-dom";
+import { observable, computed, autorun } from "mobx";
+import { observer } from "mobx-react";
+
+class Person {
+  @observable firstName = "Michel";
+  @observable lastName = "Weststrate";
+
+  @computed get fullName() {
+    return this.firstName + " " + this.lastName;
+  }
+
+  changeFirstNameAndLastName = () => {
+    this.firstName = "mike";
+    this.lastName = "west";
+  };
+}
+
+const newPerson = new Person();
+
+// Reaction: log the profile info whenever it changes
+autorun(() => {
+  console.log("Autorun called");
+  console.log(newPerson.fullName);
+});
+
+// Example React component that observes state
+const CounterParent = observer(() => {
+  console.log("render ProfileView");
+
+  return (
+    <div>
+      <p>{newPerson.fullName}</p>
+      <button onClick={newPerson.changeFirstNameAndLastName}>
+        Change first name and last name
+      </button>
+    </div>
+  );
+});*/
+export default CounterParent;
+/*import React from "react";
+import { render } from "react-dom";
+import { observable,action, computed, autorun } from "mobx";
+import { observer } from "mobx-react";
+
+class Person {
+  @observable firstName = "Michel";
+  @observable lastName = "Weststrate";
+
+  @computed get fullName() {
+    return this.firstName + " " + this.lastName;
+  }
+//@action.bound
+  changeFirstNameAndLastName=()=>{
+    this.firstName = "mike";
+    this.lastName = "west";
+  };
+}
+
+const newPerson = new Person();
+
+// Reaction: log the profile info whenever it changes
+autorun(() => {
+  console.log("Autorun called");
+  console.log(newPerson.fullName);
+});
+
+// Example React component that observes state
+const CounterParent = observer((props) => {
+  console.log("render ProfileView");
+
+  return (
+    <div>
+      <p>{newPerson.fullName}</p>
+      <button onClick={newPerson.changeFirstNameAndLastName}>
+        Change first name and last name
+      </button>
+    </div>
+  );
+});
+export default CounterParent;*/
+/*import React, { Component } from "react";
+import { render } from "react-dom";
+import { observable, action } from "mobx";
+import { observer } from "mobx-react";
+
+@observer
+class CounterParent extends Component {
+  @observable count = 243;
+  @observable isCountChanged = false;
+
+  @action.bound
+  async onChangeCount() {
+    this.isCountChanged = true;
+    this.count = this.count + 13;
+
+    const promise = new Promise((resolve, reject) => {
+      console.log("Before resolve log");
+      resolve("Success");
+      console.log("After resolve log");
+    });
+    console.log("Before await log");
+    this.count = this.count + 135;
+    
+    let response = await promise;
+    console.log(response);
+    this.run();
+    //this.count = this.count + 1334;
+    this.count = this.count + 133234;
+    //this.isCountChanged = false;
+  }
+  action
+  run(){
+    this.isCountChanged = false;
+    this.count=0;
+    //this.isCountChanged = false+"true";
+  }
+
+  render() {
+    console.log("render Counter" +`${this.count}}`);
+    return (
+      <div>
+        <p>Count: {this.count}</p>
+        <button onClick={this.onChangeCount}>Change count</button>
+        <p>{this.isCountChanged ? "Count Changed" : ""}</p>
+      </div>
+    );
+  }
+}
+export default CounterParent;
+*/
+/*import React, { Component } from "react";
+import { render } from "react-dom";
+
+class CounterParent extends Component {
+  state = {
+    name: "Michael",
+    address: {
+      city: "Hyderabad",
+      country: "India",
+    },
+  };
+
+  prevState = this.state;
+  nextState = this.state;
+
+  updateAddress = () => {
+    this.prevState = this.state;
+    this.state.address.city = "Delhi";
+  };
+
+  render() {
+    this.nextState = this.state;
+    console.log(this.nextState === this.prevState);
+    console.log(this.nextState.country === this.prevState.country);
+
+    return (
+      <div>
+        <p>Name: {this.state.name}</p>
+        <p>City: {this.state.address.city}</p>
+        <p>Name: {this.state.address.country}</p>
+        <button onClick={this.updateAddress}>Update address</button>
+      </div>
+    );
+  }
+}
+export default CounterParent;
+*/
+/*import React, { Component } from "react";
+import { render } from "react-dom";
+import {observable}  from 'mobx';
+class CounterParent extends Component {
+  @observable count;
+  constructor(){
+    super();
+    this.count=2;
+  }
+  updateCount = () => {
+      this.count= 3;
+  };
+
+  render() {
+    console.log("render Counter");
+    return (
+      <div>
+        <p>Count: {this.count}</p>
+        <button onClick={this.updateCount}>Update count</button>
+      </div>
+    );
+  }
+}
+export default CounterParent;
+*/
+/*import React from "react";
 import { action } from "mobx";
 class CounterParent extends React.Component{
       constructor(props) {
@@ -22,7 +478,7 @@ class CounterParent extends React.Component{
        return <div>Message:{this.state.message}</div>;
      }
   }
-export default CounterParent;
+export default CounterParent;*/
 /*import React from "react";
 import { render } from "react-dom";
 import { observer } from "mobx-react";

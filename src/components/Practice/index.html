@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <body>
+      <div id="console-root"></div>
+    <script src="https://tap.ibhubs.in/utils/console.js"></script>
+    <div id="div1">
+      div1
+      <div id="div2">
+        div2
+        <div id="div3">div3</div>
+      </div>
+    </div>
+    <script>
+      const div1El = document.getElementByqqId("div1");
+      const div2El = document.getElementById("div2");
+      const div3El = document.getElementById("div3");
+
+      const onClickDiv1 = () => {
+        console.log("1");
+      };
+      const onClickDiv2 = () => {
+        console.log("2");
+      };
+      div1El.addEventListener("click", onClickDiv1, false);
+      div1El.addEventListener("click", onClickDiv2, false);
+      div2El.addEventListener("click", onClickDiv1, false);
+      div2El.addEventListener("click", onClickDiv2, false);
+    </script>
+  </body>
+</html>
