@@ -1,4 +1,160 @@
-import React from "react";
+import React from 'react';
+function CustomTextInput(props) {
+  //console.log(props);
+  return (
+    <div>
+      <input ref={props.inputRef} />    </div>
+  );
+}
+
+class Sample extends React.Component {
+  render() {
+    return (
+      <CustomTextInput
+        inputRef={el =>{ 
+          this.inputElement = el;
+          console.log(this.inputElement);
+        }}      />
+    );
+  }
+}
+/*class Sample extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.textInput = null;
+    this.setTextInputRef = element => {  
+      console.log(element);
+      console.log("askgiroifdjffsg");
+      this.textInput = element;   
+      };
+    this.focusTextInput = () => {      
+      // Focus the text input using the raw DOM API      
+      if (this.textInput) this.textInput.focus();   
+      };  
+    
+  }
+
+    componentDidMount() {
+      console.log(this.textInput);
+    // autofocus the input on mount
+    this.focusTextInput();  }
+
+  render() {
+    // Use the `ref` callback to store a reference to the text input DOM
+    // element in an instance field (for example, this.textInput).
+    return (
+      <div>
+        <input
+          type="text"
+          ref={this.setTextInputRef}        />
+        <input
+          type="button"
+          value="Focus the text input"
+          onClick={this.focusTextInput}        />
+      </div>
+    );
+  }
+}*/
+export default Sample;
+
+/*import React from 'react';
+import  {observable} from 'mobx'; 
+
+const CustomTextInput=(props)=> {
+  return (
+    <div>
+      <input ref={props.inputRef} />
+    </div>
+  );
+}
+
+function Parent(props) {
+  return (
+    <div>
+      My input: <CustomTextInput inputRef={props.inputRef} />
+    </div>
+  );
+}
+
+class Sample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.inputElement = React.createRef();
+  }
+  render() {
+    return (
+      <Parent inputRef={this.inputElement} />
+    );
+  }
+}export default Sample;
+*/
+/*import {observable,action} from 'mobx';
+import {observer} from 'mobx-react';
+@observer
+class CustomTextInput extends React.Component{
+  @observable text;
+  constructor(props){
+    super(props);
+    this.text='';
+    this.textInput = React.createRef();  
+    this.submitButton=React.createRef();
+  }
+
+  focusTextInput=()=> {
+    this.textInput.current.focus();  
+  }
+  @action.bound
+  onChange(userInput,){
+    this.text=userInput;
+    
+  }
+  @action.bound
+  onKeyDown(keyCode){
+    if(keyCode===13){
+      this.submitButton.current.focus();
+      alert('focussed');
+      this.text='';
+    }
+  }
+  render(){
+    return (
+      <div>
+        <input
+          type="text"
+          ref={this.textInput} 
+          defaultValue={this.text}
+          onChange={()=>this.onChange(event.target.value)}
+          onKeyDown={()=>this.onKeyDown(event.keyCode)}
+          />        
+        <input
+        className="bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded focus:shadow-outline"
+          ref={this.submitButton}
+          type="button"
+          value="Submit"
+        />
+      </div>
+      );
+  }
+}
+class Sample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.textInputSample = React.createRef();  }
+
+  componentDidMount() {
+    this.textInputSample.current.focusTextInput(); 
+    console.log(this.textInputSample.current.focusTextInput);
+    }
+
+  render() {
+    return (
+      <CustomTextInput ref={this.textInputSample} />    );
+  }
+}
+export default Sample;
+*/
+/*import React from "react";
 import { render } from "react-dom";
 import { observer } from "mobx-react";
 import { observable } from "mobx";
@@ -31,8 +187,8 @@ class CounterParent extends React.Component{
     );
   }
 }
-
-
+export default CounterParent;
+*/
 
 /*import React from "react";
 import { render } from "react-dom";
@@ -300,7 +456,7 @@ const CounterParent = observer(() => {
     </div>
   );
 });*/
-export default CounterParent;
+
 /*import React from "react";
 import { render } from "react-dom";
 import { observable,action, computed, autorun } from "mobx";
