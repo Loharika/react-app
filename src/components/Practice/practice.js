@@ -1,4 +1,343 @@
 import React from 'react';
+
+class Cat extends React.Component {
+  render() {
+    const mouse = this.props.mouse;
+    return (
+      <img src="https://i.pinimg.com/originals/7a/af/0f/7aaf0f1d48f57b7779c0fbcf103c2d0f.jpg" 
+      style={{ position: 'absolute', left: mouse.x, top: mouse.y ,width:'70px',height:'70px',borderRadius:'50%'}} />
+    );
+  }
+}
+
+class MouseWithCat extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.state = { x: 0, y: 0 };
+  }
+
+  handleMouseMove(event) {
+    this.setState({
+      x: event.clientX,
+      y: event.clientY
+    });
+  }
+
+  render() {
+    return (
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
+      {this.props.render(this.state)}
+      </div>
+    );
+  }
+}
+
+class Sample extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        <MouseWithCat render={mouse=>(
+        <Cat mouse={mouse} />)
+        }/>
+      </div>
+    );
+  }
+}
+
+export default Sample;
+/*
+import React from "react";
+import { render } from "react-dom";
+import { observer } from "mobx-react";
+import { observable } from "mobx";
+
+class AuthStore {
+  @observable isSignedIn = false;
+
+  onChange=()=> {
+    console.log("onChange isSignedIn");
+    this.isSignedIn = !this.isSignedIn;
+  }
+}
+
+const authStore = new AuthStore();
+
+@observer
+class Sample extends React.Component {
+  onChange() {
+    const { onChange } = authStore;
+    onChange();
+  }
+  render() {
+    const { isSignedIn } = authStore;
+    console.log("isSignedIn:", isSignedIn);
+
+    return <button onClick={this.onChange}>Sign In</button>;
+  }
+}
+*/
+/*import React from "react";
+import { render } from "react-dom";
+import { observer } from "mobx-react";
+import { observable } from "mobx";
+
+class ThemeStore {
+  @observable selectedTheme = "dark";
+
+  onChange() {
+    console.log("onChange selectedTheme");
+    if (this.selectedTheme === "dark") {
+      this.selectedTheme = "light";
+    } else {
+      this.selectedTheme = "dark";
+    }
+  }
+}
+
+const themeStore = new ThemeStore();
+
+@observer
+class Sample extends React.Component {
+  onChange() {
+    const { onChange } = themeStore;
+    onChange();
+  }
+
+  render() {
+    const { selectedTheme } = themeStore;
+    console.log("SelectedTheme:", selectedTheme);
+
+    return <button onClick={this.onChange}>Change theme</button>;
+  }
+}
+
+*/
+/*import React from "react";
+import { render } from "react-dom";
+
+class Sample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { name: "Ramu", age: 24 };
+  }
+
+  componentDidMount() {
+    this.setState({ name: "Manu" });
+    this.setState({ age: 23 });
+    this.setState({ name: "Madhu" });
+  }
+
+  onIncrementAge = () => {
+    this.setState((prevState) => ({ age: prevState.age + 1 }));
+  };
+
+  render() {
+    const { name, age } = this.state;
+    return (
+      <div>
+        <h2>Person:</h2>
+        <p>Name: {name}</p>
+        <p>Age: {age}</p>
+        <button onClick={this.onIncrementAge}>Increment age</button>
+      </div>
+    );
+  }
+}
+*/
+
+/*import React from "react";
+import { render } from "react-dom";
+
+class ListItem extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    console.log(nextProps);
+    if (this.props.value === nextProps.value) {
+      console.log("yes!!")
+      return false;
+    }
+    return true;
+  }
+
+  render() {
+    console.log("tt  "+this.props.value)
+    console.log("new item");
+    return <li>{this.props.value}</li>;
+  }
+}
+
+class Sample extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { numbers: [0, 10, 20, 30, 40, 50] };
+  }
+  renderListItems = () => {
+    const { numbers } = this.state;
+    return numbers.map((number, index) => (
+      <ListItem key={index} value={number} />
+    ));
+  };
+
+  addNumberToList = () => {
+    const { numbers } = this.state;
+
+    this.setState({
+      numbers: [...numbers, numbers.length * 10],
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <ul>{this.renderListItems()}</ul>
+        <button onClick={this.addNumberToList}>Add number</button>
+      </div>
+    );
+  }
+}
+
+*/
+/*import React from 'react';
+
+import { observable, values } from "mobx";
+
+const persons = observable(new Map());
+
+const data = [
+  {
+    id: 1,
+    name: "Sri Potti Sriramulu",
+    city: "Nellore",
+    state: "Andhra Pradesh",
+  },
+  {
+    id: 2,
+    name: "Pingali Venkayya",
+    city: "Vijayawada",
+    state: "Andhra Pradesh",
+  },
+  {
+    id: 3,
+    name: "Hanuma Vihari",
+    city: "Kakinada",
+    state: "Andhra Pradesh",
+  },
+];
+
+function Sample(){
+data.forEach((person) => {
+  persons.set(person.id, person);
+});
+
+const cities1 = [];
+for (const [key, value] of persons.entries()) {
+  cities1.push(value.city);
+}
+console.log(typeof persons.entries());
+const cities2 = Array.from(persons.values()).map((person) => person.city);
+
+const cities3 = values(persons).map((person) => person.city);
+
+console.log(typeof persons.values());
+//const cities4 = persons.values().map((person) => person.city);
+return (<div>hello World</div>);
+
+}*/
+
+
+/*
+import React, { Component } from "react";
+import { render } from "react-dom";
+import { observable, action,computed,autorun,reaction } from "mobx";
+import {observer} from 'mobx-react';
+@observer
+class Sample extends React.Component{
+  @observable count=0;
+  constructor(){
+    super();
+    this.count=0;
+  }
+  @computed get totalCount(){
+    console.log("computed");
+    return this.count;
+  }
+  onClick=()=>{
+    this.count++;
+  }
+  componentWillUnmount(){
+    this.dispose()
+    this.reactionEvent();
+  }
+  
+  
+  dispose=autorun(()=>{console.log("autorun Called     "+1)});
+  reactionEvent=reaction(()=>1,()=>console.log("reaction Called    "));
+  
+  render(){
+    console.log("render");
+    return (
+      <div>
+      <h1>{this.count}</h1>
+      <button type='button'  onClick={this.onClick}>click to change count</button>
+      </div>
+      );
+  
+  
+  
+  
+  }
+}
+export default Sample;*/
+
+/*import React, { Component } from "react";
+import { render } from "react-dom";
+import { observable, action } from "mobx";
+import { observer } from "mobx-react";
+
+@observer
+class Sample extends Component {
+  @observable userDetails = null;
+  @observable count = 0;
+  @observable secondCount = 0;
+
+ @action.bound
+  async getUserDetails  () {
+    await null;
+    this.count = this.count + 1;
+    this.secondCount = this.secondCount + 1;
+    let promise = new Promise((resolve, reject) => {
+      resolve({
+        name: "Tom Preston-Werner",
+        company: "Facebook",
+      });
+    });
+    let response = await promise;
+    this.setUserDetailsResponse(response);
+  };
+  
+  @action.bound
+  setUserDetailsResponse(response) {
+    this.userDetails = response;
+  }
+
+  render() {
+    console.log("render UserProfile");
+    console.log(this.count, this.secondCount);
+
+    if (this.userDetails === null) {
+      return <button onClick={this.getUserDetails}>Get user details</button>;
+    }
+    return (
+      <div>
+        <p>Name: {this.userDetails.name}</p>
+        <p>Company: {this.userDetails.company}</p>
+      </div>
+    );
+  }
+}
+*/
+/*import React from 'react';
 function CustomTextInput(props) {
   //console.log(props);
   return (
@@ -17,7 +356,7 @@ class Sample extends React.Component {
         }}      />
     );
   }
-}
+}*/
 /*class Sample extends React.Component {
   constructor(props) {
     super(props);
@@ -56,7 +395,6 @@ class Sample extends React.Component {
     );
   }
 }*/
-export default Sample;
 
 /*import React from 'react';
 import  {observable} from 'mobx'; 

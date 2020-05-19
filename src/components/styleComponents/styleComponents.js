@@ -115,7 +115,7 @@ const EachCountryCard=styled.div`
     transition: 0.3s;
     border-top-left-radius: 10px 10px;
     border-top-right-radius: 10px 10px;
-    width:180px;
+    width:220px;
 `;
 const CountryFlagImage=styled.img`
     width:100%;
@@ -224,7 +224,7 @@ const CountryThemeChangeButton=styled.button`
     props.theme==='Light Mode'?'black':'white'}
 `;
 const SearchCountryComponent=styled.div`
-    width:40%;
+    width:200px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -232,6 +232,7 @@ const SearchCountryComponent=styled.div`
     border-radius:0px;
     margin-top:10px;
     margin-bottom:10px;
+    margin-left:25px;
     background-color: white;
     box-shadow: 0 6px 16px 0 rgba(0,0,0,0.05), 0 6px 20px 0 rgba(0,0,0,0.19);
 `;
@@ -240,6 +241,7 @@ const SearchIconComponent=styled.img`
     height:40px;
 `;
 const SearchCountryInput=styled.input`
+    color:black;
     overflow: hidden;
     flex-grow:1;
 `;
@@ -261,10 +263,16 @@ const DecrementButton=styled.button`
 const CounterValueDisplay=styled.input`
   ${tw`text-3xl border-solid border-red-300 border-2 w-1/5`}
 `;
-
+const DropDownSelect=styled.select`
+    color:black;
+    font-size:20px;
+    width:200px;
+    padding:10px;
+    margin-left:-25px;
+`;
 export {EmojiCardComponent,Image,EmojiCardsList,EmojiGameComponent,FooterComponent,ParagraphComponentPlay,ParagraphComponent,HeaderComponent,ThemeChangeButton
     ,SpanComponent,SpanComponentForTitle,WinOrLoseComponent,WinOrLoseResult,GameScore,ButtonComponent,ScoreBoardComponent,CountriesList,EachCountryCard,CountryFlagImage,
     ShowDetails,ButtonElement,ImageElement,ButtonElementDiv,TotalCountryData,FlagImage,CountryDetails,CountryDetailsWithoutBorderDetails
     ,CountryName,EachDetailAboutCountry,EachDetail,BorderCountries,CountryDetailsHeading,CountryBorderButtons,CovidGraphTitle,CountryCardDetails,CountryCardTitle,SearchBarContinentList,
-    CountryHeaderComponent,ThemeIcon,HeaderTitle,CountryThemeChangeButton,SearchCountryComponent,SearchIconComponent,SearchCountryInput,CounterAppStyle,CounterTitle,Counter,IncrementButton,DecrementButton,CounterValueDisplay
+    DropDownSelect,CountryHeaderComponent,ThemeIcon,HeaderTitle,CountryThemeChangeButton,SearchCountryComponent,SearchIconComponent,SearchCountryInput,CounterAppStyle,CounterTitle,Counter,IncrementButton,DecrementButton,CounterValueDisplay
 };

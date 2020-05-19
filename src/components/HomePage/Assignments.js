@@ -35,6 +35,7 @@ class Assignments extends Component{
           <div className="font-bold flex flex-col justify-center items-center ml-40 text-indigo-900">
                 <div className='text-4xl text-blue-500'>Assignments</div>
                 <Link to='/sample'>Sample</Link>
+                <Link to='/practice-advanced-concepts'>Practice Advanced Concepts</Link>
                 <Link to="/car">Car</Link>
                 <Link to="/formComponents">Form Components</Link>
                 <Link to="/countryDashboard">Country Dashboard</Link>

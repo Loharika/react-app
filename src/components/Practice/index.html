@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <body>
-      <div id="console-root"></div>
-    <script src="https://tap.ibhubs.in/utils/console.js"></script>
-    <div id="div1">
-      div1
-      <div id="div2">
-        div2
-        <div id="div3">div3</div>
-      </div>
-    </div>
-    <button onclick="alert(this.tagName.toUpperCase());">
-      Show this
-    </button>
-        <button  value='Hello'onclick="alert((()=>this.value)());">
-      Show inner this
-    </button>
-
-    <script>
-      function bluify(e) {
-        console.log(this);
-        this.style.backgroundColor = '#A5D9F3';
-        }
-        var elements = document.getElementsByTagName('div');
-      
-      for (var i = 0; i < elements.length; i++) {
-        elements[i].addEventListener('click', bluify, false);
+  <head>
+    <style>
+      a {
+        display: inherit;
       }
+      button {
+        display: initial;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="container">
+      <a href="tel:1800-103-9141">1800-103-9141(toll free)</a>
+      <a href="tel:1800-103-9141">1800-103-9141(toll free)</a>
+      <input value="18001039141" type="tel" />
+      <button>Call</button>
+    <script>
+          function thousands_separators(num)
+  {
+    var num_parts = num.toString().split(".");
+    num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return num_parts.join(".");
+  }
+  
+  alert(thousands_separators(1000));
+  alert(thousands_separators(10000.23));
+
     </script>
   </body>
 </html>

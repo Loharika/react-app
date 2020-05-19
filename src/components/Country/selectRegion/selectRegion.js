@@ -1,4 +1,7 @@
 import React from 'react';
+import {DropDownSelect}
+    from '../../styleComponents/styleComponents.js';
+    
 class SelectedRegion extends React.Component{
     displayRegions=()=>{
         if(this.props.regionOptions.length>0){
@@ -9,14 +12,15 @@ class SelectedRegion extends React.Component{
         }
         
     }
+    
     render(){
         let selecttag=this.props.selectedTheme==='Light Mode'?'continent-names-list-light':'continent-names-list-dark';
         return(
       
-      <select onChange={this.props.onChangeSelectedRegion}>
+      <DropDownSelect onChange={this.props.onChangeSelectedRegion}>
         <option value='all'>All</option>
         {this.displayRegions()}
-        </select>
+        </DropDownSelect>
     
             );
     }

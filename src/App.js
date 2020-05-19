@@ -25,12 +25,11 @@ import TodoAppAPI from './components/TodoAppAPI';
 import stores from './stores';
 import {ProtectedRoute} from './common/ProtectedRoute';
 import Sample from './components/Practice/practice.js';
-import "./App.css";
-
 import Authentication from './Authentication/Routes';
-
 import E_Commerce from './E_Commerce/Routes';
+import PracticeAdvancedConceptsRoute from './common/routes';
 
+import "./App.css";
 
 
 configure({enforceActions:'never'});
@@ -61,7 +60,7 @@ class App extends React.Component{
         <ProtectedRoute exact path="/rest-todo-app" component={RestTodoApp}/>
         <ProtectedRoute exact path="/user-app" component={UsersPage}/>
         <ProtectedRoute exact path="/todo-app-api" component={TodoAppAPI}/>
-        
+        <Route exact path='/practice-advanced-concepts' component={PracticeAdvancedConceptsRoute}/>
         <Route exact path='/sample' component={Sample}/>
         <Route exact path="/assignments" component={Assignments}/>
         <Route exact path="/" component={HomePage}/>

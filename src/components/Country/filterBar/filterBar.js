@@ -6,8 +6,8 @@ class FilterBar extends React.Component{
     displayRegions=()=>{
         if(this.props.regionOptions.length>0){
             const regions=this.props.regionOptions.map(eachregion=>{
-            return (<option value={eachregion}>{eachregion}</option>)
-                })
+            return (<option value={eachregion}>{eachregion}</option>);
+                });
             return regions;
         }
         
@@ -16,7 +16,10 @@ class FilterBar extends React.Component{
         return(
     <SearchBarContinentList >
       <SearchCountry onChangeSearchText={this.props.onChangeSearchText} />
-      <SelectedRegion selectedTheme={this.props.selectedTheme} onChangeSelectedRegion={this.props.onChangeSelectedRegion} regionOptions={this.props.regionOptions}/>
+      <SelectedRegion 
+      selectedTheme={this.props.selectedTheme} 
+      onChangeSelectedRegion={this.props.onChangeSelectedRegion}
+      regionOptions={this.props.regionOptions}/>
     </SearchBarContinentList>
             );
     }
