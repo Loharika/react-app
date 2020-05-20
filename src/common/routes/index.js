@@ -4,6 +4,7 @@ import DeviceTypeText from '../../components/AdvancedConcepts/DeviceTypeText';
 import ViewEditToggle from '../../components/AdvancedConcepts/ViewEditToggle';
 import CollapseExpand from '../../components/AdvancedConcepts/CollapseExpand';
 import MouseCoordinates from '../../components/AdvancedConcepts/MouseCoordinates';
+import DisplayMouseCoordinates from '../../components/AdvancedConcepts/DisplayMouseCoordinates';
 
 class PracticeAdvancedConceptsRoute extends React.Component{
     constructor(){
@@ -20,7 +21,10 @@ class PracticeAdvancedConceptsRoute extends React.Component{
                     <CollapseExpand listTitle={listTitle} list={list}/>
                     <DeviceTypeText />
                 <div className='text-3xl my-3'>Render Props Usage</div>
-                    <MouseCoordinates />
+                    <MouseCoordinates render={(mouseCoordinates,onChangeMousePointer)=>(
+                        <DisplayMouseCoordinates coordinates={mouseCoordinates} onChangeMousePointer={onChangeMousePointer}/>
+                        )}
+                    />
            </div>
             );
     }

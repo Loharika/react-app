@@ -81,7 +81,9 @@
       "!src/stores/**/*.{ts,tsx,js,jsx}",
       "!src/services/**/*.{ts,tsx,js,jsx}",
       "!src/utils/**/*.{ts,tsx,js,jsx}",
-      "!src/styles/**/*.{ts,tsx,js,jsx}"
+      "!src/styles/**/*.{ts,tsx,js,jsx}",
+      "!src/Authentication/**/*.{ts,tsx,js,jsx}",
+      "!src/E_Commerce/**/*.{ts,tsx,js,jsx}"
     ]
   }
 }

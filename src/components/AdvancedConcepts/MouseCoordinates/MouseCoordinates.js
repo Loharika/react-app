@@ -1,5 +1,5 @@
 import React from 'react';
-import DisplayMouseCoordinates from '../DisplayMouseCoordinates/DisplayMouseCoordinates.js';
+
 class MouseCoordinates extends React.Component{
     constructor(){
         super();
@@ -15,8 +15,10 @@ class MouseCoordinates extends React.Component{
         });
     }
     render(){
+        const {state,onChangeMousePointer}=this;
+        const {render}=this.props;
         return (
-            <DisplayMouseCoordinates coordinates={this.state} onChangeMousePointer={this.onChangeMousePointer}/>
+            <div className='w-screen'>{render(state,onChangeMousePointer)}</div>
             );
     }
 }

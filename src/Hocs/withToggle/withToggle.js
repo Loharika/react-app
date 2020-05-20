@@ -5,7 +5,6 @@ function withToggle(WrappedComponent){
     return class extends React.Component {
     constructor(props) {
         super(props);
-
         this.state={toggleStatus:true};
     }
     
