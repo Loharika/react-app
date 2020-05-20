@@ -33,7 +33,7 @@ class SignInForm extends React.Component{
             );
     }
 }
-export default withRouter(SignInForm);
+export default SignInForm;
 
 /*<SignInButton onClick={onSubmit} type='button' name="SignIn">
                      Sign In

@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 import { toast } from 'react-toastify';
-import { css } from 'glamor';
+//import { css } from 'glamor';
 
 import Toaster from '../Toaster';
 import {ProductTitle,ProductCard,ProductImage,InstallmentsCount,ProductPrice,AddCartToButton,ProductImageWithFreeShippingTag,FreeShippingTag} from './styledComponents';
@@ -23,10 +23,6 @@ class Product extends Component{
             autoClose:3000,
             closeButton: false,
             hideProgressBar: true,
-            className: css({
-            background: '#d69e2e',
-            color:'white',
-          })
       });
     }
     render(){

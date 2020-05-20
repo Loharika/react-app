@@ -7,6 +7,8 @@ const CheckMark=styled.span`
     `;
 const ToasterDisplay=styled.div`
     ${tw`flex justify-center items-center  `};
+     background-color: '#d69e2e',
+            color:'white',
 `;
 const ToasterInfo=styled.div`
     ${tw``};

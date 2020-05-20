@@ -10,7 +10,7 @@ import {
 @observer
 class FailureView extends React.Component {
   render() {
-    const { onRetryClick, errorMessage } = this.props
+    const { onRetryClick, errorMessage } = this.props;
 
     return (
       <FailureViewContainer>
@@ -21,4 +21,4 @@ class FailureView extends React.Component {
   }
 }
 
-export default FailureView
+export default FailureView;

@@ -18,7 +18,6 @@ function WithCountries(WrappedComponent,paramsId) {
      });
    }
     render() {
-        alert(paramsId);
         if(this.state.countries.length===0){
               return (<div className="loading-icon self-center">
                       <img src={loaderIcon} alt="loaderIcon"/>
