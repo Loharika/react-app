@@ -1,9 +1,6 @@
 import React from 'react';
 
 class TodoComponent extends React.Component{
-    constructor(props){
-        super(props);
-    }
     render(){
         return (
         <li id={this.props.todo.id} className="todo-list-item" key={this.props.todo.id}>

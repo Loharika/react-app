@@ -30,11 +30,11 @@ const StyledCheckBox=styled.input`
     border-radius:20px;
 `;
 const TodoInputField=styled.input`
+
     border: none;
     border-radius: 2px;
     font-size: 15px;
     flex-grow: 1;
-    
     &:focus{
         border: 1px solid #e1e1e1;
         border-radius:10px;
