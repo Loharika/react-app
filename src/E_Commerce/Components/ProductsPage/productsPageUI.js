@@ -5,17 +5,18 @@ import SizeFilter from '../SizeFilter';
 import Header from '../Header';
 import ProductList from '../ProductList';
 import ProductCart from '../ProductCart';
+import {ProductsPageNumber} from '../ProductsPageNumber';
 
 import {AvailableSizes_SignOutButton,ProductsDashboard,SignOutButton,
     ProductListDisplay_Header,ProductsPageStyle} from './styledComponents';
-    
+
     
 @observer
 class ProductsPageUI extends Component{
     render(){
     
         const {productStore:{onSelectSize,onChangeSortBy,onChangeSearchInput,sortedAndFilteredProducts,onClickAddToCart,totalNoOfProductsDisplayed,sizeFilter,
-            getProductListAPIStatus,getProductListAPIError},doNetworkCalls,onClickuserSignOut}=this.props;
+            getProductListAPIStatus,getProductListAPIError,onChangePageNumber,pageNumber,totalPages},doNetworkCalls,onClickuserSignOut,}=this.props;
         return (
             <ProductsPageStyle >
             
@@ -29,6 +30,7 @@ class ProductsPageUI extends Component{
                         <ProductList products={sortedAndFilteredProducts}
                             doNetworkCalls={doNetworkCalls} getProductListAPIStatus={getProductListAPIStatus} 
                                 getProductListAPIError={getProductListAPIError}/>
+                        <ProductsPageNumber onChangePageNumber={onChangePageNumber} pageNumber={pageNumber} totalPages={totalPages} />
                     </ProductListDisplay_Header>
                 </ProductsDashboard>
                 

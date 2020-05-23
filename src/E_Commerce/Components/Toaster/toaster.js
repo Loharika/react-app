@@ -9,12 +9,12 @@ import {CheckMark,ToasterDisplay,ToasterInfo} from './styledComponents.js';
     
     render(){
       return (<ToasterDisplay>
-              <CheckMark>
-                  <IoMdCheckmarkCircleOutline />
-              </CheckMark>
-              <ToasterInfo>
-                &nbsp; Product added to your cart
-              </ToasterInfo>
+                <CheckMark>
+                    <IoMdCheckmarkCircleOutline />
+                </CheckMark>
+                <ToasterInfo>
+                  &nbsp; Product added to your cart
+                </ToasterInfo>
             </ToasterDisplay>);
     }
   }

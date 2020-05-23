@@ -5,8 +5,8 @@ const ProductTitle=styled.div`
     ${tw`flex-grow text-center my-2`}
 `;
 const ProductCard=styled.div`
-    ${tw`w-48  m-1 p-2 flex flex-col items-center justify-around bg-white hover:border`};
-    height:450px;
+    ${tw`w-48  m-4 p-2 flex flex-col items-center justify-around bg-white hover:border`};
+    height:400px;
     `;
 const ProductImage=styled.img`
     ${tw`w-9/12 border-3 `}

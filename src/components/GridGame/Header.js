@@ -2,6 +2,19 @@ import React from 'react';
 import {observer} from 'mobx-react';
 import {GridGameHeader,ScoreAndThemeStyle,ThemeChangeButtonStyle} from './styledComponents';
 
+
+@observer
+class ThemeChangeButton extends React.Component{
+    render(){
+        const {onChangeTheme,theme}=this.props;
+        return (
+            <ThemeChangeButtonStyle type='button' 
+                        onClick={onChangeTheme} theme={theme}>
+                        Mode: {theme}</ThemeChangeButtonStyle>
+            )
+    }
+}
+
 @observer
 class Header extends React.Component{
     render(){
@@ -11,13 +24,14 @@ class Header extends React.Component{
                 <span theme={theme}>Top Level:{topLevel}</span>
                 <ScoreAndThemeStyle >
                     <span theme={theme}>Level:{level}</span>
-                    <ThemeChangeButtonStyle type='button' 
+                    <ThemeChangeButton onChangeTheme={onChangeTheme} theme={theme}/>
+                    {/*<ThemeChangeButtonStyle type='button' 
                         onClick={onChangeTheme} theme={theme}>
-                        Mode: {theme}</ThemeChangeButtonStyle>
+                        Mode: {theme}</ThemeChangeButtonStyle>*/}
                 </ScoreAndThemeStyle>
             </GridGameHeader>
             );
     }
         
 }
-export default Header;
+export {Header,ThemeChangeButton};

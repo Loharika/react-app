@@ -12,6 +12,9 @@ class ProductStore {
     @observable sizeFilter;
     @observable sortBy;
     @observable searchInput;
+    @observable limit;
+    @observable pageNumber;
+    @observable limit;
     productsAPIService
     constructor(productsAPIService){
         this.init(productsAPIService);
@@ -25,17 +28,22 @@ class ProductStore {
         this.sizeFilter=[];
         this.sortBy='SELECT'; //ASCENDING, DESCENDING, SELECT
         this.searchInput='';
+        this.pageNumber=1;
+        this.totalPages=0;
+        this.limit=0;
     }
     @action.bound
-    getProductList(){
-        let productListPromise=this.productsAPIService.getProductsAPI();
+    getProductList(limit,offset){
+        this.limit=limit;
+        let productListPromise=this.productsAPIService.getProductsAPI(limit,offset);
         return bindPromiseWithOnSuccess(productListPromise).
         to(this.setGetProductListAPIStatus,this.setProductListResponse).
         catch(this.setGetProductListAPIError);
     }
     @action.bound
     setProductListResponse(productListResponse){
-        this.productList=productListResponse;
+        this.productList=productListResponse.products;
+        this.totalPages=Math.ceil(productListResponse.total/this.limit);
     }
     @action.bound
     setGetProductListAPIError(apiError){
@@ -61,6 +69,22 @@ class ProductStore {
     @action.bound
     onChangeSearchInput(searchName){
         this.searchInput=searchName;
+    }
+    @action.bound
+    onChangePageNumber(page){
+        
+        let currentPageNumber=this.pageNumber;
+        if(page==='previousPage'){
+            currentPageNumber--;
+        }
+        else{
+            currentPageNumber++;
+        }
+        if(currentPageNumber>0 && currentPageNumber<=this.totalPages){
+                this.pageNumber=currentPageNumber;
+            }
+        let value=this.limit*(this.pageNumber-1);
+        this.getProductList(this.limit,value);
     }
     @computed
     get products(){

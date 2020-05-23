@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
-import 'react-toastify/dist/ReactToastify.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { toast } from 'react-toastify';
-//import { css } from 'glamor';
+import { css } from 'glamor';
 
 import Toaster from '../Toaster';
 import {ProductTitle,ProductCard,ProductImage,InstallmentsCount,ProductPrice,AddCartToButton,ProductImageWithFreeShippingTag,FreeShippingTag} from './styledComponents';
@@ -19,10 +19,15 @@ class Product extends Component{
     }
     displayToaster=()=> {
       toast(<Toaster />, {
+            className: css({
+            backgroundColor:'#d69e2e',
+            color:'red',
+          }),
             position: toast.POSITION.BOTTOM_CENTER,
             autoClose:3000,
             closeButton: false,
             hideProgressBar: true,
+            
       });
     }
     render(){

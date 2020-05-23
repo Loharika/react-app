@@ -4,7 +4,7 @@ import {Provider,observer} from 'mobx-react';
 
 import memoryGamethemeStore from '../../stores/GameTheme/index';
 import gameStore from '../../stores/GameStore/index';
-import Header from './Header';
+import {Header} from './Header';
 import GameField from './GameField';
 import GameResult from './GameResult';
 import ResetGame from './ResetGame';
