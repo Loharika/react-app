@@ -1,6 +1,6 @@
 /*global fetch*/
 import { observable,computed,action} from 'mobx';
-import Todo from './TodoModel/index';
+import TodoModel from './TodoModel/index';
 import {API_INITIAL,API_FETCHING,API_FAILED,API_SUCCESS} from '@ib/api-constants';
 
 class TodoStores {
@@ -42,7 +42,7 @@ class TodoStores {
                 title:eachTodo.title,
                 isCompleted:eachTodo.isCompleted,
             };
-            return new Todo(todoObject);
+            return new TodoModel(todoObject);
         });
         this.getUsersApiStatus=API_SUCCESS;
     }
@@ -61,7 +61,7 @@ class TodoStores {
                 title:value,
                 isCompleted:false,
             };
-       let todo=new Todo(todoObject);
+       let todo=new TodoModel(todoObject);
        this.allTodos.push(todo);
    }
     @action.bound
@@ -110,8 +110,10 @@ class TodoStores {
             }
             case 'COMPLETED':{
                 filteredTodoList=this.allTodos.filter(eachTodo=>eachTodo.isCompleted===true);
-                
                 break;
+            }
+            default :{
+                return new Error("invalid filter type")
             }
         }
         return filteredTodoList;

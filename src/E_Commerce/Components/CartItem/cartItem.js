@@ -9,9 +9,6 @@ import {CartItemDisplay,CartDetailsWithImage,CartItemImage,CartItemDetails,CartI
 
 @observer
 class CartItem extends Component{
-    constructor(props){
-        super(props);
-    }
     render(){
         const {getProductDetailsById,cartItem,onRemoveCartItem}=this.props;
         const productDetails=getProductDetailsById(cartItem.productId);

@@ -1,5 +1,5 @@
 import { observable,computed,action} from 'mobx';
-import Todo from './TodoModel/index';
+import TodoModel from './TodoModel/index';
 class TodoStores {
     @observable todos;
    @observable selectedFilter;
@@ -12,7 +12,7 @@ class TodoStores {
    @action.bound
    onAddTodo(value) {
        this.selectedFilter="ALL";
-       let todo=new Todo(value);
+       let todo=new TodoModel(value);
        this.todos.push(todo);
    }
     @action.bound
@@ -40,14 +40,13 @@ class TodoStores {
     @computed 
     get activeTodosCount(){
         let activeTodos=0;
-        let completedTodos=0;
+
         this.todos.forEach(eachTodo=>{
             if(eachTodo.isCompleted===false){
                 activeTodos++;
         }});
         this.todos.forEach(eachTodo=>{
             if(eachTodo.isCompleted===true){
-                completedTodos++;
         }});
         return activeTodos;
     }
@@ -68,6 +67,9 @@ class TodoStores {
                 filteredTodoList=this.todos.filter(eachTodo=>eachTodo.isCompleted===true);
                 
                 break;
+            }
+            default:{
+                return new Error("invalid filter type")
             }
         }
         return filteredTodoList;

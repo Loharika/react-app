@@ -15,7 +15,7 @@ import {AvailableSizes_SignOutButton,ProductsDashboard,SignOutButton,
 class ProductsPageUI extends Component{
     render(){
     
-        const {productStore:{onSelectSize,onChangeSortBy,onChangeSearchInput,sortedAndFilteredProducts,onClickAddToCart,totalNoOfProductsDisplayed,sizeFilter,
+        const {productStore:{onSelectSize,onChangeSortBy,onChangeSearchInput,sortedAndFilteredProducts,totalNoOfProductsDisplayed,sizeFilter,
             getProductListAPIStatus,getProductListAPIError,onChangePageNumber,pageNumber,totalPages},doNetworkCalls,onClickuserSignOut,}=this.props;
         return (
             <ProductsPageStyle >

@@ -43,12 +43,9 @@ class Assignments extends Component{
                 <Link to="/counter-app">Counter App</Link>
                 <Link to="/todo-app">Todo App</Link>
                 <Link to="/mobx-store-todo-app">Mobx Todo App</Link>
-                <Link to="/rest-todo-app">Rest Todo App</Link>
                 <Link to="/todo-app-api">Todo App API</Link>
-                <Link to="/events-app">Events App</Link>
                 <Link to="/grid-game">Grid Memory Game</Link>
                 <Link to="/user-app">Users App</Link>
-                <Link to='/app'>Post App</Link>
                 <Link to='/ecommerce-store/products/'>E_Commerce</Link>
           </div>
           <div className='border-2 self-center'>

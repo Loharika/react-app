@@ -115,9 +115,6 @@ class ProductStore {
             let array=filteredProducts.filter(product=>(product.title.toLowerCase().includes(this.searchInput.toLowerCase())));
             filteredProducts=array;
         }
-        else{
-            filteredProducts=filteredProducts;
-        }
         switch(this.sortBy){
             case 'SELECT':{
                 return filteredProducts;
@@ -131,6 +128,9 @@ class ProductStore {
                 return filteredProducts.slice().sort((a, b)=>{
                     return b.price-a.price;
                 });
+            }
+            default :{
+                return new Error("invalid filter type")
             }
             }
         }

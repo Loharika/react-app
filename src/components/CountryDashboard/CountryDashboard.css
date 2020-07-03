@@ -1,0 +1,138 @@
+.header-part-light-mode,
+.header-part-dark-mode {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.header-part-light-mode {
+    background-color: #fff;
+    box-shadow: 5px 5px 5px grey;
+}
+
+.header-part-dark-mode {
+    background-color: #2b3945;
+    color: white;
+    box-shadow: 5px 5px 5px black;
+}
+
+.header-button-light-mode,
+.header-button-dark-mode {
+    border: none;
+    font-size: 20px;
+}
+
+.header-button-dark-mode {
+    background-color: #2b3945;
+    color: white;
+}
+
+.light-mode {
+    background-color: #fff;
+}
+
+.dark-mode {
+    background-color: #2b3945;
+    color: white;
+}
+
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.search-country-light-mode {
+    height: 30px;
+    box-shadow: 5px 5px 5px grey;
+    font-size: 18px;
+    background-color: #fff;
+}
+
+.search-country-dark-mode {
+    height: 30px;
+    box-shadow: 5px 5px 5px black;
+    font-size: 18px;
+    background-color: #2b3945;
+    color: white;
+}
+
+.country-image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.each-country {
+    box-shadow: 5px 5px 5px grey;
+    margin-bottom: 30px;
+    width: 210px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.country-details {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    /*margin-right: 40px;*/
+}
+
+.country-name {
+    font-size: 25px;
+}
+
+.country-back-button-light-mode,
+.country-back-button-dark-mode {
+    border-radius: 0px;
+    font-size: 20px;
+    height: 50px;
+}
+
+.country-back-button-light-mode {
+    background-color: #fff;
+    color: black;
+}
+
+.country-back-button-dark-mode {
+    background-color: #2b3945;
+    color: white;
+}
+
+.country-details-div-light-mode {
+    padding: 50px;
+    background-color: #fff;
+}
+
+.country-details-div-dark-mode {
+    background-color: #2b3945;
+    color: white;
+    padding: 50px;
+}
+
+.border-country-button-light-mode,
+.border-country-button-dark-mode {
+    border: none;
+    font-size: 18px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.border-country-button-light-mode {
+    background-color: #fff;
+    box-shadow: 5px 5px 5px lightgrey;
+}
+
+.border-country-button-dark-mode {
+    background-color: #2b3945;
+    color: white;
+    box-shadow: 5px 5px 5px black;
+}
+
+.border-countries {
+    margin-left: 41%;
+}

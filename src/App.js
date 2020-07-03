@@ -6,22 +6,19 @@ import {configure} from 'mobx';
 
 import HomePage from "./components/HomePage";
 import Assignments from './components/HomePage/Assignments.js';
-//import LocalApp from './components/Practice/practice';
+import Dashboard from './components/CountryDashboard/Dashboard';
+import ShowCountryDetails from './components/CountryDashboard/ShowCountryDetails';
 import TodoApp from './components/TodoApp/todoApp';
 import CarList from  './components/CarsList/carList.js';
 import FormComponents from './components/formComponents/form.js';
 import Components from './components/formComponents/components.js';
-import CountryDashboard from './components/Country/countryDashboard/countryDashboard.js';
-import ShowCountryData from './components/Country/showCountryData/showCountryData.js';
 import EmojiGame from './components/emojiGame/emojiGame/emojiGame.js';
 import CounterPage from './components/CounterPage/index.js';
 import CounterApp from './components/assignment-6/index.js';
 import MobxTodoApp from './components/MobxTodo/MobxTodoApp/index';
-import EventsApp from './components/EventsApp/EventApp/index';
 import GridMemoryGame from './components/GridGame/GridMemoryGame';
 import RestTodoApp from './components/RestTodoApp/RestTodoApp/index';
 import UsersPage from './components/UsersPage/index';
-import TodoAppAPI from './components/TodoAppAPI';
 import stores from './stores';
 import {ProtectedRoute} from './common/ProtectedRoute';
 import Sample from './components/Practice/practice.js';
@@ -50,16 +47,14 @@ class App extends React.Component{
         <ProtectedRoute exact path="/car" component={CarList}/>
         <ProtectedRoute exact path="/formComponents" component={FormComponents}/>
         <ProtectedRoute exact path="/formComponents/:formName" component={Components}/>
-        <ProtectedRoute exact path="/countryDashboard" component={CountryDashboard}/>
-        <ProtectedRoute exact path="/countryDashboard/:id" component={ShowCountryData}/>
         <ProtectedRoute exact path="/emojiGame" component={EmojiGame}/>
         <ProtectedRoute exact path="/todo-app" component={TodoApp}/>
         <ProtectedRoute exact path="/mobx-store-todo-app" component={MobxTodoApp}/>
         <ProtectedRoute exact path="/grid-game" component={GridMemoryGame}/>
-        <ProtectedRoute exact path="/events-app" component={EventsApp}/>
         <ProtectedRoute exact path="/rest-todo-app" component={RestTodoApp}/>
         <ProtectedRoute exact path="/user-app" component={UsersPage}/>
-        <ProtectedRoute exact path="/todo-app-api" component={TodoAppAPI}/>
+        <ProtectedRoute exact path="/countryDashboard" component={Dashboard}/>
+        <ProtectedRoute exact path={`/countriesDashboardApp/:alpha3Code`} component={ShowCountryDetails}/>
         <Route exact path='/practice-advanced-concepts' component={PracticeAdvancedConceptsRoute}/>
         <Route exact path='/sample' component={Sample}/>
         <Route exact path="/assignments" component={Assignments}/>
